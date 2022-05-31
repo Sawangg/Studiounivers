@@ -1,0 +1,63 @@
+{
+    "compilerOptions": {
+        // Type Checking
+        "strict": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "exactOptionalPropertyTypes": false,
+        "noFallthroughCasesInSwitch": false,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "useUnknownInCatchVariables": true,
+        "strictBindCallApply": false,
+
+        // Modules
+        "module": "CommonJS",
+        "paths": {
+            "@interfaces/*": [
+                "src/utils/interfaces/*",
+            ],
+            "@enums/*": [
+                "src/utils/enums/*",
+            ],
+        },
+
+        // Emit
+        "baseUrl": ".",
+        "outDir": "dist",
+        "declaration": true,
+        "newLine": "lf",
+        "sourceMap": true,
+        "removeComments": true,
+        "importsNotUsedAsValues": "error",
+
+        // Interop Constraints
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": false,
+        "esModuleInterop": true,
+
+        // Language and Environment
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+
+        // Projects
+        "incremental": true,
+
+        // Completeness
+        "skipLibCheck": true,
+        "strictNullChecks": false,
+    },
+    "include": [
+        "src/**/*",
+    ],
+    "exclude": [
+        "dist",
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
