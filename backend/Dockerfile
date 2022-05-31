@@ -3,7 +3,7 @@ FROM node:alpine
 ENV FORCE_COLOR=1
 ENV NODE_ENV=production
 
-WORKDIR /home/agence
+WORKDIR /home/studiounivers
 COPY package.json yarn.lock ./
 RUN yarn --pure-lockfile
 COPY . .
