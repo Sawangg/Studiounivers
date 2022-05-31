@@ -5,6 +5,7 @@ import { UserModule } from "./user/user.module";
 import { AuthModule } from "./auth/auth.module";
 import { PassportModule } from "@nestjs/passport";
 import { SessionEntity } from "./auth/entities/Session.entity";
+import { ProductModule } from "./product/product.module";
 
 @Module({
     imports: [
@@ -28,6 +29,7 @@ import { SessionEntity } from "./auth/entities/Session.entity";
         }),
         AuthModule,
         UserModule,
+        ProductModule,
     ],
     controllers: [],
     providers: [],

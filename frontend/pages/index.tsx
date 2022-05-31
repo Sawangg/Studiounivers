@@ -7,7 +7,7 @@ const Landing: NextPage = () => (
         <Head>
             <title>StudioUnivers</title>
         </Head>
-        <div className="bg-blue w-1 h-1">
+        <div className="">
             <Navbar />
         </div>
     </>
