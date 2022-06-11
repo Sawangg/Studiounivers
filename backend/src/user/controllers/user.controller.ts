@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, HttpStatus, Param, Post, Res, UseInterceptors, ClassSerializerInterceptor } from "@nestjs/common";
+import { Body, Controller, Delete, HttpStatus, Param, Post, Res, UseInterceptors, ClassSerializerInterceptor, Get } from "@nestjs/common";
 import { UserService } from "../services/user.service";
 import { SerializedUser } from "../entities/user.entity";
 import { CreateUserDto } from "../dtos/CreateUser.dto";
@@ -19,5 +19,15 @@ export class UserController {
     async deleteCustomer(@Param("id") id: string, @Res() res: Response) {
         const result = await this.customerService.remove(id);
         return result.affected > 0 ? res.send(result).status(HttpStatus.OK) : res.status(HttpStatus.NOT_MODIFIED);
+    }
+
+    @Get("cart")
+    getCart() {
+
+    }
+
+    @Post("card/add/:productId")
+    async addToCart(@Param("productId") productId: string) {
+        const result = await this.customerService.remove(id);
     }
 }

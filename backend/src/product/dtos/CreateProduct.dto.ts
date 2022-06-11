@@ -24,5 +24,5 @@ export class CreateProductDto {
     tags: Array<string>;
 
     @IsOptional()
-    pics: Array<string>;
+    photos: Array<string>;
 }

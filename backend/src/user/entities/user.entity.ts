@@ -1,5 +1,6 @@
 import { Exclude } from "class-transformer";
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "src/product/entities/product.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class User {
@@ -11,6 +12,9 @@ export class User {
 
     @Column({ name: "password", nullable: false })
     password: string;
+
+    @OneToMany(() => Product, product => product.user, { cascade: true })
+    product: Product[];
 }
 
 export class SerializedUser {

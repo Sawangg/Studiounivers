@@ -5,7 +5,21 @@ module.exports = {
         "./ui/**/*.{ts,tsx}",
     ],
     theme: {
+        fontFamily: {
+            display: ["ClashDisplay-Variable"],
+            body: ["Satoshi-Variable"],
+        },
+        fontSize: {
+            base: "1.1704rem",
+            lg: "1.3376rem",
+            xl: "1.5048rem",
+            "2xl": "1.6720rem",
+            "3xl": "2.0064rem",
+            "4xl": "2.6752rem",
+            "5xl": "3.0096rem",
+        },
         colors: {
+            transparent: "transparent",
             primary: {
                 DEFAULT: "#0579BC",
                 50: "#7DCDFC",
@@ -45,9 +59,15 @@ module.exports = {
                 800: "#330006",
                 900: "#000000",
             },
-            background: {
-                DEFAULT: "#F0F2F4",
-                100: "#FFFFFF",
+            white: {
+                DEFAULT: "#FFFFFF",
+                100: "#F0F2F4",
+                200: "#E3E3E3",
+                300: "#F9F9F9",
+                400: "#726E8D",
+                500: "#505977",
+                600: "#EBE8F4",
+                700: "#DCDCDC",
             },
         },
     },
