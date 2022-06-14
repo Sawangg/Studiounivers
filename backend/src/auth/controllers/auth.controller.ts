@@ -1,8 +1,8 @@
 import { ClassSerializerInterceptor, Controller, Delete, Get, NotFoundException, Post, Request as RequestD, Res, UseGuards, UseInterceptors } from "@nestjs/common";
-import { AuthenticatedGuard, LocalAuthGuard } from "../utils/LocalGuard";
 import type { Request, Response } from "express";
 import { SerializedUser, User } from "src/user/entities/user.entity";
 import { UserService } from "src/user/services/user.service";
+import { AuthenticatedGuard, LocalAuthGuard } from "../utils/LocalGuard";
 
 @Controller("auth")
 export class AuthController {

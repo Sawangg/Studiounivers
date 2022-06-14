@@ -1,6 +1,6 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "../../ui/Button";
 
 export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {

@@ -1,5 +1,5 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Image from "next/image";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Input } from "../ui/Input";
 
 export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (

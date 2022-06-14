@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { apiEndpoint } from "../../../lib/constants";
 import { Footer } from "../../../modules/Footer";
 import { Navbar } from "../../../modules/Navbar";
 import { ProductBlock } from "../../../modules/product/ProductBlock";
 import { Product } from "../../../styles/types/Product";
-import { apiEndpoint } from "../../lib/constants";
 
 export interface ProductPageProps {
     product: Product;
@@ -12,6 +12,7 @@ export interface ProductPageProps {
 
 export const getProduct = async (id: number) => {
     const res = await fetch(`${apiEndpoint}/api/product/${id}`);
+    console.log(res);
     const data = await res.json();
 
     return data as Product;

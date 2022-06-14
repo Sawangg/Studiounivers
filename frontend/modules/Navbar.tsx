@@ -1,6 +1,6 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export const Navbar: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
     const router = useRouter();

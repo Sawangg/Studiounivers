@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, HttpStatus, Param, Post, Res, UseInterceptors, ClassSerializerInterceptor, Get } from "@nestjs/common";
-import { UserService } from "../services/user.service";
-import { SerializedUser } from "../entities/user.entity";
-import { CreateUserDto } from "../dtos/CreateUser.dto";
+import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpStatus, Param, Post, Res, UseInterceptors } from "@nestjs/common";
 import type { Response } from "express";
+import { CreateUserDto } from "../dtos/CreateUser.dto";
+import { SerializedUser } from "../entities/user.entity";
+import { UserService } from "../services/user.service";
 
 @Controller("user")
 export class UserController {
@@ -28,6 +28,8 @@ export class UserController {
 
     @Post("card/add/:productId")
     async addToCart(@Param("productId") productId: string) {
-        const result = await this.customerService.remove(id);
+        const result = await this.customerService.remove(productId);
+        if (!result) return new BadRequestException();
+        return result;
     }
 }

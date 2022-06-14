@@ -1,5 +1,5 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Image from "next/image";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "../../ui/Button";
 
 export const FeatureAbout: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (

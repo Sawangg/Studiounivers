@@ -1,5 +1,5 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Image from "next/image";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type FeatureBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     title: string;

@@ -1,9 +1,9 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Image from "next/image";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
+import { Product } from "../../styles/types/Product";
 import { Button } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
 import { ProductCard } from "./ProductCard";
-import { Product } from "../../styles/types/Product";
 
 export type ProductPageProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     products: Array<Product>

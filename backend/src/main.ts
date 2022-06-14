@@ -1,12 +1,12 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
 import { TypeormStore } from "connect-typeorm";
-import { getConnection } from "typeorm";
-import { SessionEntity } from "./auth/entities/Session.entity";
-import helmet from "helmet";
 import session from "express-session";
+import helmet from "helmet";
 import passport from "passport";
+import { getConnection } from "typeorm";
+import { AppModule } from "./app.module";
+import { SessionEntity } from "./auth/entities/Session.entity";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
