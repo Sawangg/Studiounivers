@@ -6,7 +6,7 @@ module.exports = {
     ],
     theme: {
         fontFamily: {
-            display: ["ClashDisplay-Variable"],
+            title: ["ClashDisplay-Variable"],
             body: ["Satoshi-Variable"],
         },
         fontSize: {

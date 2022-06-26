@@ -9,7 +9,7 @@ export const Listings: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
     return (
         <div className="w-full px-28 py-20 flex flex-col text-white">
             <div className="w-3/5 flex flex-col justify-between bg-primary-700 p-16">
-                <h2 className="font-display text-4xl">Nouveaux produits</h2>
+                <h2 className="font-title text-4xl">Nouveaux produits</h2>
                 <div className="">
                     <Image src="/assets/hero.png" layout="fill" alt="heroImg" />
 

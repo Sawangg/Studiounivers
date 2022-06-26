@@ -22,7 +22,7 @@ export const Input: React.FC<InputProps> = ({
     ...props
 }) => (
     <>
-        {label && <label htmlFor="ipt" className="font-display text-lg">{label}</label>}
+        {label && <label htmlFor="ipt" className="font-title text-lg">{label}</label>}
         <div className="flex flex-row items-center justify-center mt-4">
             <input
                 name="ipt"

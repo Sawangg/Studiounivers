@@ -4,15 +4,14 @@ import { apiEndpoint } from "../../../lib/constants";
 import { Footer } from "../../../modules/Footer";
 import { Navbar } from "../../../modules/Navbar";
 import { ProductBlock } from "../../../modules/product/ProductBlock";
-import { Product } from "../../../styles/types/Product";
+import { Product } from "../../../types/Product";
 
 export interface ProductPageProps {
     product: Product;
 }
 
 export const getProduct = async (id: number) => {
-    const res = await fetch(`${apiEndpoint}/api/product/${id}`);
-    console.log(res);
+    const res = await fetch(`${apiEndpoint}/api/product/${id}`, { credentials: "include" });
     const data = await res.json();
 
     return data as Product;

@@ -18,11 +18,11 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
             </div>
         </div>
         <div className="w-1/2 p-24">
-            <h1 className="font-display text-5xl">{title}</h1>
+            <h1 className="font-title text-5xl">{title}</h1>
             <h3 className="text-3xl">{price}€</h3>
-            <h5 className="font-display text-lg">Description</h5>
+            <h5 className="font-title text-lg">Description</h5>
             <p className="text-lg">{description}</p>
-            <h5 className="font-display text-lg">Dimensions</h5>
+            <h5 className="font-title text-lg">Dimensions</h5>
             <div className="flex flex-row items-center">
                 <p className="text-lg">Quantité</p>
                 <Button>Ajouter au panier</Button>

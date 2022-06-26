@@ -11,7 +11,7 @@ export interface ProductsProps {
 }
 
 export const getAllProducts = async () => {
-    const res = await fetch(`${apiEndpoint}/api/product/`);
+    const res = await fetch(`${apiEndpoint}/api/product/`, { credentials: "include" });
     const data = await res.json();
 
     return data as Array<Product>;

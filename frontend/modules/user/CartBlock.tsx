@@ -12,9 +12,9 @@ export const CartBlock: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement
             {/* Do not display if empty */}
             <div className="w-full flex flex-col">
                 <div className="flex flex-row my-3">
-                    <h6 className="font-display text-base w-3/5">Produits</h6>
-                    <h6 className="font-display text-base w-1/5">Quantité</h6>
-                    <h6 className="font-display text-base text-right w-1/5">Total</h6>
+                    <h6 className="font-title text-base w-3/5">Produits</h6>
+                    <h6 className="font-title text-base w-1/5">Quantité</h6>
+                    <h6 className="font-title text-base text-right w-1/5">Total</h6>
                 </div>
                 <hr className="w-full bg-white-600 border-none h-[1px]" />
 
@@ -25,7 +25,7 @@ export const CartBlock: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement
                             <Image src="/assets/product1.png" layout="fill" title="product title" alt="productImg" />
                         </div>
                         <div className="w-1/3">
-                            <h4 className="text-2xl font-display my-2">Graystone vase</h4>
+                            <h4 className="text-2xl font-title my-2">Graystone vase</h4>
                             <p className="text-base my-2">A timeless ceramic vase with  a tri color grey glaze.</p>
                             <p className="text-lg my-2">10€</p>
                         </div>

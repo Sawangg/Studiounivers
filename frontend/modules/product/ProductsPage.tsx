@@ -14,13 +14,13 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
         <div className="w-full">
             <div className="h-[18rem] relative">
                 <Image src="/assets/header.png" layout="fill" alt="header" className="-z-50 select-none" />
-                <h1 className="absolute bottom-9 pl-24 text-5xl font-display text-white z-50">Tous les produits</h1>
+                <h1 className="absolute bottom-9 pl-24 text-5xl font-title text-white z-50">Tous les produits</h1>
             </div>
         </div>
         <div className="w-full flex flex-row px-16">
             <div className="w-1/4 flex flex-col p-10 gap-16">
                 <div className="flex flex-col gap-2">
-                    <h5 className="font-display text-lg my-4">Types de produits</h5>
+                    <h5 className="font-title text-lg my-4">Types de produits</h5>
                     <Checkbox label="Eclairage" />
                     <Checkbox label="Accessoires" />
                     <Checkbox label="Modificateurs" />
@@ -30,13 +30,13 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                     <Checkbox label="Strobist" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h5 className="font-display text-lg my-4">Prix</h5>
+                    <h5 className="font-title text-lg my-4">Prix</h5>
                     <Checkbox label="0 - 100" />
                     <Checkbox label="101 - 250" />
                     <Checkbox label="250+" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h5 className="font-display text-lg my-4">Fournisseurs</h5>
+                    <h5 className="font-title text-lg my-4">Fournisseurs</h5>
                     <Checkbox label="Disnet" />
                     <Checkbox label="Kiwi" />
                     <Checkbox label="Litra" />
@@ -45,7 +45,7 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
             </div>
             <div className="w-3/4 py-12">
                 <div className="grid grid-cols-3 gap-x-8 gap-y-12 ">
-                    {products.map(product => (
+                    {products.length > 0 && products.map(product => (
                         <ProductCard
                             key={product.id}
                             productId={product.id}

@@ -2,7 +2,7 @@ import { Exclude } from "class-transformer";
 import { Product } from "src/product/entities/product.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity({ name: "users" })
 export class User {
     @PrimaryGeneratedColumn({ name: "id" })
     id: number;

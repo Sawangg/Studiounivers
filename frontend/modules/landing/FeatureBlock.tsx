@@ -10,7 +10,7 @@ export type FeatureBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
 export const FeatureBlock: React.FC<FeatureBlockProps> = ({ title, description, imagePath, ...props }) => (
     <div className="w-full block max-w-md p-10 overflow-hidden bg-white-300" {...props}>
         <Image src={imagePath} width="24px" height="24px" alt="icon" />
-        <h4 className="font-display text-2xl my-2">{title}</h4>
+        <h4 className="font-title text-2xl my-2">{title}</h4>
         <p className="w-full text-lg break-words">{description}</p>
     </div>
 );

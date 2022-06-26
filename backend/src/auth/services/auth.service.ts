@@ -5,10 +5,7 @@ import { compatePasswords } from "src/utils/password";
 
 @Injectable()
 export class AuthService {
-    constructor(
-        @Inject(UserService)
-        private readonly customerService: UserService,
-    ) { }
+    constructor(@Inject(UserService) private readonly customerService: UserService) { }
 
     async validateUser(username: string, rawPass: string): Promise<User | null> {
         const userDB = await this.customerService.findByUsername(username);

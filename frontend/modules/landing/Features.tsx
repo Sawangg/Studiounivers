@@ -3,7 +3,7 @@ import { FeatureBlock } from "./FeatureBlock";
 
 export const Features: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
     <div className="w-full flex flex-col px-10 py-24">
-        <h3 className="font-display text-3xl mx-auto mb-8">Ce qui rend notre marque différente</h3>
+        <h3 className="font-title text-3xl mx-auto mb-8">Ce qui rend notre marque différente</h3>
         <div className="flex flex-row justify-around">
             <FeatureBlock
                 title="Livraison rapide"
