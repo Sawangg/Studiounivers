@@ -1,6 +1,6 @@
+import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import axios from "axios";
 import { apiEndpoint } from "../../lib/constants";
 
 export interface AdminLandingProps {
@@ -16,11 +16,20 @@ export const getUser = async () => {
     }
 };
 
-export async function getServerSideProps() {
-    const user = await getUser();
-    console.log(user);
+export async function getServerSideProps(context) {
+    try {
+        const rep = await axios({
+            method: "get",
+            url: `${apiEndpoint}/api/auth`,
+            headers: context.req ? { cookie: context.req.headers.cookie } : undefined,
+        });
 
-    if (!user) {
+        if (!rep.data) throw new Error("No Token");
+
+        return {
+            props: { user: rep.data },
+        };
+    } catch {
         return {
             redirect: {
                 destination: "/login",
@@ -28,10 +37,6 @@ export async function getServerSideProps() {
             },
         };
     }
-
-    return {
-        props: { user },
-    };
 }
 
 const AdminLanding: NextPage<AdminLandingProps> = ({ user }) => (

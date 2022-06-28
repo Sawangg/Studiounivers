@@ -27,9 +27,9 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post("/login")
     async login(@RequestD() req: Request, @Res({ passthrough: true }) res: Response) {
-        const token = await this.authService.login(req.user);
-        if (!token) throw new BadRequestException();
-        res.cookie("auth-cookie", token, { httpOnly: true });
+        const tokens = await this.authService.login(req.user);
+        if (!tokens) throw new BadRequestException();
+        res.cookie("auth-cookie", tokens, { httpOnly: true });
         return { msg: "Successfull" };
     }
 
