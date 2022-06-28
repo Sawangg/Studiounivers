@@ -13,6 +13,12 @@ export class User {
     @Column({ name: "password", nullable: false })
     password: string;
 
+    @Column({ nullable: true })
+    refreshToken: string;
+
+    @Column({ nullable: true })
+    refreshTokenExpires: Date;
+
     @OneToMany(() => Product, product => product.user, { cascade: true })
     product: Product[];
 }
@@ -23,6 +29,12 @@ export class SerializedUser {
 
     @Exclude()
     password: string;
+
+    @Exclude()
+    refreshToken: string;
+
+    @Exclude()
+    refreshTokenExpires: Date;
 
     constructor(partial: Partial<SerializedUser>) {
         Object.assign(this, partial);

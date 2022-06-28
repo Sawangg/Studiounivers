@@ -18,6 +18,10 @@ export class UserService {
         return this.usersRepository.save(newCustomer);
     }
 
+    saveOrUpdateRefreshToken(refreshToken: string, id: string, refreshTokenExpires: Date) {
+        return this.usersRepository.update(id, { refreshToken, refreshTokenExpires });
+    }
+
     findByUsername(username: string) {
         return this.usersRepository.findOne({ where: { username } });
     }

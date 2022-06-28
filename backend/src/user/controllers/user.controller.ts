@@ -6,18 +6,18 @@ import { UserService } from "../services/user.service";
 
 @Controller("user")
 export class UserController {
-    constructor(private readonly customerService: UserService) { }
+    constructor(private readonly userService: UserService) { }
 
     @UseInterceptors(ClassSerializerInterceptor)
     @Post("register")
     async createCustomer(@Body() createCustomer: CreateUserDto) {
-        const customer = await this.customerService.createCustomer(createCustomer);
+        const customer = await this.userService.createCustomer(createCustomer);
         return new SerializedUser(customer);
     }
 
     @Delete("delete/:id")
     async deleteCustomer(@Param("id") id: string, @Res() res: Response) {
-        const result = await this.customerService.remove(id);
+        const result = await this.userService.remove(id);
         return result.affected > 0 ? res.send(result).status(HttpStatus.OK) : res.status(HttpStatus.NOT_MODIFIED);
     }
 
@@ -28,7 +28,7 @@ export class UserController {
 
     @Post("card/add/:productId")
     async addToCart(@Param("productId") productId: string) {
-        const result = await this.customerService.remove(productId);
+        const result = await this.userService.remove(productId);
         if (!result) return new BadRequestException();
         return result;
     }
