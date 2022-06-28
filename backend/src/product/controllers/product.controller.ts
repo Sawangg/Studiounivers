@@ -21,10 +21,10 @@ export class ProductController {
         return data;
     }
 
-    @Get("/search/:productId")
-    async searchProduct(@Param("productId") productId: string) {
+    // @Get("/search/:productId")
+    // async searchProduct(@Param("productId") productId: string) {
 
-    }
+    // }
 
     // Auth guard here
     @UseInterceptors(FilesInterceptor("files"))

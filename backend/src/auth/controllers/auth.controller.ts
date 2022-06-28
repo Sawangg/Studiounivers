@@ -2,14 +2,17 @@ import { ClassSerializerInterceptor, Controller, Delete, Get, NotFoundException,
 import type { Request, Response } from "express";
 import { SerializedUser, User } from "src/user/entities/user.entity";
 import { UserService } from "src/user/services/user.service";
-import { AuthenticatedGuard, LocalAuthGuard } from "../utils/LocalGuard";
+import { JwtAuthGuard } from "../guards/JWTGuard";
+import { LocalAuthGuard } from "../guards/LocalGuard";
+import { AuthService } from "../services/auth.service";
 
 @Controller("auth")
 export class AuthController {
-    constructor(private readonly customerService: UserService) { }
+    constructor(private readonly customerService: UserService,
+        private readonly authService: AuthService) { }
 
     @UseInterceptors(ClassSerializerInterceptor)
-    @UseGuards(AuthenticatedGuard)
+    @UseGuards(JwtAuthGuard)
     @Get("/")
     async isLogged(@RequestD() req: Request) {
         try {
@@ -24,13 +27,12 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post("/login")
     login(@RequestD() req: Request) {
-        return new SerializedUser(req.user);
+        return this.authService.login(req.user);
     }
 
-    @UseGuards(AuthenticatedGuard)
+    @UseGuards(JwtAuthGuard)
     @Delete("/logout")
     logout(@RequestD() req: Request, @Res() res: Response) {
-        // @ts-expect-error: Need callback
         req.logout(() => res.sendStatus(200));
     }
 }
