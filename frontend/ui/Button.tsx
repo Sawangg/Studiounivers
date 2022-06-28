@@ -7,7 +7,7 @@ const sizeClassnames = {
 
 const colorClassnames = {
     primary: "bg-primary-600 text-white hover:bg-primary-500 transition duration-200 ease-in-out",
-    secondary: "bg-white-300 text-primary-700 hover:bg-white-400 transition duration-200 ease-in-out",
+    secondary: "bg-white-300 text-primary-700 hover:bg-accent-200/50 transition duration-200 ease-in-out",
     opaque: "",
 };
 
@@ -27,10 +27,14 @@ export const Button: React.FC<ButtonProps> = ({
     <button
         disabled={disabled}
         className={`flex outline-none focus:ring-4 ${sizeClassnames[size]} ${colorClassnames[color]} 
-            flex items-center justify-center text-lg ${className}`}
+            flex items-center justify-center text-lg group
+            ${className}`}
         {...props}
     >
-        <span className="flex items-center">
+        <span className="flex items-center relative group-hover:before:scale-x-100 group-hover:before:scale-y-100
+            before:transition-scale before:absolute before:bottom-[1px] before:left-0 before:origin-left before:border-t
+            before:scale-x-0 before:duration-700 before:ease-out-expo"
+        >
             {children}
         </span>
     </button>

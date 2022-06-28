@@ -26,7 +26,7 @@ export const Input: React.FC<InputProps> = ({
         <div className="flex flex-row items-center justify-center mt-4">
             <input
                 name="ipt"
-                className={`w-full pl-8 py-4 text-lg ${colorInputClassnames[color]}`}
+                className={`w-full pl-8 py-4 text-lg ${colorInputClassnames[color]} outline-none`}
                 placeholder={placeholder}
                 {...props}
             />

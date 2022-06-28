@@ -5,7 +5,7 @@ import { Button } from "../../ui/Button";
 export const FeatureAbout: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
     <div className="w-full flex flex-row">
         <div className="w-1/2 flex flex-col justify-between px-28 pt-24 pb-16">
-            <div className="">
+            <div>
                 <h3 className="font-title text-3xl mx-auto mb-8">D&apos;une petite entreprise à une marque de renommée</h3>
                 <p className="text-lg text-white-500">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi distinctio vero veniam illum a autem quisquam repellendus magni similique earum asperiores non, totam sed minima quibusdam, atque fugit neque doloremque.

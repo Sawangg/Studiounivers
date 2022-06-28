@@ -9,7 +9,7 @@ import { Navbar } from "../modules/Navbar";
 const Landing: NextPage = () => (
     <>
         <Head>
-            <title>StudioUnivers | A propos</title>
+            <title>StudioUnivers — A propos</title>
         </Head>
         <Navbar />
         <div className="my-24">

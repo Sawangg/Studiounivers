@@ -30,7 +30,7 @@ export const getServerSideProps = async ({ params }) => {
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => (
     <>
         <Head>
-            <title>StudioUnivers | Produit</title>
+            <title>StudioUnivers — Produit</title>
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal">
             <Navbar />

@@ -1,10 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { DetailedHTMLProps, HTMLAttributes, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import Image from "next/image";
 
-export const SearchBar: React.FC<{}> = () => {
+export type SearchBarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+    onChange: (event: any) => void;
+};
+
+export const SearchBar: React.FC<SearchBarProps> = ({ onChange }) => {
     const [open, setOpen] = useState(false);
-    const spring = useSpring({ opacity: open ? 1 : 0 });
+    const spring = useSpring({ opacity: open ? 1 : 0, width: open ? "20rem" : "7rem" });
     const textInput = useRef<HTMLInputElement>(null);
 
     return (
@@ -28,6 +32,7 @@ export const SearchBar: React.FC<{}> = () => {
                 name="ipt-search"
                 ref={textInput}
                 style={spring}
+                onChange={onChange}
                 className="w-full px-10 py-1 text-lg border-2 border-primary-900 rounded-full outline-none"
             />
         </div>

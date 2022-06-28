@@ -7,7 +7,7 @@ import { Navbar } from "../modules/Navbar";
 const Login: NextPage = () => (
     <>
         <Head>
-            <title>StudioUnivers | Login</title>
+            <title>StudioUnivers — Login</title>
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal bg-white-100">
             <Navbar />

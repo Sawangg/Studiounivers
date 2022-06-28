@@ -6,12 +6,12 @@ import { Navbar } from "../modules/Navbar";
 const NotFound: NextPage = () => (
     <>
         <Head>
-            <title>StudioUnivers | 404</title>
+            <title>StudioUnivers — 404</title>
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal">
             <Navbar />
             <div className="w-full h-full flex items-center justify-center">
-                <h1 className="text-5xl">404 | Not Found</h1>
+                <h1 className="text-5xl">404 — Not Found</h1>
             </div>
             <Footer />
         </div>

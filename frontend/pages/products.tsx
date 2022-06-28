@@ -4,7 +4,7 @@ import { apiEndpoint } from "../lib/constants";
 import { Footer } from "../modules/Footer";
 import { Navbar } from "../modules/Navbar";
 import { ProductsPage } from "../modules/product/ProductsPage";
-import { Product } from "../styles/types/Product";
+import { Product } from "../types/Product";
 
 export interface ProductsProps {
     products: Array<Product>;
@@ -29,7 +29,7 @@ export const getStaticProps = async () => {
 const Products: NextPage<ProductsProps> = ({ products }) => (
     <>
         <Head>
-            <title>StudioUnivers | Produits</title>
+            <title>StudioUnivers — Produits</title>
         </Head>
         <Navbar />
         <ProductsPage products={products} />
