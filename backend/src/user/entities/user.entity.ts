@@ -13,6 +13,9 @@ export class User {
     @Column({ name: "password", nullable: false })
     password: string;
 
+    @Column({ name: "admin", nullable: false, default: false })
+    admin: boolean;
+
     @Column({ nullable: true })
     refreshToken: string;
 
@@ -24,9 +27,6 @@ export class User {
 }
 
 export class SerializedUser {
-    id: number;
-    username: string;
-
     @Exclude()
     password: string;
 

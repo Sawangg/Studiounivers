@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import type { Repository } from "typeorm";
+import { Repository, Like } from "typeorm";
 import type { CreateProductDto } from "../dtos/CreateProduct.dto";
 import { Product } from "../entities/product.entity";
 
@@ -16,6 +16,10 @@ export class ProductService {
         files.forEach(file => filesData.push(`data:${file.mimetype};base64,${file.buffer.toString("base64")}`));
         createProductDto.photos = filesData;
         return this.productRepository.save(createProductDto);
+    }
+
+    search(query: string) {
+        return this.productRepository.findBy({ name: Like(`${query}%`) });
     }
 
     findAll() {

@@ -2,6 +2,7 @@ import { BadRequestException, ClassSerializerInterceptor, Controller, Delete, Ge
 import type { Request, Response } from "express";
 import { SerializedUser, User } from "src/user/entities/user.entity";
 import { UserService } from "src/user/services/user.service";
+import { authCookieName } from "src/utils/constants";
 import { JwtAuthGuard } from "../guards/JWTGuard";
 import { LocalAuthGuard } from "../guards/LocalGuard";
 import { AuthService } from "../services/auth.service";
@@ -29,14 +30,14 @@ export class AuthController {
     async login(@RequestD() req: Request, @Res({ passthrough: true }) res: Response) {
         const tokens = await this.authService.login(req.user);
         if (!tokens) throw new BadRequestException();
-        res.cookie("auth-cookie", tokens, { httpOnly: true });
-        return { msg: "Successfull" };
+        res.cookie(authCookieName, tokens, { httpOnly: true });
+        return res.sendStatus(201);
     }
 
     @UseGuards(JwtAuthGuard)
     @Delete("/logout")
     logout(@Res() res: Response) {
-        res.clearCookie("auth-cookie");
+        res.clearCookie(authCookieName);
         return res.sendStatus(200);
     }
 }

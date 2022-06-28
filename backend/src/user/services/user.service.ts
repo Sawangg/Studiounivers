@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { encodePassword } from "src/utils/password";
 import type { DeleteResult, Repository } from "typeorm";
+import type { CreateAdminDto } from "../dtos/CreateAdmin.dto";
 import type { CreateUserDto } from "../dtos/CreateUser.dto";
 import { User } from "../entities/user.entity";
 
@@ -12,10 +13,16 @@ export class UserService {
         private readonly usersRepository: Repository<User>,
     ) { }
 
-    createCustomer(createUserDto: CreateUserDto) {
+    createUser(createUserDto: CreateUserDto) {
         const password = encodePassword(createUserDto.password);
-        const newCustomer = this.usersRepository.create({ ...createUserDto, password });
-        return this.usersRepository.save(newCustomer);
+        const newUser = this.usersRepository.create({ ...createUserDto, password });
+        return this.usersRepository.save(newUser);
+    }
+
+    createAdmin(createAdminDto: CreateAdminDto) {
+        const password = encodePassword(createAdminDto.password);
+        const newAdmin = this.usersRepository.create({ ...createAdminDto, password });
+        return this.usersRepository.save(newAdmin);
     }
 
     saveOrUpdateRefreshToken(refreshToken: string, id: string, refreshTokenExpires: Date) {

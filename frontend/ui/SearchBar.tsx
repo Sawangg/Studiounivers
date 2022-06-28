@@ -3,7 +3,7 @@ import { animated, useSpring } from "@react-spring/web";
 import Image from "next/image";
 
 export type SearchBarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
-    onChange: (event: any) => void;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const SearchBar: React.FC<SearchBarProps> = ({ onChange }) => {

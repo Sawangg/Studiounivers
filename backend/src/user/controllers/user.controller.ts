@@ -1,5 +1,6 @@
 import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpStatus, Param, Post, Res, UseInterceptors } from "@nestjs/common";
 import type { Response } from "express";
+import { CreateAdminDto } from "../dtos/CreateAdmin.dto";
 import { CreateUserDto } from "../dtos/CreateUser.dto";
 import { SerializedUser } from "../entities/user.entity";
 import { UserService } from "../services/user.service";
@@ -10,13 +11,20 @@ export class UserController {
 
     @UseInterceptors(ClassSerializerInterceptor)
     @Post("register")
-    async createCustomer(@Body() createCustomer: CreateUserDto) {
-        const customer = await this.userService.createCustomer(createCustomer);
-        return new SerializedUser(customer);
+    async createUser(@Body() createUser: CreateUserDto) {
+        const user = await this.userService.createUser(createUser);
+        return new SerializedUser(user);
+    }
+
+    @UseInterceptors(ClassSerializerInterceptor)
+    @Post("admin/register")
+    async createAdmin(@Body() createUser: CreateAdminDto) {
+        const admin = await this.userService.createAdmin(createUser);
+        return new SerializedUser(admin);
     }
 
     @Delete("delete/:id")
-    async deleteCustomer(@Param("id") id: string, @Res() res: Response) {
+    async deleteUser(@Param("id") id: string, @Res() res: Response) {
         const result = await this.userService.remove(id);
         return result.affected > 0 ? res.send(result).status(HttpStatus.OK) : res.status(HttpStatus.NOT_MODIFIED);
     }

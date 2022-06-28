@@ -3,28 +3,28 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { SearchBar } from "../ui/SearchBar";
 import { apiEndpoint } from "../lib/constants";
+import { User } from "../types/User";
 import axios from "axios";
 
-export const Navbar: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
+export type NavbarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+    user: User | null;
+};
+
+export const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const router = useRouter();
     const [results, setResults] = useState([]);
 
-    // const onChange = useCallback(event => {
-    //     console.log('yo');
-    //     const query = event.target.value as string;
-    //     if (query.length) {
-    //         console.log(query);
-    //         // axios.get(`${apiEndpoint}/api/product/search/${query}`).then(rep => {
-    //         //     setResults(rep.data);
-    //         // });
-    //     } else {
-    //         setResults([]);
-    //     }
-    // }, []);
-
-    const onChange = () => {
-        console.log("yo");
-    };
+    const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        const query = event.target.value as string;
+        if (query.length) {
+            axios.get(`${apiEndpoint}/api/product/search/${query}`).then(rep => {
+                setResults(rep.data);
+                console.log(results);
+            });
+        } else {
+            setResults([]);
+        }
+    }, [results]);
 
     return (
         <nav className="w-full bg-white flex flex-col justify-center items-center">
@@ -38,7 +38,7 @@ export const Navbar: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                     </div>
                     <div className="mr-5">
                         <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" className="cursor-pointer" title="Mon profil"
-                            onClick={() => router.push("/login")} />
+                            onClick={() => user ? router.push("/profile") : router.push("/login")} />
                     </div>
                 </div>
             </div>

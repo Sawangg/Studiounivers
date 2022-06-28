@@ -4,6 +4,7 @@ import { PassportStrategy } from "@nestjs/passport";
 import type { Request } from "express";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { UserService } from "src/user/services/user.service";
+import { authCookieName } from "src/utils/constants";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -13,7 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
             passReqToCallback: true,
             secretOrKey: configService.get<string>("JWT_SECRET"),
             jwtFromRequest: ExtractJwt.fromExtractors([(request: Request) => {
-                const data = request.cookies["auth-cookie"];
+                const data = request.cookies[authCookieName];
                 if (!data) return null;
                 return data.access_token;
             }]),
@@ -26,7 +27,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         const user = await this.userService.findByUsername(payload.username);
         if (!user) throw new UnauthorizedException();
 
-        const data = req.cookies["auth-cookie"];
+        const data = req.cookies[authCookieName];
         if (!data?.refresh_token || user.refreshToken !== data?.refresh_token) throw new BadRequestException("invalid refresh token");
         if (!user.refreshTokenExpires || new Date() > user.refreshTokenExpires) throw new BadRequestException("Refresh token expired");
 
