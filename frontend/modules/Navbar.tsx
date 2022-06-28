@@ -34,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 <div className="flex flex-row justify-end">
                     <div className="mr-5">
                         <Image src="/assets/icons/cart.svg" width="20px" height="20px" alt="cart" className="cursor-pointer" title="Votre panier"
-                            onClick={() => router.push("/cart")} />
+                            onClick={() => user ? router.push("/profile") : router.push("/login")} />
                     </div>
                     <div className="mr-5">
                         <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" className="cursor-pointer" title="Mon profil"

@@ -6,7 +6,7 @@ import { Button } from "../../ui/Button";
 import { Input } from "../../ui/Input";
 import { NotificationType, useNotifications } from "../../stores/useNotifications";
 
-export const LoginBlock: React.FC<{}> = () => {
+export const LoginBlock: React.FC = () => {
     const router = useRouter();
     const [loginState, setLoginState] = useState({ username: "", pwd: "" });
     const { addNotification } = useNotifications();
@@ -17,7 +17,7 @@ export const LoginBlock: React.FC<{}> = () => {
         axios.post(`${apiEndpoint}/api/auth/login`, { username: loginState.username, password: loginState.pwd }, { withCredentials: true }).then(rep => {
             if (rep.status === 201) {
                 setLoginState({ username: "", pwd: "" });
-                router.push("/");
+                router.back();
             } else {
                 setLoginState({ username: loginState.username, pwd: "" });
             }
