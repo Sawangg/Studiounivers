@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Product } from "../../styles/types/Product";
+import { Product } from "../../types/Product";
 import { Button } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
 import { ProductCard } from "./ProductCard";
@@ -14,7 +14,7 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
         <div className="w-full">
             <div className="h-[18rem] relative">
                 <Image src="/assets/header.png" layout="fill" alt="header" className="-z-50 select-none" />
-                <h1 className="absolute bottom-9 pl-24 text-5xl font-title text-white z-50">Tous les produits</h1>
+                <h1 className="absolute bottom-9 pl-24 text-5xl font-title text-white z-40">Tous les produits</h1>
             </div>
         </div>
         <div className="w-full flex flex-row px-16">

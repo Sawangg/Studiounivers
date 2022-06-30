@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import axios from "axios";
 import { apiEndpoint } from "../lib/constants";
 import { Footer } from "../modules/Footer";
 import { Navbar } from "../modules/Navbar";
@@ -11,10 +12,8 @@ export interface ProductsProps {
 }
 
 export const getAllProducts = async () => {
-    const res = await fetch(`${apiEndpoint}/api/product/`, { credentials: "include" });
-    const data = await res.json();
-
-    return data as Array<Product>;
+    const rep = await axios.get(`${apiEndpoint}/api/product/`);
+    return rep.data as Array<Product>;
 };
 
 export const getStaticProps = async () => {

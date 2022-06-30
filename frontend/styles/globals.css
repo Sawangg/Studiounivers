@@ -42,3 +42,14 @@ input:checked+div svg {
     display: block;
     @apply bg-primary-600;
 }
+
+/* Hide Up Down arrows on input number */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

@@ -33,7 +33,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onChange }) => {
                 ref={textInput}
                 style={spring}
                 onChange={onChange}
-                className="w-full px-10 py-1 text-lg border-2 border-primary-900 rounded-full outline-none"
+                className="w-full px-10 py-1 text-lg border-2 border-primary-900 rounded-lg outline-none"
             />
         </div>
     );

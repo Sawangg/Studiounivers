@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "../../ui/Button";
+import { Stepper } from "../../ui/Stepper";
 
 export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     productId: number
@@ -11,7 +12,7 @@ export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,
 };
 
 export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, description, price, imagePath }) => (
-    <div className="w-full flex flex-row bg-white-300">
+    <div className="w-full flex flex-row">
         <div className="w-1/2">
             <div className="w-full h-[60rem] relative">
                 <Image src={imagePath} layout="fill" alt="productImg" />
@@ -25,6 +26,10 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
             <h5 className="font-title text-lg">Dimensions</h5>
             <div className="flex flex-row items-center">
                 <p className="text-lg">Quantité</p>
+                <div className="w-1/5">
+                    <Stepper defaultValue={1} min={1} max={99} />
+
+                </div>
                 <Button>Ajouter au panier</Button>
             </div>
         </div>

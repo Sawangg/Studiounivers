@@ -1,38 +1,43 @@
-import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
-import { Button } from "./Button";
+import React, { DetailedHTMLProps, InputHTMLAttributes, useRef } from "react";
 
-const colorInputClassnames = {
-    primary: "bg-primary-600 text-white placeholder:text-white",
-    secondary: "bg-white-300 text-white",
-};
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {};
 
-export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
-    placeholder?: string;
-    label?: string;
-    disabled?: boolean;
-    button?: string;
-    color?: keyof typeof colorInputClassnames;
-};
-
-export const Input: React.FC<StepperProps> = ({
-    placeholder,
-    label,
-    color = "primary",
-    button,
+export const Stepper: React.FC<StepperProps> = ({
     ...props
-}) => (
-    <>
-        {label && <label htmlFor="ipt" className="font-title text-lg">{label}</label>}
-        <div className="flex flex-row items-center justify-center mt-4">
+}) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const inc = () => {
+        if (inputRef.current!.value !== inputRef.current!.max) inputRef.current!.value = (parseInt(inputRef.current!.value) + 1).toString();
+    };
+
+    const dec = () => {
+        if (inputRef.current!.value !== inputRef.current!.min) inputRef.current!.value = (parseInt(inputRef.current!.value) - 1).toString();
+    };
+
+    const handleChange = () => {
+        if (parseInt(inputRef.current!.value) > parseInt(inputRef.current!.max)) inputRef.current!.value = inputRef.current!.max;
+        if (parseInt(inputRef.current!.value) < parseInt(inputRef.current!.min)) inputRef.current!.value = inputRef.current!.min;
+    };
+
+    return (
+        <div className="bg-white-300 flex flex-row items-center w-full">
+            <button data-action="decrement" className="h-full w-20 rounded-l cursor-pointer outline-none" onClick={dec}>
+                <span className="m-auto text-2xl font-thin">-</span>
+            </button>
             <input
-                name="ipt"
-                className={`w-full pl-8 py-4 text-lg ${colorInputClassnames[color]} outline-none`}
-                placeholder={placeholder}
+                type="number"
+                ref={inputRef}
+                className="bg-white-300 focus:outline-none text-center w-full font-semibold text-md hover:text-black focus:text-black
+                    flex items-center outline-none py-4 px-4"
+                onChange={handleChange}
                 {...props}
             />
-            {button &&
-                <Button color={color === "primary" ? "secondary" : "primary"}>{button}</Button>
-            }
+            <button data-action="increment" className="h-full w-20 rounded-r cursor-pointer" onClick={inc}>
+                <span className="m-auto text-2xl font-thin">+</span>
+            </button>
         </div>
-    </>
-);
+    );
+};
+

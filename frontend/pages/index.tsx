@@ -24,7 +24,7 @@ const Landing: NextPage<LandingProps> = ({ user }) => (
         <Head>
             <title>StudioUnivers</title>
         </Head>
-        <Navbar user={user} />
+        <Navbar />
         <Hero />
         <Features />
         <FeatureAbout />

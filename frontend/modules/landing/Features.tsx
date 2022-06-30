@@ -2,9 +2,9 @@ import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { FeatureBlock } from "./FeatureBlock";
 
 export const Features: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
-    <div className="w-full flex flex-col px-10 py-24">
-        <h3 className="font-title text-3xl mx-auto mb-8">Ce qui rend notre marque différente</h3>
-        <div className="flex flex-row justify-around">
+    <div className="w-full flex flex-col md:px-10 py-10 md:py-24">
+        <h3 className="font-title text-2xl md:text-3xl mb-6 md:mb-8 mx-5 md:mx-auto">Ce qui rend notre marque différente</h3>
+        <div className="flex flex-col md:flex-row justify-around">
             <FeatureBlock
                 title="Livraison rapide"
                 description="Notre entreprise s'engage à vous livrer vos produits dans des temps compétitifs"
