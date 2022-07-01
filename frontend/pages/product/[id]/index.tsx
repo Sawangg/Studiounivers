@@ -6,6 +6,7 @@ import { Footer } from "../../../modules/Footer";
 import { Navbar } from "../../../modules/Navbar";
 import { ProductBlock } from "../../../modules/product/ProductBlock";
 import { Product } from "../../../types/Product";
+import { Features } from "../../../modules/landing/Features";
 
 export interface ProductPageProps {
     product: Product;
@@ -29,7 +30,7 @@ export const getServerSideProps = async ({ params }) => {
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => (
     <>
         <Head>
-            <title>StudioUnivers — Produit</title>
+            <title>{`StudioUnivers — ${product.name}`}</title>
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal">
             <Navbar />
@@ -40,6 +41,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => (
                 description={product.description}
                 imagePath={product.photos[0]}
             />
+            <Features />
             <Footer />
         </div>
     </>

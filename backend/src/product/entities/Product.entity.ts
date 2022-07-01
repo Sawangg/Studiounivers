@@ -24,6 +24,9 @@ export class Product {
     @Column({ type: "text", array: true, default: [], nullable: false })
     photos: string[];
 
+    @Column({ nullable: false })
+    addedAt: Date;
+
     @ManyToOne(() => User, user => user.product)
     user: User;
 }

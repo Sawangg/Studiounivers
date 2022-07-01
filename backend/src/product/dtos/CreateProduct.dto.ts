@@ -25,4 +25,7 @@ export class CreateProductDto {
 
     @IsOptional()
     photos: Array<string>;
+
+    @IsOptional()
+    addedAt: Date;
 }

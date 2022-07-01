@@ -15,7 +15,16 @@ export class ProductService {
         const filesData: Array<string> = [];
         files.forEach(file => filesData.push(`data:${file.mimetype};base64,${file.buffer.toString("base64")}`));
         createProductDto.photos = filesData;
+        createProductDto.addedAt = new Date(Date.now());
         return this.productRepository.save(createProductDto);
+    }
+
+    async newest() {
+        const result = await this.productRepository.createQueryBuilder("product")
+            .orderBy("product.addedAt", "DESC")
+            .limit(4)
+            .getMany();
+        return result;
     }
 
     search(query: string) {

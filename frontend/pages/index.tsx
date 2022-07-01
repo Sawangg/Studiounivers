@@ -1,25 +1,40 @@
+import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { withAuthSsr } from "../hoc/withAuth";
+import { apiEndpoint } from "../lib/constants";
 import { Footer } from "../modules/Footer";
 import { FeatureAbout } from "../modules/landing/FeatureAbout";
 import { Features } from "../modules/landing/Features";
 import { Hero } from "../modules/landing/Hero";
+import { NewListings } from "../modules/landing/NewListings";
 import { Navbar } from "../modules/Navbar";
 import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
+import { Product } from "../types/Product";
 import { User } from "../types/User";
 
 export type LandingProps = {
     user: User | null;
+    newestProducts: Array<Product> | null
 };
 
-export const getServerSideProps = withAuthSsr((context: GetServerSidePropsContextUser) => ({
-    props: {
-        user: context.user,
-    },
-}));
+const getNewestProducts = async () => {
+    const rep = await axios.get(`${apiEndpoint}/api/product/newest`);
+    return rep.data as Array<Product>;
+};
 
-const Landing: NextPage<LandingProps> = ({ user }) => (
+export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {
+    const newestProducts = await getNewestProducts();
+
+    return {
+        props: {
+            user: context.user,
+            newestProducts,
+        },
+    };
+});
+
+const Landing: NextPage<LandingProps> = ({ user, newestProducts }) => (
     <>
         <Head>
             <title>StudioUnivers</title>
@@ -27,6 +42,7 @@ const Landing: NextPage<LandingProps> = ({ user }) => (
         <Navbar />
         <Hero />
         <Features />
+        <NewListings newestProducts={newestProducts!} />
         <FeatureAbout />
         <Footer />
     </>

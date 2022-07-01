@@ -14,6 +14,13 @@ export class ProductController {
         return data;
     }
 
+    @Get("/newest")
+    async getNewestProduct() {
+        const data = await this.productService.newest();
+        if (!data) throw new NotFoundException();
+        return data;
+    }
+
     @Get("/:productId")
     async getProduct(@Param("productId") productId: string) {
         const data = await this.productService.find(+productId);

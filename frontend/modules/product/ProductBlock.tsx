@@ -28,7 +28,6 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                 <p className="text-lg">Quantité</p>
                 <div className="w-1/5">
                     <Stepper defaultValue={1} min={1} max={99} />
-
                 </div>
                 <Button>Ajouter au panier</Button>
             </div>
