@@ -31,7 +31,7 @@ export class AuthController {
         const tokens = await this.authService.login(req.user);
         if (!tokens) throw new BadRequestException();
         res.cookie(authCookieName, tokens, { httpOnly: true });
-        return res.sendStatus(201);
+        return { msg: "Success" };
     }
 
     @UseGuards(JwtAuthGuard)

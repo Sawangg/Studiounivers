@@ -17,7 +17,7 @@ export const LoginBlock: React.FC = () => {
         axios.post(`${apiEndpoint}/api/auth/login`, { username: loginState.username, password: loginState.pwd }, { withCredentials: true }).then(rep => {
             if (rep.status === 201) {
                 setLoginState({ username: "", pwd: "" });
-                router.back();
+                router.push("/");
             } else {
                 setLoginState({ username: loginState.username, pwd: "" });
             }
@@ -44,8 +44,8 @@ export const LoginBlock: React.FC = () => {
                     <Input color="primary" placeholder="password" type="password"
                         onChange={e => setLoginState({ ...loginState, pwd: e.target.value })} />
                 </div>
-                <div className="w-5/6 flex justify-between self-end mt-9">
-                    <p>Register</p>
+                <div className="w-5/6 flex justify-between items-center self-end mt-9">
+                    <p onClick={() => router.push("/register")}>Register</p>
                     <Button color="secondary" onClick={connectClick}>Connecter</Button>
                 </div>
             </div>

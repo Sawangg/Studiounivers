@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Footer } from "../modules/Footer";
-import { LoginBlock } from "../modules/auth/LoginBlock";
+import { RegisterBlock } from "../modules/auth/RegisterBlock";
 import { Navbar } from "../modules/Navbar";
 
 const Login: NextPage = () => (
@@ -11,7 +11,7 @@ const Login: NextPage = () => (
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal bg-white-100">
             <Navbar />
-            <LoginBlock />
+            <RegisterBlock />
             <Footer />
         </div>
     </>
