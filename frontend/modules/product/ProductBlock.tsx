@@ -3,8 +3,8 @@ import Image from "next/image";
 import { Button } from "../../ui/Button";
 import { Stepper } from "../../ui/Stepper";
 import { apiEndpoint } from "../../lib/constants";
-import axios from "axios";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     productId: number
@@ -28,8 +28,8 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
 
     return (
         <div className="w-full flex flex-row">
-            <div className="w-1/2">
-                <div className="w-full h-[60rem] relative">
+            <div className="w-1/2 px-48 py-10">
+                <div className="w-full h-[55rem] relative">
                     <Image src={imagePath} layout="fill" alt="productImg" />
                 </div>
             </div>
@@ -40,22 +40,41 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                     <h5 className="font-title text-lg mb-4">Description</h5>
                     <p className="text-lg">{description}</p>
                 </div>
-                <div className="mt-20">
+                <div className="my-16">
                     <h5 className="font-title text-lg">Dimensions</h5>
+                    <div className="grid grid-cols-3 gap-6 w-1/3 mt-6">
+                        <div className="flex flex-col gap-4">
+                            <h6 className="font-title">Hauteur</h6>
+                            <p>110cm</p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <h6 className="font-title">Largeur</h6>
+                            <p>75cm</p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <h6 className="font-title">Profondeur</h6>
+                            <p>50cm</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex flex-row items-center justify-between w-full">
-                    <div className="flex flex-row items-center w-1/4">
-                        <p className="text-lg mr-6">Quantité :</p>
-                        <Stepper
-                            defaultValue={1}
-                            min={1}
-                            max={99}
-                            onChange={e => setCurrentQuantity(+e.target.value)}
-                            onStepperButtonDecrease={() => setCurrentQuantity(currentQuantity - 1)}
-                            onStepperButtonIncrease={() => setCurrentQuantity(currentQuantity + 1)}
-                        />
+                    <div className="flex flex-row items-center gap-10">
+                        <p className="text-lg">Quantité :</p>
+                        <div className="flex flex-row items-center max-w-[10rem]">
+                            <Stepper
+                                defaultValue={1}
+                                min={1}
+                                max={99}
+                                onChange={e => setCurrentQuantity(+e.target.value)}
+                                onStepperButtonDecrease={() => setCurrentQuantity(currentQuantity - 1)}
+                                onStepperButtonIncrease={() => setCurrentQuantity(currentQuantity + 1)}
+                            />
+                        </div>
                     </div>
-                    <Button onClick={addToCart}>Ajouter au panier</Button>
+                    <div className="flex flex-row gap-10">
+                        <Button onClick={addToCart}>Ajouter au panier</Button>
+                        <Button color="secondary">Acheter en un click</Button>
+                    </div>
                 </div>
             </div>
         </div>

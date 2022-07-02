@@ -27,6 +27,12 @@ export class ProductService {
         return result;
     }
 
+    async popular() {
+        const result = await this.productRepository.query(`SELECT "product".* FROM "cart" LEFT JOIN "product" ON "product"."id" = "cart"."productId" GROUP BY "product"."id" ORDER BY COUNT("cart"."productId") DESC LIMIT 4`);
+        if (result && result.length === 4) return result;
+        return this.newest();
+    }
+
     search(query: string) {
         return this.productRepository.findBy({ name: Like(`${query}%`) });
     }

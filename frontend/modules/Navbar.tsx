@@ -3,30 +3,30 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dropdown } from "../ui/Dropdown";
 import { SearchBar } from "../ui/SearchBar";
+import { Product } from "../types/Product";
 import { apiEndpoint } from "../lib/constants";
 import axios from "axios";
 
 export const Navbar: React.FC = () => {
     const router = useRouter();
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState<Array<Product>>([]);
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const query = event.target.value as string;
         if (query.length) {
             axios.get(`${apiEndpoint}/api/product/search/${query}`).then(rep => {
                 setResults(rep.data);
-                console.log(results);
             });
         } else {
             setResults([]);
         }
-    }, [results]);
+    }, []);
 
     return (
         <nav className="w-full bg-white flex flex-col justify-center items-center">
             <div className="w-full flex flex-row justify-between sm:grid sm:grid-cols-3 items-center py-3 px-5 sm:px-10">
                 <div className="hidden sm:block">
-                    <SearchBar onChange={onChange} />
+                    <SearchBar onChange={onChange} searchData={results} />
                 </div>
                 <h2 className="sm:flex justify-center text-3xl cursor-pointer" title="StudioUnivers - Accueil" onClick={() => router.push("/")}>StudioUnivers</h2>
                 <div className="hidden sm:flex flex-row justify-end">

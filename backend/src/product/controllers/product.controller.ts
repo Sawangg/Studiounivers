@@ -15,8 +15,15 @@ export class ProductController {
     }
 
     @Get("/newest")
-    async getNewestProduct() {
+    async getNewestProducts() {
         const data = await this.productService.newest();
+        if (!data) throw new NotFoundException();
+        return data;
+    }
+
+    @Get("/popular")
+    async getPopularProducts() {
+        const data = await this.productService.popular();
         if (!data) throw new NotFoundException();
         return data;
     }

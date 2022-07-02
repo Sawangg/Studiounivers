@@ -15,7 +15,8 @@ import { User } from "../types/User";
 
 export type LandingProps = {
     user: User | null;
-    newestProducts: Array<Product> | null
+    newestProducts: Array<Product> | null;
+    popularProducts: Array<Product>;
 };
 
 const getNewestProducts = async () => {
@@ -23,18 +24,25 @@ const getNewestProducts = async () => {
     return rep.data as Array<Product>;
 };
 
+const getPopularProducts = async () => {
+    const rep = await axios.get(`${apiEndpoint}/api/product/popular`);
+    return rep.data as Array<Product>;
+};
+
 export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {
     const newestProducts = await getNewestProducts();
+    const popularProducts = await getPopularProducts();
 
     return {
         props: {
             user: context.user,
             newestProducts,
+            popularProducts,
         },
     };
 });
 
-const Landing: NextPage<LandingProps> = ({ user, newestProducts }) => (
+const Landing: NextPage<LandingProps> = ({ user, newestProducts, popularProducts }) => (
     <>
         <Head>
             <title>StudioUnivers</title>
