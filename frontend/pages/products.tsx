@@ -6,8 +6,12 @@ import { Footer } from "../modules/Footer";
 import { Navbar } from "../modules/Navbar";
 import { ProductsPage } from "../modules/product/ProductsPage";
 import { Product } from "../types/Product";
+import { User } from "../types/User";
+import { withAuthSsr } from "../hoc/withAuth";
+import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
 
 export interface ProductsProps {
+    user: User | null;
     products: Array<Product>;
 }
 
@@ -16,21 +20,23 @@ export const getAllProducts = async () => {
     return rep.data as Array<Product>;
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {
     const products = await getAllProducts();
+
     return {
         props: {
+            user: context.user,
             products,
         },
     };
-};
+});
 
-const Products: NextPage<ProductsProps> = ({ products }) => (
+const Products: NextPage<ProductsProps> = ({ user, products }) => (
     <>
         <Head>
             <title>StudioUnivers — Produits</title>
         </Head>
-        <Navbar />
+        <Navbar user={user} />
         <ProductsPage products={products} />
         <Footer />
     </>

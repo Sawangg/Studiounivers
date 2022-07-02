@@ -38,7 +38,7 @@ export class ProductService {
     }
 
     findAll() {
-        return this.productRepository.find();
+        return this.productRepository.find({ order: { addedAt: "DESC" } });
     }
 
     find(id: number) {

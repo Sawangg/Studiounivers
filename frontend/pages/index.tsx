@@ -47,7 +47,7 @@ const Landing: NextPage<LandingProps> = ({ user, newestProducts, popularProducts
         <Head>
             <title>StudioUnivers</title>
         </Head>
-        <Navbar />
+        <Navbar user={user} />
         <Hero />
         <Features />
         <NewListings newestProducts={newestProducts!} />

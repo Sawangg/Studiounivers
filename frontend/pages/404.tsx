@@ -9,7 +9,7 @@ const NotFound: NextPage = () => (
             <title>StudioUnivers — 404</title>
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal">
-            <Navbar user={null} />
+            <Navbar />
             <div className="w-full h-full flex items-center justify-center">
                 <h1 className="text-5xl">404 — Not Found</h1>
             </div>

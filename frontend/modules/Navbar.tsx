@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dropdown } from "../ui/Dropdown";
@@ -6,10 +6,20 @@ import { SearchBar } from "../ui/SearchBar";
 import { Product } from "../types/Product";
 import { apiEndpoint } from "../lib/constants";
 import axios from "axios";
+import { User } from "../types/User";
 
-export const Navbar: React.FC = () => {
+export type NavbarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+    user?: User | null;
+};
+
+export const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const router = useRouter();
+    const [currentUser, setCurrentUser] = useState(user);
     const [results, setResults] = useState<Array<Product>>([]);
+
+    useEffect(() => {
+        if (!user) axios.get(`${apiEndpoint}/api/auth`, { withCredentials: true }).then(rep => setCurrentUser(rep.data)).catch(() => setCurrentUser(null));
+    }, [user]);
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const query = event.target.value as string;
@@ -32,24 +42,24 @@ export const Navbar: React.FC = () => {
                 <div className="hidden sm:flex flex-row justify-end">
                     <div className="mr-5">
                         <Image src="/assets/icons/cart.svg" width="20px" height="20px" alt="cart" className="cursor-pointer" title="Votre panier"
-                            onClick={() => user ? router.push("/cart") : router.push("/login")} />
+                            onClick={() => currentUser ? router.push("/cart") : router.push("/login")} />
                     </div>
                     <div className="mr-5">
                         <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" className="cursor-pointer" title="Mon profil"
-                            onClick={() => user ? router.push("/profile") : router.push("/login")} />
+                            onClick={() => currentUser ? router.push("/profile") : router.push("/login")} />
                     </div>
                 </div>
                 <div className="block sm:hidden max-h-[20px]">
                     <Dropdown>
                         <div className="flex flex-row justify-around">
                             <div className="flex flex-row gap-2 items-center cursor-pointer"
-                                onClick={() => user ? router.push("/cart") : router.push("/login")}
+                                onClick={() => currentUser ? router.push("/cart") : router.push("/login")}
                             >
                                 <Image src="/assets/icons/cart.svg" width="20px" height="20px" alt="cart" />
                                 <p>Panier</p>
                             </div>
                             <div className="flex flex-row gap-2 items-center cursor-pointer"
-                                onClick={() => user ? router.push("/profile") : router.push("/login")}
+                                onClick={() => currentUser ? router.push("/profile") : router.push("/login")}
                             >
                                 <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" />
                                 <p>Profile</p>
