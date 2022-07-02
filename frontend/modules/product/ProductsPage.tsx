@@ -12,13 +12,13 @@ export type ProductPageProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,
 export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
     <>
         <div className="w-full">
-            <div className="h-[18rem] relative">
+            <div className="h-[7rem] md:h-[18rem] relative flex justify-center items-center md:block">
                 <Image src="/assets/header.png" layout="fill" alt="header" className="-z-50 select-none" />
-                <h1 className="absolute bottom-9 pl-24 text-5xl font-title text-white z-40">Tous les produits</h1>
+                <h1 className="font-title md:absolute md:bottom-9 md:pl-24 text-3xl md:text-5xl text-white z-40">Tous les produits</h1>
             </div>
         </div>
-        <div className="w-full flex flex-row px-16">
-            <div className="w-1/4 flex flex-col p-10 gap-16">
+        <div className="w-full flex flex-col md:flex-row px-4 md:px-16">
+            <div className="hidden w-1/4 md:flex flex-col p-10 gap-16">
                 <div className="flex flex-col gap-2">
                     <h5 className="font-title text-lg my-4">Types de produits</h5>
                     <Checkbox label="Eclairage" />
@@ -43,8 +43,12 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                     <Checkbox label="Meike" />
                 </div>
             </div>
-            <div className="w-3/4 py-12">
-                <div className="grid grid-cols-3 gap-x-8 gap-y-12 ">
+            <div className="flex flex-row items-center justify-around mt-6 md:hidden">
+                <Button color="secondary" arrow={true} className="w-40">Filtres</Button>
+                <Button color="secondary" arrow={true} className="w-40">Trier</Button>
+            </div>
+            <div className="w-full md:w-3/4 py-12">
+                <div className="grid grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-y-4 md:gap-y-12 justify-items-center md:justify-items-start">
                     {products.length > 0 && products.map(product => (
                         <ProductCard
                             key={product.id}
@@ -55,8 +59,8 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                         />
                     ))}
                 </div>
-                <div className="w-full flex justify-center mt-12">
-                    <Button color="secondary">Plus</Button>
+                <div className="w-full flex justify-center mt-6 px-3 md:px-0 md:mt-12">
+                    <Button color="secondary" className="w-full md:w-1/12">Plus</Button>
                 </div>
             </div>
         </div>

@@ -13,13 +13,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
     const router = useRouter();
 
     return (
-        <div className="cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
+        <div className="flex flex-col cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
             onClick={() => router.push(`/product/${productId}`)}
         >
-            <div className="w-[9rem] h-[12rem] md:w-[24rem] md:h-[30rem] relative">
+            <div className="w-[9rem] h-[12rem] md:w-[24rem] md:h-[30rem] relative self-center">
                 <Image src={imagePath} layout="fill" alt="productImg" />
             </div>
-            <div className="flex flex-col gap-2 mt-4">
+            <div className="flex flex-col gap-2 mt-4 max-w-[9rem] md:max-w-[24rem]">
                 <h4 className="font-title text-lg md:text-2xl">{title}</h4>
                 <p className="text-lg mb-3 md:mb-0 md:text-xl">{price}€</p>
             </div>
