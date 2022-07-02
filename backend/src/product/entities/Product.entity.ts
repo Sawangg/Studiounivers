@@ -1,5 +1,5 @@
-import { User } from "src/user/entities/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Cart } from "src/user/entities/cart.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -27,6 +27,6 @@ export class Product {
     @Column({ nullable: false })
     addedAt: Date;
 
-    @ManyToOne(() => User, user => user.product)
-    user: User;
+    @OneToMany(() => Cart, cart => cart.product)
+    inCart: Cart[];
 }

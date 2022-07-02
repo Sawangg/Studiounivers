@@ -24,13 +24,12 @@ export class AuthController {
         }
     }
 
-    @UseInterceptors(ClassSerializerInterceptor)
     @UseGuards(LocalAuthGuard)
     @Post("/login")
     async login(@RequestD() req: Request, @Res({ passthrough: true }) res: Response) {
         const tokens = await this.authService.login(req.user);
         if (!tokens) throw new BadRequestException();
-        res.cookie(authCookieName, tokens, { httpOnly: true });
+        res.cookie(authCookieName, tokens, { httpOnly: true, sameSite: true });
         return { msg: "Success" };
     }
 

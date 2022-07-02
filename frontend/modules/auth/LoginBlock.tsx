@@ -4,16 +4,12 @@ import { apiEndpoint } from "../../lib/constants";
 import { useRouter } from "next/router";
 import { Button } from "../../ui/Button";
 import { Input } from "../../ui/Input";
-import { NotificationType, useNotifications } from "../../stores/useNotifications";
 
 export const LoginBlock: React.FC = () => {
     const router = useRouter();
     const [loginState, setLoginState] = useState({ username: "", pwd: "" });
-    const { addNotification } = useNotifications();
 
     const connectClick = () => {
-        addNotification("Test", NotificationType.SUCCESS);
-
         axios.post(`${apiEndpoint}/api/auth/login`, { username: loginState.username, password: loginState.pwd }, { withCredentials: true }).then(rep => {
             if (rep.status === 201) {
                 setLoginState({ username: "", pwd: "" });
@@ -27,7 +23,7 @@ export const LoginBlock: React.FC = () => {
     };
 
     useEffect(() => {
-        window.addEventListener("keydown", e => { if (e.key === "Enter") connectClick(); });
+        window.addEventListener("keydown", e => { if (e.key === "Enter") connectClick(); }, { once: true });
         return () => {
             window.removeEventListener("keydown", e => { if (e.key === "Enter") connectClick(); });
         };
@@ -45,7 +41,11 @@ export const LoginBlock: React.FC = () => {
                         onChange={e => setLoginState({ ...loginState, pwd: e.target.value })} />
                 </div>
                 <div className="w-5/6 flex justify-between items-center self-end mt-9">
-                    <p onClick={() => router.push("/register")}>Register</p>
+                    <p>Pas de compte ?
+                        <span className="text-primary-200 underline cursor-pointer ml-2" onClick={() => router.push("/register")}>
+                            Créez ici
+                        </span>
+                    </p>
                     <Button color="secondary" onClick={connectClick}>Connecter</Button>
                 </div>
             </div>

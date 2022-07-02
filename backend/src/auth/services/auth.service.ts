@@ -4,7 +4,7 @@ import { JwtService } from "@nestjs/jwt";
 import randtoken from "rand-token";
 import type { User } from "src/user/entities/user.entity";
 import { UserService } from "src/user/services/user.service";
-import { compatePasswords } from "src/utils/password";
+import { comparePasswords } from "src/utils/password";
 
 @Injectable()
 export class AuthService {
@@ -15,7 +15,7 @@ export class AuthService {
 
     async validateUser(username: string, rawPass: string): Promise<User | null> {
         const userDB = await this.userService.findByUsername(username);
-        if (userDB && compatePasswords(rawPass, userDB.password)) return userDB;
+        if (userDB && comparePasswords(rawPass, userDB.password)) return userDB;
         return null;
     }
 

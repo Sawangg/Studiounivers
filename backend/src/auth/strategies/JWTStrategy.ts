@@ -21,6 +21,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         });
     }
 
+    // TODO: Better refresh token check
     async validate(req: Request, payload: any) {
         if (payload === null) throw new BadRequestException("invalid jwt token");
 

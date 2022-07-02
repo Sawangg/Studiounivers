@@ -1,6 +1,6 @@
 import { Exclude } from "class-transformer";
-import { Product } from "src/product/entities/product.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Cart } from "./cart.entity";
 
 @Entity({ name: "users" })
 export class User {
@@ -17,13 +17,13 @@ export class User {
     admin: boolean;
 
     @Column({ nullable: true })
-    refreshToken: string;
+    refreshToken?: string;
 
     @Column({ nullable: true })
-    refreshTokenExpires: Date;
+    refreshTokenExpires?: Date;
 
-    @OneToMany(() => Product, product => product.user, { cascade: true })
-    product: Product[];
+    @OneToMany(() => Cart, cart => cart.user)
+    cart?: Cart[];
 }
 
 export class SerializedUser {

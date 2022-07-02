@@ -46,7 +46,11 @@ export const RegisterBlock: React.FC = () => {
                         onChange={e => setRegisterState({ ...registerState, cpwd: e.target.value })} />
                 </div>
                 <div className="w-5/6 flex justify-between items-center self-end mt-9">
-                    <p>Déjà un compte ? <span className="text-primary-200 underline cursor-pointer" onClick={() => router.push("/login")}>Connectez vous</span></p>
+                    <p>Déjà un compte ?
+                        <span className="text-primary-200 underline cursor-pointer ml-2" onClick={() => router.push("/login")}>
+                            Connectez vous
+                        </span>
+                    </p>
                     <Button color="secondary" onClick={registerClick}>Créer</Button>
                 </div>
             </div>

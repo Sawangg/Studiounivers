@@ -1,19 +1,25 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes, useRef } from "react";
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {};
+export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+    onStepperButtonIncrease?: () => void;
+    onStepperButtonDecrease?: () => void;
+};
 
 export const Stepper: React.FC<StepperProps> = ({
+    onStepperButtonIncrease,
+    onStepperButtonDecrease,
     ...props
 }) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const inc = () => {
         if (inputRef.current!.value !== inputRef.current!.max) inputRef.current!.value = (parseInt(inputRef.current!.value) + 1).toString();
+        if (onStepperButtonIncrease) onStepperButtonIncrease();
     };
 
     const dec = () => {
         if (inputRef.current!.value !== inputRef.current!.min) inputRef.current!.value = (parseInt(inputRef.current!.value) - 1).toString();
+        if (onStepperButtonDecrease) onStepperButtonDecrease();
     };
 
     const handleChange = () => {
