@@ -49,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             onClick={() => currentUser ? router.push("/profile") : router.push("/login")} />
                     </div>
                 </div>
-                <div className="block sm:hidden max-h-[20px]">
+                <div className="block md:hidden max-h-[20px]">
                     <Dropdown>
                         <div className="flex flex-row justify-around">
                             <div className="flex flex-row gap-2 items-center cursor-pointer"
