@@ -29,7 +29,7 @@ export const Stepper: React.FC<StepperProps> = ({
 
     return (
         <div className="bg-white-300 flex flex-row items-center w-full">
-            <button data-action="decrement" className="h-full w-20 rounded-l cursor-pointer outline-none disabled:text-white-400 disabled:cursor-not-allowed" onClick={dec} disabled={inputRef.current!.value === inputRef.current!.min}>
+            <button data-action="decrement" className="h-full w-20 rounded-l cursor-pointer outline-none disabled:text-white-400 disabled:cursor-not-allowed" onClick={dec} disabled={inputRef.current ? inputRef.current.value === inputRef.current.min : false}>
                 <span className="m-auto text-2xl font-thin">-</span>
             </button>
             <input
@@ -40,7 +40,7 @@ export const Stepper: React.FC<StepperProps> = ({
                 onChange={handleChange}
                 {...props}
             />
-            <button data-action="increment" className="h-full w-20 rounded-r cursor-pointer disabled:text-white-400 disabled:cursor-not-allowed" onClick={inc} disabled={inputRef.current!.value === inputRef.current!.max}>
+            <button data-action="increment" className="h-full w-20 rounded-r cursor-pointer disabled:text-white-400 disabled:cursor-not-allowed" onClick={inc} disabled={inputRef.current ? inputRef.current.value === inputRef.current.max : false}>
                 <span className="m-auto text-2xl font-thin">+</span>
             </button>
         </div>
