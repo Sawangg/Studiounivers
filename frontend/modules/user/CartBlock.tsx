@@ -102,9 +102,9 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                     </div>
                 </>
                 :
-                <div className="flex flex-col justify-center items-center gap-10">
+                <div className="flex flex-col justify-center items-center gap-10 my-14 md:mt-0">
                     <Image src="/assets/icons/cart_empty.svg" width="110px" height="110px" title="Panier vide" alt="Empty cart" />
-                    <p className="text-2xl">Votre panier est vide !</p>
+                    <p className="text-xl md:text-2xl">Votre panier est vide !</p>
                     <Button color="primary" onClick={() => router.push("/products")}>Voir les produits</Button>
                 </div>
             }

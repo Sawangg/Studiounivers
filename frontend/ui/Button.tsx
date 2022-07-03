@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
         disabled={disabled}
         className={`cursor-pointer flex outline-none focus:ring-4 ${sizeClassnames[size]} ${colorClassnames[color]} 
-            flex items-center justify-center text-lg group gap-x-2
+            flex items-center justify-center text-lg group gap-x-2 min-w-max
             ${className}`}
         {...props}
     >

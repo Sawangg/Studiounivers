@@ -10,11 +10,18 @@ import { Features } from "../../../modules/landing/Features";
 import { User } from "../../../types/User";
 import { GetServerSidePropsContextUser } from "../../../types/GetServerSidePropsContextUser";
 import { withAuthSsr } from "../../../hoc/withAuth";
+import { NewListings } from "../../../modules/landing/NewListings";
 
 export interface ProductPageProps {
     user: User | null;
     product: Product;
+    alsoLikeProducts: Array<Product> | null;
 }
+
+const getAlsoLikeProducts = async () => {
+    const rep = await axios.get(`${apiEndpoint}/api/product/newest`);
+    return rep.data as Array<Product>;
+};
 
 export const getProduct = async (id: number) => {
     const rep = await axios.get(`${apiEndpoint}/api/product/${id}`);
@@ -23,16 +30,18 @@ export const getProduct = async (id: number) => {
 
 export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {
     const product = await getProduct(+context.params!.id!);
+    const alsoLikeProducts = await getAlsoLikeProducts();
 
     return {
         props: {
             user: context.user,
+            alsoLikeProducts,
             product,
         },
     };
 });
 
-const ProductPage: NextPage<ProductPageProps> = ({ user, product }) => (
+const ProductPage: NextPage<ProductPageProps> = ({ user, product, alsoLikeProducts }) => (
     <>
         <Head>
             <title>{`StudioUnivers — ${product.name}`}</title>
@@ -46,6 +55,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ user, product }) => (
                 description={product.description}
                 imagePath={product.photos[0]}
             />
+            {/* Replace by AlsoLike when component is done */}
+            <NewListings newestProducts={alsoLikeProducts!} />
             <Features />
             <Footer />
         </div>
