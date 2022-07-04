@@ -4,6 +4,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthModule } from "./auth/auth.module";
+import { PaymentModule } from "./payment/payment.module";
 import { ProductModule } from "./product/product.module";
 import { UserModule } from "./user/user.module";
 
@@ -35,6 +36,7 @@ import { UserModule } from "./user/user.module";
             inject: [ConfigService],
         }),
         AuthModule,
+        PaymentModule,
         UserModule,
         ProductModule,
     ],

@@ -1,11 +1,12 @@
-import axios from "axios";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import { apiEndpoint } from "../../lib/constants";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import { Cart } from "../../types/Cart";
 import { Button } from "../../ui/Button";
 import { Stepper } from "../../ui/Stepper";
+import checkout from "../../lib/checkout";
+import { apiEndpoint } from "../../lib/constants";
+import axios from "axios";
 
 export type CartBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     cart: Cart;
@@ -72,7 +73,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="hidden md:block 2xl:w-36 3xl:w-1/12">
+                                <div className="hidden md:block 2xl:w-36 4xl:w-1/12">
                                     <Stepper
                                         min={0}
                                         max={99}
@@ -97,7 +98,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                 <h3 className="text-3xl">{currentCart.total}€</h3>
                             </div>
                             <p className="text-base my-4 text-white-500 text-right">Taxes et coût de livraison calculé lors de la commande</p>
-                            <Button color="primary" className="w-full md:w-1/2">Commander</Button>
+                            <Button color="primary" className="w-full md:w-1/2" onClick={() => checkout(currentCart.total)}>Commander</Button>
                         </div>
                     </div>
                 </>

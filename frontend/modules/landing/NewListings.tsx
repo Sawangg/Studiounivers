@@ -12,7 +12,7 @@ export const NewListings: React.FC<NewListingsProps> = ({ newestProducts }) => {
     const router = useRouter();
 
     return (
-        <div className="w-full px-7 md:px-28 py-10 2xl:py-10 3xl:py-16 flex flex-col">
+        <div className="w-full px-7 md:px-28 py-10 2xl:py-10 4xl:py-16 flex flex-col">
             <h2 className="font-title text-3xl md:text-4xl">Nouveaux produits</h2>
             <div className="w-full sm:w-4/6 lg:w-full flex flex-wrap items-center justify-center my-10 gap-7 md:gap-20">
                 {newestProducts.map(product => (

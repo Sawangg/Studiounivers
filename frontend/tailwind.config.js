@@ -6,8 +6,9 @@ module.exports = {
     ],
     theme: {
         extend: {
-            screen: {
-                "3xl": "1920px",
+            screens: {
+                "3xl": "1650px",
+                "4xl": "1920px",
             },
         },
         fontFamily: {

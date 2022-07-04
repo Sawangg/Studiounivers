@@ -42,7 +42,7 @@ export const LoginBlock: React.FC = () => {
                 </div>
                 <div className="w-full md:w-5/6 flex justify-between items-center self-end mt-9">
                     <p className="w-36 md:w-full">Pas de compte ?
-                        <span className="text-primary-200 underline cursor-pointer ml-2" onClick={() => router.push("/register")}>
+                        <span className="text-primary-200 underline cursor-pointer md:ml-2" onClick={() => router.push("/register")}>
                             Créez ici
                         </span>
                     </p>

@@ -16,7 +16,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
         <div className="flex flex-col cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
             onClick={() => router.push(`/product/${productId}`)}
         >
-            <div className="w-36 h-48 md:w-96 md:h-[30rem] 2xl:w-64 2xl:h-80 3xl:w-96 3xl:h-[30rem] relative self-center">
+            <div className="w-36 h-48 md:w-96 md:h-[30rem] 2xl:w-64 2xl:h-80 4xl:w-96 4xl:h-[30rem] relative self-center">
                 <Image src={imagePath} layout="fill" alt="productImg" />
             </div>
             <div className="flex flex-col gap-2 mt-4 max-w-[9rem] md:max-w-[24rem]">
