@@ -1,11 +1,11 @@
-import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Button } from "../../ui/Button";
-import { Stepper } from "../../ui/Stepper";
+import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
 import { apiEndpoint } from "../../lib/constants";
 import { Cart } from "../../types/Cart";
-import axios from "axios";
+import { Button } from "../../ui/Button";
+import { Stepper } from "../../ui/Stepper";
 
 export type CartBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     cart: Cart;
@@ -72,7 +72,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="hidden md:block md:w-1/12">
+                                <div className="hidden md:block 2xl:w-36 3xl:w-1/12">
                                     <Stepper
                                         min={0}
                                         max={99}

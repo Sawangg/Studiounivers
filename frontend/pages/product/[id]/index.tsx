@@ -1,16 +1,16 @@
+import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import axios from "axios";
+import { withAuthSsr } from "../../../hoc/withAuth";
 import { apiEndpoint } from "../../../lib/constants";
 import { Footer } from "../../../modules/Footer";
+import { Features } from "../../../modules/landing/Features";
+import { NewListings } from "../../../modules/landing/NewListings";
 import { Navbar } from "../../../modules/Navbar";
 import { ProductBlock } from "../../../modules/product/ProductBlock";
-import { Product } from "../../../types/Product";
-import { Features } from "../../../modules/landing/Features";
-import { User } from "../../../types/User";
 import { GetServerSidePropsContextUser } from "../../../types/GetServerSidePropsContextUser";
-import { withAuthSsr } from "../../../hoc/withAuth";
-import { NewListings } from "../../../modules/landing/NewListings";
+import { Product } from "../../../types/Product";
+import { User } from "../../../types/User";
 
 export interface ProductPageProps {
     user: User | null;
@@ -31,6 +31,15 @@ export const getProduct = async (id: number) => {
 export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {
     const product = await getProduct(+context.params!.id!);
     const alsoLikeProducts = await getAlsoLikeProducts();
+
+    if (!product || !alsoLikeProducts || alsoLikeProducts.length === 0) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/",
+            },
+        };
+    }
 
     return {
         props: {

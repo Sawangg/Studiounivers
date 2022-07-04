@@ -31,6 +31,15 @@ const getCart = async (context: GetServerSidePropsContextUser) => {
 export const getServerSideProps = withAuthSsrRedirection(async (context: GetServerSidePropsContextUser) => {
     const cart = await getCart(context);
 
+    if (!cart) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/",
+            },
+        };
+    }
+
     return {
         props: {
             user: context.user,

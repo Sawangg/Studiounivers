@@ -5,6 +5,11 @@ module.exports = {
         "./ui/**/*.{ts,tsx}",
     ],
     theme: {
+        extend: {
+            screen: {
+                "3xl": "1920px",
+            },
+        },
         fontFamily: {
             title: ["ClashDisplay-Variable"],
             body: ["Satoshi-Variable"],
