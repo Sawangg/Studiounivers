@@ -26,14 +26,14 @@ export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                         <p className="cursor-pointer">Appareils Photo</p>
                         <p className="cursor-pointer">Strobist</p>
                     </div>
-                    <div className="leading-loose mx-auto flex-grow basis-[calc(100%/2)] my-9">
+                    <div className="leading-loose mx-auto flex-grow basis-[calc(100%/2)] 2xl:my-0 3xl:my-9">
                         <h4 className="font-title text-lg">Notre entreprise</h4>
                         <p className="cursor-pointer" onClick={() => router.push("/about")}>À propos</p>
                         <p>Contactez-nous</p>
                         <p>Conditions générales</p>
                     </div>
                 </div>
-                <div className="sm:w-1/2">
+                <div className="sm:w-1/2 md:mt-2">
                     <Input color="primary" label="Rejoignez notre liste mail" placeholder="votre@mail.com" button="Rejoindre" type="email" />
                 </div>
             </div>

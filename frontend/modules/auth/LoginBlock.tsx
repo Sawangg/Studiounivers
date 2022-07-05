@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { apiEndpoint } from "../../lib/constants";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { apiEndpoint } from "../../lib/constants";
 import { Button } from "../../ui/Button";
 import { Input } from "../../ui/Input";
 
@@ -37,7 +37,7 @@ export const LoginBlock: React.FC = () => {
                 <div className="md:w-1/2">
                     <Input color="primary" placeholder="email" type="email"
                         onChange={e => setLoginState({ ...loginState, username: e.target.value })} />
-                    <Input color="primary" placeholder="password" type="password"
+                    <Input color="primary" placeholder="mot-de-passe" type="password"
                         onChange={e => setLoginState({ ...loginState, pwd: e.target.value })} />
                 </div>
                 <div className="w-full md:w-5/6 flex justify-between items-center self-end mt-9">

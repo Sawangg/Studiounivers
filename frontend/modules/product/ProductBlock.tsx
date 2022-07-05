@@ -52,13 +52,13 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
             </div>
             <div className="w-full md:w-1/2 pt-10 px-6 2xl:p-16 4xl:p-24">
                 <h1 className="font-title text-3xl md:text-5xl">{title}</h1>
-                <h3 className="text-2xl md:text-3xl">{price}€</h3>
+                <h3 className="text-2xl font-bold md:text-3xl">{price}€</h3>
                 <div className="mt-8 2xl:mt-14 4xl:mt-20">
-                    <h5 className="font-title text-lg mb-4">Description</h5>
-                    <p className="text-base md:text-lg">{description}</p>
+                    <h5 className="font-title font-semibold text-xl mb-4">Description</h5>
+                    <p className="text-base md:text-lg">‟ {description} ”</p>
                 </div>
                 <div className="my-8 2xl:my-10 4xl:my-16">
-                    <h5 className="font-title text-lg">Dimensions</h5>
+                    <h5 className="font-title font-semibold text-xl">Dimensions</h5>
                     <div className="grid grid-cols-3 gap-6 w-full 2xl:w-7/12 4xl:w-1/3 mt-6">
                         <div className="flex flex-col gap-4">
                             <h6 className="font-title">Hauteur</h6>

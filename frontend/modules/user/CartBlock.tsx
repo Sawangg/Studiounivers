@@ -45,15 +45,15 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
     };
 
     return (
-        <div className="w-full bg-white-100 px-5 md:px-40 md:pt-16 pb-10">
-            <h1 className="text-3xl md:text-5xl mb-4 md:mb-10 mt-4">Votre panier</h1>
+        <div className="w-full bg-white-100 px-5 md:px-40 2xl:pt-6 3xl:pt-16 pb-10">
+            <h1 className="font-title text-2xl md:text-5xl mb-4 md:mb-10 mt-4">Votre panier</h1>
             {currentCart && currentCart.productsInCart.length > 0 ?
                 <>
                     <div className="w-full flex flex-col gap-4 md:gap-0">
                         <div className="hidden md:flex flex-row my-3">
                             <h6 className="font-title text-base w-3/5">Produits</h6>
                             <h6 className="font-title text-base w-1/5">Quantité</h6>
-                            <h6 className="font-title text-base text-right w-1/5">Total</h6>
+                            <h6 className="font-title text-base text-right w-1/5">Sous-total</h6>
                         </div>
                         <hr className="hidden md:block w-full bg-white-600 border-none h-[1px]" />
 
@@ -101,16 +101,16 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                     <div className="w-full flex flex-col items-end mt-8">
                         <div className="w-full md:w-1/4 flex flex-col items-end">
                             <div className="flex items-center gap-4">
-                                <h4 className="text-2xl text-white-500">Total</h4>
+                                <h4 className="text-2xl font-semibold text-white-500">Total</h4>
                                 <h3 className="text-3xl">{currentCart.total}€</h3>
                             </div>
-                            <p className="text-base my-4 text-white-500 text-right">Taxes et coût de livraison calculé lors de la commande</p>
+                            <p className="text-base my-3 text-white-500 font-light text-right">Taxes et coût de livraison calculé lors de la commande</p>
                             <Button color="primary" className="w-full md:w-1/2" loading={isLoading} loadingStyle="w-full md:w-[7.5rem]" onClick={handleCheckout}>Commander</Button>
                         </div>
                     </div>
                 </>
                 :
-                <div className="flex flex-col justify-center items-center gap-10 my-14 md:mt-0">
+                <div className="flex flex-col justify-center items-center gap-10 my-14 md:mt-0 2xl:my-6">
                     <Image src="/assets/icons/cart_empty.svg" width="110px" height="110px" title="Panier vide" alt="Empty cart" />
                     <p className="text-xl md:text-2xl">Votre panier est vide !</p>
                     <Button color="primary" onClick={() => router.push("/products")}>Voir les produits</Button>
