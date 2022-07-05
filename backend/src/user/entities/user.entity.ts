@@ -1,4 +1,5 @@
 import { Exclude } from "class-transformer";
+import { Order } from "src/order/entities/order.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Cart } from "./cart.entity";
 
@@ -24,6 +25,9 @@ export class User {
 
     @OneToMany(() => Cart, cart => cart.user)
     cart?: Cart[];
+
+    @OneToMany(() => Order, order => order.id)
+    orders?: Order[];
 }
 
 export class SerializedUser {
