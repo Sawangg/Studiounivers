@@ -1,12 +1,12 @@
-import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import { useRouter } from "next/router";
+import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
+import checkout from "../../lib/checkout";
+import { apiEndpoint } from "../../lib/constants";
 import { Cart } from "../../types/Cart";
 import { Button } from "../../ui/Button";
 import { Stepper } from "../../ui/Stepper";
-import checkout from "../../lib/checkout";
-import { apiEndpoint } from "../../lib/constants";
-import axios from "axios";
 
 export type CartBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     cart: Cart;
@@ -14,6 +14,7 @@ export type CartBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, H
 
 export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
     const [currentCart, setCurrentCart] = useState(cart);
 
     const handleChange = async (productId: number, quantity: number) => {
@@ -35,6 +36,12 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
 
     const updateInputQuantity = (productId: number, quantity: number) => {
         if (quantity < 99) handleChange(productId, quantity);
+    };
+
+    const handleCheckout = async () => {
+        setIsLoading(true);
+        await checkout(currentCart.total);
+        setIsLoading(false);
     };
 
     return (
@@ -98,7 +105,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                 <h3 className="text-3xl">{currentCart.total}€</h3>
                             </div>
                             <p className="text-base my-4 text-white-500 text-right">Taxes et coût de livraison calculé lors de la commande</p>
-                            <Button color="primary" className="w-full md:w-1/2" onClick={() => checkout(currentCart.total)}>Commander</Button>
+                            <Button color="primary" className="w-full md:w-1/2" loading={isLoading} loadingStyle="w-full md:w-[7.5rem]" onClick={handleCheckout}>Commander</Button>
                         </div>
                     </div>
                 </>

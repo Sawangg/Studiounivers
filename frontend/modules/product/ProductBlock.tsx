@@ -17,22 +17,29 @@ export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,
 
 export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, description, price, imagePath }) => {
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState({ cart: false, oneClick: false });
     const [currentQuantity, setCurrentQuantity] = useState<number>(1);
 
     const addToCart = async () => {
+        setIsLoading({ ...isLoading, cart: true });
         try {
             await axios.post(`${apiEndpoint}/api/user/cart/add`, { productId, quantity: currentQuantity }, { withCredentials: true });
+            setIsLoading({ ...isLoading, cart: false });
         } catch (err) {
+            setIsLoading({ ...isLoading, cart: false });
             if (err.response.status === 400) router.push("/login");
         }
     };
 
     const handleCheckout = async () => {
+        setIsLoading({ ...isLoading, oneClick: true });
         try {
             await axios.get(`${apiEndpoint}/api/auth`, { withCredentials: true });
-            checkout(price * currentQuantity);
+            await checkout(price * currentQuantity);
+            setIsLoading({ ...isLoading, oneClick: false });
         } catch {
             router.push("/login");
+            setIsLoading({ ...isLoading, oneClick: false });
         }
     };
 
@@ -82,8 +89,8 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                         </div>
                     </div>
                     <div className="4xl:justify-end w-full flex flex-col md:flex-row gap-6 4xl:gap-10 my-10 4xl:my-0 md:mb-0">
-                        <Button className="w-full md:w-28" onClick={addToCart}>Ajouter au panier</Button>
-                        <Button className="w-full md:w-28" color="secondary" onClick={handleCheckout}>Acheter en un click</Button>
+                        <Button className="w-full md:w-28" loading={isLoading.cart} loadingStyle="w-full md:w-40" onClick={addToCart}>Ajouter au panier</Button>
+                        <Button className="w-full md:w-28" color="secondary" loading={isLoading.oneClick} loadingStyle="w-full md:w-40" onClick={handleCheckout}>Acheter en un click</Button>
                     </div>
                 </div>
             </div>
