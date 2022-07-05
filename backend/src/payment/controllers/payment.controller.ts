@@ -1,6 +1,7 @@
 import { Body, Controller, Post, Request as RequestD, UseGuards } from "@nestjs/common";
 import type { Request } from "express";
 import { JwtAuthGuard } from "src/auth/guards/JWTGuard";
+import type { User } from "src/user/entities/user.entity";
 import { CreatePaymentSessionDto } from "../dtos/CreateSession.dto";
 import { VerifyPaymentDto } from "../dtos/VerifyPayment.dto";
 import { PaymentService } from "../services/payment.service";
@@ -11,13 +12,13 @@ export class PaymentController {
 
     @UseGuards(JwtAuthGuard)
     @Post("session")
-    createSession(@RequestD() request: Request, @Body() createPaymentSession: CreatePaymentSessionDto) {
-        return this.paymentService.createSession(request.headers.origin, createPaymentSession);
+    createSession(@RequestD() req: Request, @Body() createPaymentSession: CreatePaymentSessionDto) {
+        return this.paymentService.createSession(req.headers.origin, createPaymentSession);
     }
 
     @UseGuards(JwtAuthGuard)
     @Post("verify")
-    verifyPayment(@Body() verifyPayment: VerifyPaymentDto) {
-        return this.paymentService.verifyPayment(verifyPayment);
+    verifyPayment(@RequestD() req: Request, @Body() verifyPayment: VerifyPaymentDto) {
+        return this.paymentService.verifyPayment((req.user as User), verifyPayment);
     }
 }

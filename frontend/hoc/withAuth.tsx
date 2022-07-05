@@ -3,7 +3,7 @@ import { apiEndpoint } from "../lib/constants";
 import { User } from "../types/User";
 import axios from "axios";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const withAuth = (gssp: any, redirect = false) => async (context: GetServerSidePropsContextUser) => {
     try {
         const rep = await axios({

@@ -1,5 +1,7 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
+import { OrderService } from "src/order/services/order.service";
+import type { User } from "src/user/entities/user.entity";
 import { defaultCurrency } from "src/utils/constants";
 import { formatAmountForStripe } from "src/utils/stripe";
 import Stripe from "stripe";
@@ -10,7 +12,10 @@ import type { VerifyPaymentDto } from "../dtos/VerifyPayment.dto";
 export class PaymentService {
     private stripe: Stripe;
 
-    constructor(private readonly configService: ConfigService) {
+    constructor(
+        @Inject(OrderService) private readonly orderService: OrderService,
+        private readonly configService: ConfigService,
+    ) {
         this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2020-08-27" });
     }
 
@@ -35,13 +40,18 @@ export class PaymentService {
         return checkoutSession;
     }
 
-    async verifyPayment(verifyPayment: VerifyPaymentDto) {
+    async verifyPayment(user: User, verifyPayment: VerifyPaymentDto) {
         try {
             const session = await this.stripe.checkout.sessions.retrieve(verifyPayment.sessionId);
             const customer = await this.stripe.customers.retrieve(session.customer.toString());
-            return customer;
-        } catch {
-            return null;
+            const alreadyOrdered = await this.orderService.findByStripeSessionId(verifyPayment.sessionId);
+            if (alreadyOrdered) return { customer };
+            const order = await this.orderService.createOrder(user, verifyPayment.sessionId);
+            console.log(order);
+            console.log({ customer, order });
+            return { customer, order };
+        } catch (err) {
+            throw new BadRequestException();
         }
     }
 }

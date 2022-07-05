@@ -53,6 +53,7 @@ export class UserService {
     }
 
     async updateCart(userId: number, updatedCart: UpdateCartDto) {
+        // Remove here for saving system
         if (updatedCart.quantity === 0) return this.removeFromCart(userId, updatedCart.productId);
         const product = await this.productRepository.findOne({ where: { id: +updatedCart.productId } });
         if (!product) throw new BadRequestException();
