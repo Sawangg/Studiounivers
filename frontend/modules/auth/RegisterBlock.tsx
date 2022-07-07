@@ -33,7 +33,7 @@ export const RegisterBlock: React.FC = () => {
     });
 
     return (
-        <div className="flex flex-col md:justify-center md:items-center w-full my-6 px-8 md:px-0 md:my-14">
+        <div className="flex flex-col md:justify-center md:items-center w-full py-6 px-8 md:px-0 md:py-10 bg-white-100">
             <div className="flex flex-col md:justify-center md:items-center w-full md:w-1/2 md:my-8">
                 <h1 className="font-title text-xl md:text-2xl self-start mb-4">Créér un compte</h1>
                 <hr className="md:w-[calc(100%-3.5rem)] text-white-200 lg:visible md:invisible sm:invisible md:mb-8 mb-" />
@@ -46,7 +46,8 @@ export const RegisterBlock: React.FC = () => {
                         onChange={e => setRegisterState({ ...registerState, cpwd: e.target.value })} />
                 </div>
                 <div className="w-full md:w-5/6 flex justify-between items-center self-end mt-9">
-                    <p className="w-full">Déjà un compte ?
+                    <p className="w-full">
+                        Déjà un compte ?
                         <span className="text-primary-200 underline cursor-pointer md:ml-2" onClick={() => router.push("/login")}>
                             Connectez vous
                         </span>
