@@ -8,6 +8,7 @@ import { Footer } from "../modules/Footer";
 import { FeatureAbout } from "../modules/landing/FeatureAbout";
 import { Features } from "../modules/landing/Features";
 import { Hero } from "../modules/landing/Hero";
+import { Hero2 } from "../modules/landing/Hero2";
 import { NewListings } from "../modules/landing/NewListings";
 import { Navbar } from "../modules/Navbar";
 import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
@@ -51,6 +52,7 @@ const Landing: NextPage<LandingProps> = ({ user, newestProducts, popularProducts
         </Head>
         <Navbar user={user} />
         <Hero />
+        <Hero2 />
         <Features />
         <NewListings newestProducts={newestProducts!} />
         <FeatureAbout />

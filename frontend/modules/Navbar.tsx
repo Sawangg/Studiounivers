@@ -68,13 +68,13 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             </div>
                         </div>
                         <hr className="w-full text-white-200 mb-4" />
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego1")}</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego2")}</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego3")}</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego4")}</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego5")}</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego6")}</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego7")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego1")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego2")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego3")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego4")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego5")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego6")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navbar.catego7")}</p>
                     </Dropdown>
                 </div>
             </div>
