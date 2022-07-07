@@ -1,5 +1,38 @@
 {
+    "navabar": {
+        "catego1": "Eclairages",
+        "catego2": "Accessoires",
+        "catego3": "Modificateurs",
+        "catego4": "Arrière-fond",
+        "catego5": "Lampes",
+        "catego6": "Appareils Photo",
+        "catego7": "Strobist"
+    },
     "hero": {
-        "title": "La marque de luxe pour toutes vos créations photos"
+        "title": "La marque de luxe pour toutes vos créations photos",
+        "button": "Voir les produits"
+    },
+    "features": {
+        "title": "Ce qui rend notre marque différente",
+        "delivery": {
+            "title": "Livraison rapide",
+            "description": "Notre entreprise s'engage à vous livrer vos produits dans des temps compétitifs"
+        },
+        "advantages": {
+            "title": "Des produits avantageux",
+            "description": "Nos produits feront la différence dans vos créations"
+        },
+        "price": {
+            "title": "Des prix imbattables",
+            "description": "Un catalogue complet avec des prix attractifs"
+        },
+        "ecological": {
+            "title": "Une pensée pour la planète",
+            "description": "Nos actions de la réception de votre commande à son envoi sont pensées pour minimiser l'empreinte carbone"
+        }
+    },
+    "newlisting": {
+        "title": "Nouveaux produits",
+        "button": "Voir les produits"
     }
 }

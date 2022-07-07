@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { withAuthSsr } from "../hoc/withAuth";
 import { apiEndpoint } from "../lib/constants";
@@ -38,6 +39,7 @@ export const getServerSideProps = withAuthSsr(async (context: GetServerSideProps
             user: context.user,
             newestProducts,
             popularProducts,
+            ...(await serverSideTranslations(context.locale!, ["common"])),
         },
     };
 });

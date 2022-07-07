@@ -18,7 +18,7 @@ export const ProfileBlock: React.FC<ProfileBlockProps> = ({ user }) => {
     };
 
     return (
-        <div className="w-full md:px-28 md:py-20 flex flex-row">
+        <div className="w-full md:px-28 md:py-20 flex flex-col gap-6">
             <div>
                 {user.username}
             </div>

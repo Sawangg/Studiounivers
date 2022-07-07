@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { withAuthSsrRedirection } from "../hoc/withAuth";
 import { Footer } from "../modules/Footer";
@@ -11,8 +12,9 @@ export type ProfileProps = {
     user: User;
 };
 
-export const getServerSideProps = withAuthSsrRedirection((context: GetServerSidePropsContextUser) => ({
+export const getServerSideProps = withAuthSsrRedirection(async (context: GetServerSidePropsContextUser) => ({
     props: {
+        ...(await serverSideTranslations(context.locale!, ["common"])),
         user: context.user,
     },
 }));

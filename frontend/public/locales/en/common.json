@@ -1,0 +1,38 @@
+{
+    "navabar": {
+        "catego1": "Lighting",
+        "catego2": "Accessories",
+        "catego3": "Modifiers",
+        "catego4": "Background",
+        "catego5": "Lamps",
+        "catego6": "Cameras",
+        "catego7": "Strobist"
+    },
+    "hero": {
+        "title": "The luxury brand for all your photo creations",
+        "button": "View collection"
+    },
+    "features": {
+        "title": "What makes our brand different",
+        "delivery": {
+            "title": "Fast delivery",
+            "description": "Our company is committed to delivering your products in a competitive time"
+        },
+        "advantages": {
+            "title": "Advantageous products",
+            "description": "Our products will make the difference in your creations"
+        },
+        "price": {
+            "title": "Unbeatable prices",
+            "description": "A complete catalog with attractive prices"
+        },
+        "ecological": {
+            "title": "A thought for the planet",
+            "description": "Our actions from the receipt of your order to its shipment are designed to minimize the carbon footprint"
+        }
+    },
+    "newlisting": {
+        "title": "New products",
+        "button": "View collection"
+    }
+}

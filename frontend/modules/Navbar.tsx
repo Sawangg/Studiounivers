@@ -1,18 +1,20 @@
-import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
+import { apiEndpoint } from "../lib/constants";
+import { Product } from "../types/Product";
+import { User } from "../types/User";
 import { Dropdown } from "../ui/Dropdown";
 import { SearchBar } from "../ui/SearchBar";
-import { Product } from "../types/Product";
-import { apiEndpoint } from "../lib/constants";
-import axios from "axios";
-import { User } from "../types/User";
 
 export type NavbarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     user?: User | null;
 };
 
 export const Navbar: React.FC<NavbarProps> = ({ user }) => {
+    const { t } = useTranslation();
     const router = useRouter();
     const [currentUser, setCurrentUser] = useState(user);
     const [results, setResults] = useState<Array<Product>>([]);
@@ -66,13 +68,13 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             </div>
                         </div>
                         <hr className="w-full text-white-200 mb-4" />
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Eclairages</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Accessoires</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Modificateurs</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Arrière-fond</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Lampes</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Appareils Photo</p>
-                        <p className="cursor-pointer" onClick={() => router.push("/products")}>Strobist</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego1")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego2")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego3")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego4")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego5")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego6")}</p>
+                        <p className="cursor-pointer" onClick={() => router.push("/products")}>{t("navabar.catego7")}</p>
                     </Dropdown>
                 </div>
             </div>
