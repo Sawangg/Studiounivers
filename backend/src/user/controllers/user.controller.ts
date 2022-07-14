@@ -1,4 +1,20 @@
-import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpStatus, Param, Post, Res, Request as RequestD, UseGuards, UseInterceptors, NotFoundException, ParseIntPipe } from "@nestjs/common";
+import {
+    BadRequestException,
+    Body,
+    ClassSerializerInterceptor,
+    Controller,
+    Delete,
+    Get,
+    HttpStatus,
+    Param,
+    Post,
+    Res,
+    Request as RequestD,
+    UseGuards,
+    UseInterceptors,
+    NotFoundException,
+    ParseIntPipe,
+} from "@nestjs/common";
 import type { Request, Response } from "express";
 import { JwtAuthGuard } from "src/auth/guards/JWTGuard";
 import { SerializedUser, User } from "../entities/user.entity";
@@ -10,7 +26,7 @@ import { CreateUserDto } from "../dtos/CreateUser.dto";
 
 @Controller("user")
 export class UserController {
-    constructor(private readonly userService: UserService) { }
+    constructor(private readonly userService: UserService) {}
 
     @UseInterceptors(ClassSerializerInterceptor)
     @Post("register")
@@ -50,7 +66,10 @@ export class UserController {
 
     @UseGuards(JwtAuthGuard)
     @Delete("cart/remove/:productId")
-    async removeFromCart(@RequestD() req: any, @Param("productId", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) productId: number) {
+    async removeFromCart(
+        @RequestD() req: Request,
+        @Param("productId", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) productId: number,
+    ) {
         const data = await this.userService.removeFromCart((req.user as User).id, productId);
         if (!data) throw new NotFoundException();
         return data;

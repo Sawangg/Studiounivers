@@ -11,7 +11,8 @@ export class AuthService {
     constructor(
         @Inject(UserService) private readonly userService: UserService,
         private readonly configService: ConfigService,
-        private readonly jwtService: JwtService) { }
+        private readonly jwtService: JwtService,
+    ) {}
 
     async validateUser(username: string, rawPass: string): Promise<User | null> {
         const userDB = await this.userService.findByUsername(username);
@@ -19,7 +20,7 @@ export class AuthService {
         return null;
     }
 
-    async generateRefreshToken(userId: string): Promise<string> {
+    async generateRefreshToken(userId: number): Promise<string> {
         const refreshToken = randtoken.generate(16);
         const expirydate = new Date();
         expirydate.setDate(expirydate.getDate() + 6);
@@ -27,9 +28,12 @@ export class AuthService {
         return refreshToken;
     }
 
-    async login(user: any) {
+    async login(user: User) {
         return {
-            access_token: this.jwtService.sign({ username: user.username, sub: user.id }, { secret: this.configService.get("JWT_SECRET") }),
+            access_token: this.jwtService.sign(
+                { username: user.username, sub: user.id },
+                { secret: this.configService.get("JWT_SECRET") },
+            ),
             refresh_token: await this.generateRefreshToken(user.id),
         };
     }

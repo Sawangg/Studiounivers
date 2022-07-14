@@ -19,11 +19,11 @@ export const ProfileBlock: React.FC<ProfileBlockProps> = ({ user }) => {
 
     return (
         <div className="w-full md:px-28 md:py-20 flex flex-col gap-6">
+            <div>{user.username}</div>
             <div>
-                {user.username}
-            </div>
-            <div>
-                <Button color="secondary" onClick={logout}>Déconnexion</Button>
+                <Button color="secondary" onClick={logout}>
+                    Déconnexion
+                </Button>
             </div>
         </div>
     );

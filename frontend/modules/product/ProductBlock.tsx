@@ -8,7 +8,7 @@ import { Button } from "../../ui/Button";
 import { Stepper } from "../../ui/Stepper";
 
 export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
-    productId: number
+    productId: number;
     title: string;
     description: string;
     price: number;
@@ -23,7 +23,11 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     const addToCart = async () => {
         setIsLoading({ ...isLoading, cart: true });
         try {
-            await axios.post(`${apiEndpoint}/api/user/cart/add`, { productId, quantity: currentQuantity }, { withCredentials: true });
+            await axios.post(
+                `${apiEndpoint}/api/user/cart/add`,
+                { productId, quantity: currentQuantity },
+                { withCredentials: true },
+            );
             setIsLoading({ ...isLoading, cart: false });
         } catch (err) {
             setIsLoading({ ...isLoading, cart: false });
@@ -82,15 +86,30 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                                 defaultValue={1}
                                 min={1}
                                 max={99}
-                                onChange={e => setCurrentQuantity(+e.target.value)}
+                                onChange={(e) => setCurrentQuantity(+e.target.value)}
                                 onStepperButtonDecrease={() => setCurrentQuantity(currentQuantity - 1)}
                                 onStepperButtonIncrease={() => setCurrentQuantity(currentQuantity + 1)}
                             />
                         </div>
                     </div>
                     <div className="4xl:justify-end w-full flex flex-col md:flex-row gap-6 4xl:gap-10 my-10 4xl:my-0 md:mb-0">
-                        <Button className="w-full md:w-28" loading={isLoading.cart} loadingStyle="w-full md:w-40" onClick={addToCart}>Ajouter au panier</Button>
-                        <Button className="w-full md:w-28" color="secondary" loading={isLoading.oneClick} loadingStyle="w-full md:w-40" onClick={handleCheckout}>Acheter en un click</Button>
+                        <Button
+                            className="w-full md:w-28"
+                            loading={isLoading.cart}
+                            loadingStyle="w-full md:w-40"
+                            onClick={addToCart}
+                        >
+                            Ajouter au panier
+                        </Button>
+                        <Button
+                            className="w-full md:w-28"
+                            color="secondary"
+                            loading={isLoading.oneClick}
+                            loadingStyle="w-full md:w-40"
+                            onClick={handleCheckout}
+                        >
+                            Acheter en un click
+                        </Button>
                     </div>
                 </div>
             </div>

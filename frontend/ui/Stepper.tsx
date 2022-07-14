@@ -5,36 +5,45 @@ export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElemen
     onStepperButtonDecrease?: () => void;
 };
 
-export const Stepper: React.FC<StepperProps> = ({
-    onStepperButtonIncrease,
-    onStepperButtonDecrease,
-    ...props
-}) => {
+export const Stepper: React.FC<StepperProps> = ({ onStepperButtonIncrease, onStepperButtonDecrease, ...props }) => {
     const [disabled, setDisabled] = useState({ min: false, max: false });
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (inputRef.current) setDisabled({ min: inputRef.current.value === inputRef.current.min, max: inputRef.current.value === inputRef.current.max });
+        if (inputRef.current)
+            setDisabled({
+                min: inputRef.current.value === inputRef.current.min,
+                max: inputRef.current.value === inputRef.current.max,
+            });
     }, []);
 
     const inc = () => {
-        if (inputRef.current!.value !== inputRef.current!.max) inputRef.current!.value = (parseInt(inputRef.current!.value) + 1).toString();
+        if (inputRef.current!.value !== inputRef.current!.max)
+            inputRef.current!.value = (parseInt(inputRef.current!.value) + 1).toString();
         if (onStepperButtonIncrease) onStepperButtonIncrease();
     };
 
     const dec = () => {
-        if (inputRef.current!.value !== inputRef.current!.min) inputRef.current!.value = (parseInt(inputRef.current!.value) - 1).toString();
+        if (inputRef.current!.value !== inputRef.current!.min)
+            inputRef.current!.value = (parseInt(inputRef.current!.value) - 1).toString();
         if (onStepperButtonDecrease) onStepperButtonDecrease();
     };
 
     const handleChange = () => {
-        if (parseInt(inputRef.current!.value) > parseInt(inputRef.current!.max)) inputRef.current!.value = inputRef.current!.max;
-        if (parseInt(inputRef.current!.value) < parseInt(inputRef.current!.min)) inputRef.current!.value = inputRef.current!.min;
+        if (parseInt(inputRef.current!.value) > parseInt(inputRef.current!.max))
+            inputRef.current!.value = inputRef.current!.max;
+        if (parseInt(inputRef.current!.value) < parseInt(inputRef.current!.min))
+            inputRef.current!.value = inputRef.current!.min;
     };
 
     return (
         <div className="bg-white-300 flex flex-row items-center w-full">
-            <button data-action="decrement" className="h-full w-20 rounded-l cursor-pointer outline-none disabled:text-white-400 disabled:cursor-not-allowed" onClick={dec} disabled={inputRef.current ? inputRef.current.value === inputRef.current.min : disabled.min}>
+            <button
+                data-action="decrement"
+                className="h-full w-20 rounded-l cursor-pointer outline-none disabled:text-white-400 disabled:cursor-not-allowed"
+                onClick={dec}
+                disabled={inputRef.current ? inputRef.current.value === inputRef.current.min : disabled.min}
+            >
                 <span className="m-auto text-2xl font-thin">-</span>
             </button>
             <input
@@ -45,10 +54,14 @@ export const Stepper: React.FC<StepperProps> = ({
                 onChange={handleChange}
                 {...props}
             />
-            <button data-action="increment" className="h-full w-20 rounded-r cursor-pointer disabled:text-white-400 disabled:cursor-not-allowed" onClick={inc} disabled={inputRef.current ? inputRef.current.value === inputRef.current.max : disabled.max}>
+            <button
+                data-action="increment"
+                className="h-full w-20 rounded-r cursor-pointer disabled:text-white-400 disabled:cursor-not-allowed"
+                onClick={inc}
+                disabled={inputRef.current ? inputRef.current.value === inputRef.current.max : disabled.max}
+            >
                 <span className="m-auto text-2xl font-thin">+</span>
             </button>
         </div>
     );
 };
-

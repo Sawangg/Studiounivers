@@ -1,3 +1,4 @@
+import React from "react";
 import { appWithTranslation } from "next-i18next";
 import "../styles/globals.css";
 

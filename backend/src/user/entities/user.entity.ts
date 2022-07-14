@@ -23,10 +23,10 @@ export class User {
     @Column({ nullable: true })
     refreshTokenExpires?: Date;
 
-    @OneToMany(() => Cart, cart => cart.user)
+    @OneToMany(() => Cart, (cart) => cart.user)
     cart?: Cart[];
 
-    @OneToMany(() => Order, order => order.id)
+    @OneToMany(() => Order, (order) => order.id)
     orders?: Order[];
 }
 

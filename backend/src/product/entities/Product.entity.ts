@@ -27,6 +27,6 @@ export class Product {
     @Column({ nullable: false })
     addedAt: Date;
 
-    @OneToMany(() => Cart, cart => cart.product)
+    @OneToMany(() => Cart, (cart) => cart.product)
     inCart: Cart[];
 }

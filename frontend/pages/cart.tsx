@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -9,6 +10,7 @@ import { CartBlock } from "../modules/user/CartBlock";
 import { Cart } from "../types/Cart";
 import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
 import { User } from "../types/User";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export type CartProps = {
     user: User | null;
@@ -44,6 +46,7 @@ export const getServerSideProps = withAuthSsrRedirection(async (context: GetServ
         props: {
             user: context.user,
             cart,
+            ...(await serverSideTranslations(context.locale!, ["common"])),
         },
     };
 });

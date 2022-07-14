@@ -7,10 +7,10 @@ export class Cart {
     @PrimaryGeneratedColumn({ name: "id" })
     id: number;
 
-    @ManyToOne(() => User, user => user.cart, { nullable: false, cascade: true })
+    @ManyToOne(() => User, (user) => user.cart, { nullable: false, cascade: true })
     user: User;
 
-    @ManyToOne(() => Product, product => product.photos, { nullable: false, cascade: true })
+    @ManyToOne(() => Product, (product) => product.photos, { nullable: false, cascade: true })
     product: Product;
 
     @Column({ nullable: false })

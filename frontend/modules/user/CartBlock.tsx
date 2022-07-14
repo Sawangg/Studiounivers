@@ -19,7 +19,11 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
 
     const handleChange = async (productId: number, quantity: number) => {
         try {
-            const newProducts = await axios.post(`${apiEndpoint}/api/user/cart/update`, { productId, quantity }, { withCredentials: true });
+            const newProducts = await axios.post(
+                `${apiEndpoint}/api/user/cart/update`,
+                { productId, quantity },
+                { withCredentials: true },
+            );
             setCurrentCart(newProducts.data);
         } catch {
             // Notif here
@@ -47,7 +51,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
     return (
         <div className="w-full bg-white-100 px-5 md:px-40 2xl:pt-6 3xl:pt-16 pb-10">
             <h1 className="font-title text-2xl md:text-5xl mb-4 md:mb-10 mt-4">Votre panier</h1>
-            {currentCart && currentCart.productsInCart.length > 0 ?
+            {currentCart && currentCart.productsInCart.length > 0 ? (
                 <>
                     <div className="w-full flex flex-col gap-4 md:gap-0">
                         <div className="hidden md:flex flex-row my-3">
@@ -57,25 +61,46 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                         </div>
                         <hr className="hidden md:block w-full bg-white-600 border-none h-[1px]" />
 
-                        {currentCart.productsInCart.map(product => (
+                        {currentCart.productsInCart.map((product) => (
                             <div key={product.product.id} className="flex flex-row md:pt-6">
                                 <div className="w-full md:w-3/5 flex flex-row items-center gap-7">
-                                    <div className="w-60 md:w-[8rem] h-[12rem] relative cursor-pointer" onClick={() => router.push(`/product/${product.product.id}`)}>
-                                        <Image src={product.product.photos[0]} layout="fill" title={product.product.name} alt="productImg" />
+                                    <div
+                                        className="w-60 md:w-[8rem] h-[12rem] relative cursor-pointer"
+                                        onClick={() => router.push(`/product/${product.product.id}`)}
+                                        onKeyPress={() => router.push(`/product/${product.product.id}`)}
+                                        role="button"
+                                        tabIndex={0}
+                                    >
+                                        <Image
+                                            src={product.product.photos[0]}
+                                            layout="fill"
+                                            title={product.product.name}
+                                            alt="productImg"
+                                        />
                                     </div>
                                     <div className="w-full md:w-1/3">
                                         <h4 className="text-xl md:text-2xl font-title my-2">{product.product.name}</h4>
-                                        <p className="hidden md:block text-base my-2">{product.product.description.slice(0, 100)}...</p>
-                                        <p className="text-base md:hidden my-2">{product.product.description.slice(0, 35)}...</p>
+                                        <p className="hidden md:block text-base my-2">
+                                            {product.product.description.slice(0, 100)}...
+                                        </p>
+                                        <p className="text-base md:hidden my-2">
+                                            {product.product.description.slice(0, 35)}...
+                                        </p>
                                         <p className="md:hidden text-lg">{product.adjustedPrice}€</p>
                                         <div className="md:hidden w-36 mt-4">
                                             <Stepper
                                                 min={0}
                                                 max={99}
                                                 defaultValue={product.quantity}
-                                                onChange={e => updateInputQuantity(product.product.id, +e.target.value)}
-                                                onStepperButtonDecrease={() => decreaseQuantity(product.product.id, product.quantity)}
-                                                onStepperButtonIncrease={() => increaseQuantity(product.product.id, product.quantity)}
+                                                onChange={(e) =>
+                                                    updateInputQuantity(product.product.id, +e.target.value)
+                                                }
+                                                onStepperButtonDecrease={() =>
+                                                    decreaseQuantity(product.product.id, product.quantity)
+                                                }
+                                                onStepperButtonIncrease={() =>
+                                                    increaseQuantity(product.product.id, product.quantity)
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -85,9 +110,13 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                         min={0}
                                         max={99}
                                         defaultValue={product.quantity}
-                                        onChange={e => updateInputQuantity(product.product.id, +e.target.value)}
-                                        onStepperButtonDecrease={() => decreaseQuantity(product.product.id, product.quantity)}
-                                        onStepperButtonIncrease={() => increaseQuantity(product.product.id, product.quantity)}
+                                        onChange={(e) => updateInputQuantity(product.product.id, +e.target.value)}
+                                        onStepperButtonDecrease={() =>
+                                            decreaseQuantity(product.product.id, product.quantity)
+                                        }
+                                        onStepperButtonIncrease={() =>
+                                            increaseQuantity(product.product.id, product.quantity)
+                                        }
                                     />
                                 </div>
                                 <div className="hidden md:block flex-grow">
@@ -104,18 +133,36 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                 <h4 className="text-2xl font-semibold text-white-500">Total</h4>
                                 <h3 className="text-3xl">{currentCart.total}€</h3>
                             </div>
-                            <p className="text-base my-3 text-white-500 font-light text-right">Taxes et coût de livraison calculé lors de la commande</p>
-                            <Button color="primary" className="w-full md:w-1/2" loading={isLoading} loadingStyle="w-full md:w-[7.5rem]" onClick={handleCheckout}>Commander</Button>
+                            <p className="text-base my-3 text-white-500 font-light text-right">
+                                Taxes et coût de livraison calculé lors de la commande
+                            </p>
+                            <Button
+                                color="primary"
+                                className="w-full md:w-1/2"
+                                loading={isLoading}
+                                loadingStyle="w-full md:w-[7.5rem]"
+                                onClick={handleCheckout}
+                            >
+                                Commander
+                            </Button>
                         </div>
                     </div>
                 </>
-                :
+            ) : (
                 <div className="flex flex-col justify-center items-center gap-10 my-14 md:mt-0 2xl:my-6">
-                    <Image src="/assets/icons/cart_empty.svg" width="110px" height="110px" title="Panier vide" alt="Empty cart" />
+                    <Image
+                        src="/assets/icons/cart_empty.svg"
+                        width="110px"
+                        height="110px"
+                        title="Panier vide"
+                        alt="Empty cart"
+                    />
                     <p className="text-xl md:text-2xl">Votre panier est vide !</p>
-                    <Button color="primary" onClick={() => router.push("/products")}>Voir les produits</Button>
+                    <Button color="primary" onClick={() => router.push("/products")}>
+                        Voir les produits
+                    </Button>
                 </div>
-            }
+            )}
         </div>
     );
 };

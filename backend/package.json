@@ -4,7 +4,6 @@
     "description": "Backend of StudioUnivers",
     "author": "Léo MERCIER <leo.mercier@efrei.net>",
     "private": true,
-    "license": "MIT",
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "nest build",
@@ -53,6 +52,9 @@
         "@typescript-eslint/eslint-plugin": "^5.30.0",
         "@typescript-eslint/parser": "^5.30.0",
         "eslint": "^8.18.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.7.1",
         "source-map-support": "^0.5.21",
         "ts-loader": "^9.3.1",
         "ts-node": "^10.8.1",

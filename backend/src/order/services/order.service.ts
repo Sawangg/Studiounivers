@@ -12,12 +12,17 @@ export class OrderService {
         private readonly orderRepository: Repository<Order>,
         @Inject(UserService)
         private readonly userService: UserService,
-    ) { }
+    ) {}
 
     async createOrder(user: User, stripeSession: string) {
         const currentCart = await this.userService.getCart(user.id);
         if (!currentCart) throw new BadRequestException("No cart found");
-        const newOrder = this.orderRepository.create({ user, stripeSession, products: currentCart.productsInCart, total: currentCart.total });
+        const newOrder = this.orderRepository.create({
+            user,
+            stripeSession,
+            products: currentCart.productsInCart,
+            total: currentCart.total,
+        });
         return this.orderRepository.save(newOrder);
     }
 

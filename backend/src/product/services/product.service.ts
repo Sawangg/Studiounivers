@@ -9,18 +9,19 @@ export class ProductService {
     constructor(
         @InjectRepository(Product)
         private readonly productRepository: Repository<Product>,
-    ) { }
+    ) {}
 
     create(createProductDto: CreateProductDto, files: Array<Express.Multer.File>) {
         const filesData: Array<string> = [];
-        files.forEach(file => filesData.push(`data:${file.mimetype};base64,${file.buffer.toString("base64")}`));
+        files.forEach((file) => filesData.push(`data:${file.mimetype};base64,${file.buffer.toString("base64")}`));
         createProductDto.photos = filesData;
         createProductDto.addedAt = new Date(Date.now());
         return this.productRepository.save(createProductDto);
     }
 
     async newest() {
-        const result = await this.productRepository.createQueryBuilder("product")
+        const result = await this.productRepository
+            .createQueryBuilder("product")
             .orderBy("product.addedAt", "DESC")
             .limit(4)
             .getMany();
@@ -28,7 +29,9 @@ export class ProductService {
     }
 
     async popular() {
-        const result = await this.productRepository.query(`SELECT "product".* FROM "cart" LEFT JOIN "product" ON "product"."id" = "cart"."productId" GROUP BY "product"."id" ORDER BY COUNT("cart"."productId") DESC LIMIT 4`);
+        const result = await this.productRepository.query(
+            `SELECT "product".* FROM "cart" LEFT JOIN "product" ON "product"."id" = "cart"."productId" GROUP BY "product"."id" ORDER BY COUNT("cart"."productId") DESC LIMIT 4`,
+        );
         if (result && result.length === 4) return result;
         return this.newest();
     }

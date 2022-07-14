@@ -1,4 +1,16 @@
-import { BadRequestException, ClassSerializerInterceptor, Controller, Delete, Get, NotFoundException, Post, Request as RequestD, Res, UseGuards, UseInterceptors } from "@nestjs/common";
+import {
+    BadRequestException,
+    ClassSerializerInterceptor,
+    Controller,
+    Delete,
+    Get,
+    NotFoundException,
+    Post,
+    Request as RequestD,
+    Res,
+    UseGuards,
+    UseInterceptors,
+} from "@nestjs/common";
 import type { Request, Response } from "express";
 import { SerializedUser, User } from "src/user/entities/user.entity";
 import { UserService } from "src/user/services/user.service";
@@ -9,8 +21,7 @@ import { AuthService } from "../services/auth.service";
 
 @Controller("auth")
 export class AuthController {
-    constructor(private readonly userService: UserService,
-        private readonly authService: AuthService) { }
+    constructor(private readonly userService: UserService, private readonly authService: AuthService) {}
 
     @UseInterceptors(ClassSerializerInterceptor)
     @UseGuards(JwtAuthGuard)
@@ -27,7 +38,7 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post("/login")
     async login(@RequestD() req: Request, @Res({ passthrough: true }) res: Response) {
-        const tokens = await this.authService.login(req.user);
+        const tokens = await this.authService.login(req.user as User);
         if (!tokens) throw new BadRequestException();
         res.cookie(authCookieName, tokens, { httpOnly: true, sameSite: true });
         return { msg: "Success" };

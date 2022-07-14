@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -9,6 +10,7 @@ import { ProductsPage } from "../modules/product/ProductsPage";
 import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
 import { Product } from "../types/Product";
 import { User } from "../types/User";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export interface ProductsProps {
     user: User | null;
@@ -36,6 +38,7 @@ export const getServerSideProps = withAuthSsr(async (context: GetServerSideProps
         props: {
             user: context.user,
             products,
+            ...(await serverSideTranslations(context.locale!, ["common"])),
         },
     };
 });

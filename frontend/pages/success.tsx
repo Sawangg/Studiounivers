@@ -1,13 +1,14 @@
+import React from "react";
 import type { GetServerSidePropsContext, NextPage } from "next";
 import Head from "next/head";
-import { Suspense } from "react";
 import { Footer } from "../modules/Footer";
 import { Navbar } from "../modules/Navbar";
 import { SuccessPaymentBlock } from "../modules/product/SuccessPaymentBlock";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export type SuccessPaymentProps = {
     sessionId: string;
-}
+};
 
 // Not truly SSR because auth cookie is not available in context ...
 // export const getServerSideProps = (context: GetServerSidePropsContext) => ({
@@ -16,6 +17,14 @@ export type SuccessPaymentProps = {
 //     },
 // });
 
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    return {
+        props: {
+            ...(await serverSideTranslations(context.locale!, ["common"])),
+        },
+    };
+};
+
 const SuccessPayment: NextPage<SuccessPaymentProps> = ({ sessionId }) => (
     <>
         <Head>
@@ -23,9 +32,7 @@ const SuccessPayment: NextPage<SuccessPaymentProps> = ({ sessionId }) => (
         </Head>
         <div className="w-full flex flex-col h-screen tracking-normal bg-white-100">
             <Navbar />
-            <Suspense fallback={<>cringe</>}>
-                <SuccessPaymentBlock sessionId={""} />
-            </Suspense>
+            <SuccessPaymentBlock sessionId={""} />
             <Footer />
         </div>
     </>

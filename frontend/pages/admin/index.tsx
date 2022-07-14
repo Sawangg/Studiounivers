@@ -19,9 +19,7 @@ const AdminLanding: NextPage<AdminLandingProps> = ({ user }) => (
         <Head>
             <title>StudioUnivers — Admin</title>
         </Head>
-        <div className="w-full flex flex-col h-screen tracking-normal">
-            {user.username}
-        </div>
+        <div className="w-full flex flex-col h-screen tracking-normal">{user.username}</div>
     </>
 );
 

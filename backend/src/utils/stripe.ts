@@ -1,7 +1,4 @@
-export function formatAmountForStripe(
-    amount: number,
-    currency: string,
-): number {
+export function formatAmountForStripe(amount: number, currency: string): number {
     const numberFormat = new Intl.NumberFormat(["fr-FR"], {
         style: "currency",
         currency: currency,

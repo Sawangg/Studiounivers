@@ -11,24 +11,35 @@ export const RegisterBlock: React.FC = () => {
 
     const registerClick = () => {
         if (registerState.pwd === registerState.cpwd) {
-            axios.post(`${apiEndpoint}/api/user/register`, { username: registerState.username, password: registerState.pwd }, { withCredentials: true }).then(rep => {
-                if (rep.status === 201) {
-                    router.push("/login");
-                } else {
+            axios
+                .post(
+                    `${apiEndpoint}/api/user/register`,
+                    { username: registerState.username, password: registerState.pwd },
+                    { withCredentials: true },
+                )
+                .then((rep) => {
+                    if (rep.status === 201) {
+                        router.push("/login");
+                    } else {
+                        setRegisterState({ username: registerState.username, pwd: "", cpwd: "" });
+                    }
+                })
+                .catch(() => {
                     setRegisterState({ username: registerState.username, pwd: "", cpwd: "" });
-                }
-            }).catch(() => {
-                setRegisterState({ username: registerState.username, pwd: "", cpwd: "" });
-            });
+                });
         } else {
             setRegisterState({ username: registerState.username, pwd: "", cpwd: "" });
         }
     };
 
     useEffect(() => {
-        window.addEventListener("keydown", e => { if (e.key === "Enter") registerClick(); });
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") registerClick();
+        });
         return () => {
-            window.removeEventListener("keydown", e => { if (e.key === "Enter") registerClick(); });
+            window.removeEventListener("keydown", (e) => {
+                if (e.key === "Enter") registerClick();
+            });
         };
     });
 
@@ -38,21 +49,41 @@ export const RegisterBlock: React.FC = () => {
                 <h1 className="font-title text-xl md:text-2xl self-start mb-4">Créér un compte</h1>
                 <hr className="md:w-[calc(100%-3.5rem)] text-white-200 lg:visible md:invisible sm:invisible md:mb-8 mb-" />
                 <div className="md:w-1/2">
-                    <Input color="primary" placeholder="email" type="email"
-                        onChange={e => setRegisterState({ ...registerState, username: e.target.value })} />
-                    <Input color="primary" placeholder="mot-de-passe" type="password"
-                        onChange={e => setRegisterState({ ...registerState, pwd: e.target.value })} />
-                    <Input color="primary" placeholder="confirmation mot-de-passe" type="password"
-                        onChange={e => setRegisterState({ ...registerState, cpwd: e.target.value })} />
+                    <Input
+                        color="primary"
+                        placeholder="email"
+                        type="email"
+                        onChange={(e) => setRegisterState({ ...registerState, username: e.target.value })}
+                    />
+                    <Input
+                        color="primary"
+                        placeholder="mot-de-passe"
+                        type="password"
+                        onChange={(e) => setRegisterState({ ...registerState, pwd: e.target.value })}
+                    />
+                    <Input
+                        color="primary"
+                        placeholder="confirmation mot-de-passe"
+                        type="password"
+                        onChange={(e) => setRegisterState({ ...registerState, cpwd: e.target.value })}
+                    />
                 </div>
                 <div className="w-full md:w-5/6 flex justify-between items-center self-end mt-9">
                     <p className="w-full">
                         Déjà un compte ?
-                        <span className="text-primary-200 underline cursor-pointer md:ml-2" onClick={() => router.push("/login")}>
+                        <span
+                            className="text-primary-200 underline cursor-pointer md:ml-2"
+                            onClick={() => router.push("/login")}
+                            onKeyPress={() => router.push("/login")}
+                            role="button"
+                            tabIndex={0}
+                        >
                             Connectez vous
                         </span>
                     </p>
-                    <Button color="secondary" className="w-36 md:w-1/6" onClick={registerClick}>Créer</Button>
+                    <Button color="secondary" className="w-36 md:w-1/6" onClick={registerClick}>
+                        Créer
+                    </Button>
                 </div>
             </div>
         </div>

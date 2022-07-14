@@ -1,3 +1,4 @@
+import React from "react";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -18,7 +19,6 @@ export const getServerSideProps = withAuthSsrRedirection(async (context: GetServ
         user: context.user,
     },
 }));
-
 
 const Profile: NextPage<ProfileProps> = ({ user }) => (
     <>

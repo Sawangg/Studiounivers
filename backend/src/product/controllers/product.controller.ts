@@ -1,11 +1,24 @@
-import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Post, UploadedFiles, UseInterceptors } from "@nestjs/common";
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    NotFoundException,
+    Param,
+    Post,
+    UploadedFiles,
+    UseGuards,
+    UseInterceptors,
+} from "@nestjs/common";
 import { FilesInterceptor } from "@nestjs/platform-express";
+import { JwtAuthGuard } from "src/auth/guards/JWTGuard";
 import { CreateProductDto } from "../dtos/CreateProduct.dto";
 import { ProductService } from "../services/product.service";
 
 @Controller("product")
 export class ProductController {
-    constructor(private readonly productService: ProductService) { }
+    constructor(private readonly productService: ProductService) {}
 
     @Get("/")
     async getProducts() {
@@ -40,7 +53,7 @@ export class ProductController {
         return this.productService.search(query);
     }
 
-    // Auth guard here
+    @UseGuards(JwtAuthGuard)
     @UseInterceptors(FilesInterceptor("files"))
     @Post("create")
     createProduct(@Body() createProductDto: CreateProductDto, @UploadedFiles() files: Array<Express.Multer.File>) {

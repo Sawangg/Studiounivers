@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

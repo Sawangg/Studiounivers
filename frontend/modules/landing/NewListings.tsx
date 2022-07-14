@@ -17,7 +17,7 @@ export const NewListings: React.FC<NewListingsProps> = ({ newestProducts }) => {
         <div className="w-full px-7 md:px-28 py-10 2xl:py-10 4xl:py-16 flex flex-col">
             <h2 className="font-title text-3xl md:text-4xl">{t("newlisting.title")}</h2>
             <div className="w-full sm:w-4/6 lg:w-full flex flex-wrap items-center justify-center my-10 gap-7 md:gap-20">
-                {newestProducts.map(product => (
+                {newestProducts.map((product) => (
                     <div key={product.id} className="flex-[1_0_45%] self-start md:flex-[0_0_0]">
                         <ProductCard
                             productId={product.id}
@@ -28,7 +28,13 @@ export const NewListings: React.FC<NewListingsProps> = ({ newestProducts }) => {
                     </div>
                 ))}
             </div>
-            <Button className="w-full md:w-60 md:mt-6 self-center" color="secondary" onClick={() => router.push("/products")}>{t("newlisting.button")}</Button>
+            <Button
+                className="w-full md:w-60 md:mt-6 self-center"
+                color="secondary"
+                onClick={() => router.push("/products")}
+            >
+                {t("newlisting.button")}
+            </Button>
         </div>
     );
 };

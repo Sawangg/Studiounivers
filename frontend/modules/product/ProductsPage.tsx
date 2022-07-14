@@ -6,7 +6,7 @@ import { Checkbox } from "../../ui/Checkbox";
 import { ProductCard } from "./ProductCard";
 
 export type ProductPageProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
-    products: Array<Product>
+    products: Array<Product>;
 };
 
 export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
@@ -14,7 +14,9 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
         <div className="w-full">
             <div className="h-[7rem] md:h-[18rem] relative flex justify-center items-center md:block">
                 <Image src="/assets/header.png" layout="fill" alt="header" className="-z-50 select-none" />
-                <h1 className="font-title md:absolute md:bottom-9 md:pl-24 text-3xl md:text-5xl text-white z-40">Tous les produits</h1>
+                <h1 className="font-title md:absolute md:bottom-9 md:pl-24 text-3xl md:text-5xl text-white z-40">
+                    Tous les produits
+                </h1>
             </div>
         </div>
         <div className="w-full flex flex-col md:flex-row px-4 md:px-16">
@@ -44,23 +46,30 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                 </div>
             </div>
             <div className="flex flex-row items-center justify-around mt-6 md:hidden">
-                <Button color="secondary" arrow={true} className="w-40">Filtres</Button>
-                <Button color="secondary" arrow={true} className="w-40">Trier</Button>
+                <Button color="secondary" arrow={true} className="w-40">
+                    Filtres
+                </Button>
+                <Button color="secondary" arrow={true} className="w-40">
+                    Trier
+                </Button>
             </div>
             <div className="w-full md:w-3/4 py-12">
                 <div className="grid grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-y-4 md:gap-y-12 justify-items-center md:justify-items-start">
-                    {products.length > 0 && products.map(product => (
-                        <ProductCard
-                            key={product.id}
-                            productId={product.id}
-                            title={product.name}
-                            price={product.price}
-                            imagePath={product.photos[0]}
-                        />
-                    ))}
+                    {products.length > 0 &&
+                        products.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                productId={product.id}
+                                title={product.name}
+                                price={product.price}
+                                imagePath={product.photos[0]}
+                            />
+                        ))}
                 </div>
                 <div className="w-full flex justify-center mt-6 px-3 md:px-0 md:mt-12">
-                    <Button color="secondary" className="w-full md:w-1/12">Plus</Button>
+                    <Button color="secondary" className="w-full md:w-1/12">
+                        Plus
+                    </Button>
                 </div>
             </div>
         </div>

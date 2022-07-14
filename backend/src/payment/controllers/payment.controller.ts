@@ -8,7 +8,7 @@ import { PaymentService } from "../services/payment.service";
 
 @Controller("payment")
 export class PaymentController {
-    constructor(private readonly paymentService: PaymentService) { }
+    constructor(private readonly paymentService: PaymentService) {}
 
     @UseGuards(JwtAuthGuard)
     @Post("session")
@@ -19,6 +19,6 @@ export class PaymentController {
     @UseGuards(JwtAuthGuard)
     @Post("verify")
     verifyPayment(@RequestD() req: Request, @Body() verifyPayment: VerifyPaymentDto) {
-        return this.paymentService.verifyPayment((req.user as User), verifyPayment);
+        return this.paymentService.verifyPayment(req.user as User, verifyPayment);
     }
 }

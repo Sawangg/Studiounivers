@@ -19,7 +19,7 @@ export class UserService {
         private readonly productRepository: Repository<Product>,
         @InjectRepository(Cart)
         private readonly cartRepository: Repository<Cart>,
-    ) { }
+    ) {}
 
     createUser(createUserDto: CreateUserDto) {
         const password = encodePassword(createUserDto.password);
@@ -40,7 +40,8 @@ export class UserService {
         if (!user) throw new BadRequestException();
 
         // Check if product is in cart and update if so
-        const result = await this.cartRepository.createQueryBuilder("cart")
+        const result = await this.cartRepository
+            .createQueryBuilder("cart")
             .leftJoin("cart.user", "users")
             .leftJoinAndSelect("cart.product", "product")
             .where("users.id = :userId", { userId })
@@ -48,7 +49,12 @@ export class UserService {
             .getOne();
         if (result) return this.updateCart(userId, addToCart);
 
-        await this.cartRepository.save({ user, product, quantity: addToCart.quantity, adjustedPrice: (product.price * addToCart.quantity) });
+        await this.cartRepository.save({
+            user,
+            product,
+            quantity: addToCart.quantity,
+            adjustedPrice: product.price * addToCart.quantity,
+        });
         return this.getCart(userId);
     }
 
@@ -57,11 +63,12 @@ export class UserService {
         if (updatedCart.quantity === 0) return this.removeFromCart(userId, updatedCart.productId);
         const product = await this.productRepository.findOne({ where: { id: +updatedCart.productId } });
         if (!product) throw new BadRequestException();
-        await this.cartRepository.createQueryBuilder("cart")
+        await this.cartRepository
+            .createQueryBuilder("cart")
             .update()
             .set({
                 quantity: updatedCart.quantity,
-                adjustedPrice: (product.price * updatedCart.quantity),
+                adjustedPrice: product.price * updatedCart.quantity,
             })
             .where('"cart"."userId" = :userId', { userId })
             .andWhere('"cart"."productId" = :productId', { productId: updatedCart.productId })
@@ -71,22 +78,26 @@ export class UserService {
 
     async getCart(id: number) {
         let total = 0;
-        const productsInCart = await this.cartRepository.createQueryBuilder("cart")
+        const productsInCart = await this.cartRepository
+            .createQueryBuilder("cart")
             .leftJoin("cart.user", "users")
             .leftJoinAndSelect("cart.product", "product")
             .where("users.id = :id", { id })
             .orderBy("product.addedAt", "DESC")
             .getMany();
-        if (productsInCart.length > 0) productsInCart.forEach(product => (total += product.adjustedPrice));
+        if (productsInCart.length > 0) productsInCart.forEach((product) => (total += product.adjustedPrice));
         return { total, productsInCart };
     }
 
     async removeFromCart(userId: number, productId: number) {
-        await this.cartRepository.query(`DELETE FROM "cart" WHERE "cart"."productId" = $1 AND "cart"."userId" = $2`, [productId, userId]);
+        await this.cartRepository.query(`DELETE FROM "cart" WHERE "cart"."productId" = $1 AND "cart"."userId" = $2`, [
+            productId,
+            userId,
+        ]);
         return this.getCart(userId);
     }
 
-    saveOrUpdateRefreshToken(refreshToken: string, id: string, refreshTokenExpires: Date) {
+    saveOrUpdateRefreshToken(refreshToken: string, id: number, refreshTokenExpires: Date) {
         return this.usersRepository.update(id, { refreshToken, refreshTokenExpires });
     }
 
