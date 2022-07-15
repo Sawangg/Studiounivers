@@ -79,36 +79,69 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 <div className="block md:hidden max-h-[20px]">
                     <Dropdown>
                         <div className="flex flex-row justify-around">
-                            <a className="flex flex-row gap-2 items-center" href={currentUser ? "/cart" : "/login"}>
-                                <Image src="/assets/icons/cart.svg" width="20px" height="20px" alt="cart" />
-                                <p>Panier</p>
-                            </a>
-                            <a className="flex flex-row gap-2 items-center" href={currentUser ? "/profile" : "/login"}>
-                                <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" />
-                                <p>Profile</p>
-                            </a>
+                            <Link href={currentUser ? "/cart" : "/login"}>
+                                <a className="flex flex-row gap-2 items-center" href={currentUser ? "/cart" : "/login"}>
+                                    <Image src="/assets/icons/cart.svg" width="20px" height="20px" alt="cart" />
+                                    <p>Panier</p>
+                                </a>
+                            </Link>
+                            <Link href={currentUser ? "/profile" : "/login"}>
+                                <a
+                                    className="flex flex-row gap-2 items-center"
+                                    href={currentUser ? "/profile" : "/login"}
+                                >
+                                    <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" />
+                                    <p>Profile</p>
+                                </a>
+                            </Link>
                         </div>
                         <hr className="w-full text-white-200 mb-4" />
-                        <a href="/products">{t("navbar.catego1")}</a>
+                        <Link href="/products">
+                            <a href="/products">{t("navbar.catego1")}</a>
+                        </Link>
                         <a href="/products">{t("navbar.catego2")}</a>
-                        <a href="/products">{t("navbar.catego3")}</a>
-                        <a href="/products">{t("navbar.catego4")}</a>
-                        <a href="/products">{t("navbar.catego5")}</a>
-                        <a href="/products">{t("navbar.catego6")}</a>
-                        <a href="/products">{t("navbar.catego7")}</a>
+                        <Link href="/products">
+                            <a href="/products">{t("navbar.catego3")}</a>
+                        </Link>
+                        <Link href="/products">
+                            <a href="/products">{t("navbar.catego4")}</a>
+                        </Link>
+                        <Link href="/products">
+                            <a href="/products">{t("navbar.catego5")}</a>
+                        </Link>
+                        <Link href="/products">
+                            <a href="/products">{t("navbar.catego6")}</a>
+                        </Link>
+                        <Link href="/products">
+                            <a href="/products">{t("navbar.catego7")}</a>
+                        </Link>
                     </Dropdown>
                 </div>
             </div>
             <hr className="w-[calc(100%-3.5rem)] text-white-200 hidden sm:block" />
             <div className="w-full hidden sm:flex justify-center py-3">
                 <div className="w-4/6 flex flex-row text-lg items-center justify-around text-white-400">
-                    <a href="/products">{t("navbar.catego1")}</a>
-                    <a href="/products">{t("navbar.catego2")}</a>
-                    <a href="/products">{t("navbar.catego3")}</a>
-                    <a href="/products">{t("navbar.catego4")}</a>
-                    <a href="/products">{t("navbar.catego5")}</a>
-                    <a href="/products">{t("navbar.catego6")}</a>
-                    <a href="/products">{t("navbar.catego7")}</a>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego1")}</a>
+                    </Link>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego2")}</a>
+                    </Link>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego3")}</a>
+                    </Link>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego4")}</a>
+                    </Link>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego5")}</a>
+                    </Link>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego6")}</a>
+                    </Link>
+                    <Link href="/products">
+                        <a href="/products">{t("navbar.catego7")}</a>
+                    </Link>
                 </div>
             </div>
         </nav>

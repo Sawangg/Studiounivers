@@ -1,12 +1,12 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { OrderService } from "src/order/services/order.service";
-import type { User } from "src/user/entities/user.entity";
-import { defaultCurrency } from "src/utils/constants";
-import { formatAmountForStripe } from "src/utils/stripe";
+import { OrderService } from "@order/services/order.service";
+import type { User } from "@user/entities/user.entity";
+import { defaultCurrency } from "@utils/constants";
+import { formatAmountForStripe } from "@utils/stripe";
 import Stripe from "stripe";
-import type { CreatePaymentSessionDto } from "../dtos/CreateSession.dto";
-import type { VerifyPaymentDto } from "../dtos/VerifyPayment.dto";
+import type { CreatePaymentSessionDto } from "@payment/dtos/CreateSession.dto";
+import type { VerifyPaymentDto } from "@payment/dtos/VerifyPayment.dto";
 
 @Injectable()
 export class PaymentService {

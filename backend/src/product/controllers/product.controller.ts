@@ -12,9 +12,9 @@ import {
     UseInterceptors,
 } from "@nestjs/common";
 import { FilesInterceptor } from "@nestjs/platform-express";
-import { JwtAuthGuard } from "src/auth/guards/JWTGuard";
-import { CreateProductDto } from "../dtos/CreateProduct.dto";
-import { ProductService } from "../services/product.service";
+import { JwtAuthGuard } from "@auth/guards/JWTGuard";
+import { CreateProductDto } from "@product/dtos/CreateProduct.dto";
+import { ProductService } from "@product/services/product.service";
 
 @Controller("product")
 export class ProductController {

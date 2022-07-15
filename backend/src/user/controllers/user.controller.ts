@@ -16,13 +16,13 @@ import {
     ParseIntPipe,
 } from "@nestjs/common";
 import type { Request, Response } from "express";
-import { JwtAuthGuard } from "src/auth/guards/JWTGuard";
-import { SerializedUser, User } from "../entities/user.entity";
-import { UserService } from "../services/user.service";
-import { AddToCartDto } from "../dtos/AddToCart.dto";
-import { UpdateCartDto } from "../dtos/UpdateCart.dto";
-import { CreateAdminDto } from "../dtos/CreateAdmin.dto";
-import { CreateUserDto } from "../dtos/CreateUser.dto";
+import { JwtAuthGuard } from "@auth/guards/JWTGuard";
+import { SerializedUser, User } from "@user/entities/user.entity";
+import { UserService } from "@user/services/user.service";
+import { AddToCartDto } from "@user/dtos/AddToCart.dto";
+import { UpdateCartDto } from "@user/dtos/UpdateCart.dto";
+import { CreateAdminDto } from "@user/dtos/CreateAdmin.dto";
+import { CreateUserDto } from "@user/dtos/CreateUser.dto";
 
 @Controller("user")
 export class UserController {

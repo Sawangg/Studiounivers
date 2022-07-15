@@ -1,14 +1,14 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { encodePassword } from "src/utils/password";
-import { Cart } from "../entities/cart.entity";
-import { User } from "../entities/user.entity";
-import { Product } from "src/product/entities/product.entity";
+import { encodePassword } from "@utils/password";
+import { Cart } from "@user/entities/cart.entity";
+import { User } from "@user/entities/user.entity";
+import { Product } from "@product/entities/product.entity";
 import type { DeleteResult, Repository } from "typeorm";
-import type { AddToCartDto } from "../dtos/AddToCart.dto";
-import type { CreateAdminDto } from "../dtos/CreateAdmin.dto";
-import type { CreateUserDto } from "../dtos/CreateUser.dto";
-import type { UpdateCartDto } from "../dtos/UpdateCart.dto";
+import type { AddToCartDto } from "@user/dtos/AddToCart.dto";
+import type { CreateAdminDto } from "@user/dtos/CreateAdmin.dto";
+import type { CreateUserDto } from "@user/dtos/CreateUser.dto";
+import type { UpdateCartDto } from "@user/dtos/UpdateCart.dto";
 
 @Injectable()
 export class UserService {

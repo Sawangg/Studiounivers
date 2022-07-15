@@ -1,5 +1,5 @@
-import { Product } from "src/product/entities/product.entity";
-import { User } from "src/user/entities/user.entity";
+import { Product } from "@product/entities/product.entity";
+import { User } from "@user/entities/user.entity";
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 export enum OrderStatus {

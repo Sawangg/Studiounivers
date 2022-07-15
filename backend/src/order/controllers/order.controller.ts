@@ -1,6 +1,6 @@
 import { Controller, Delete, HttpStatus, Param, Res } from "@nestjs/common";
 import type { Response } from "express";
-import { OrderService } from "../services/order.service";
+import { OrderService } from "@order/services/order.service";
 
 @Controller("order")
 export class OrderController {

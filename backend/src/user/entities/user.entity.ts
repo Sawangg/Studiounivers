@@ -1,7 +1,7 @@
 import { Exclude } from "class-transformer";
-import { Order } from "src/order/entities/order.entity";
+import { Order } from "@order/entities/order.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Cart } from "./cart.entity";
+import { Cart } from "@user/entities/cart.entity";
 
 @Entity({ name: "users" })
 export class User {

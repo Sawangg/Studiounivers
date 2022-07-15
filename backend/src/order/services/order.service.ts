@@ -1,9 +1,9 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Order } from "../entities/order.entity";
+import { Order } from "@order/entities/order.entity";
 import type { DeleteResult, Repository } from "typeorm";
-import type { User } from "src/user/entities/user.entity";
-import { UserService } from "src/user/services/user.service";
+import type { User } from "@user/entities/user.entity";
+import { UserService } from "@user/services/user.service";
 
 @Injectable()
 export class OrderService {

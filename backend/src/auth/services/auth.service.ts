@@ -2,9 +2,9 @@ import { Inject, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import randtoken from "rand-token";
-import type { User } from "src/user/entities/user.entity";
-import { UserService } from "src/user/services/user.service";
-import { comparePasswords } from "src/utils/password";
+import type { User } from "@user/entities/user.entity";
+import { UserService } from "@user/services/user.service";
+import { comparePasswords } from "@utils/password";
 
 @Injectable()
 export class AuthService {

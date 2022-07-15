@@ -17,12 +17,12 @@
         // Modules
         "module": "CommonJS",
         "paths": {
-            "@interfaces/*": [
-                "src/utils/interfaces/*",
-            ],
-            "@enums/*": [
-                "src/utils/enums/*",
-            ],
+            "@auth/*": ["src/auth/*"],
+            "@order/*": ["src/order/*"],
+            "@payment/*": ["src/payment/*"],
+            "@product/*": ["src/product/*"],
+            "@user/*": ["src/user/*"],
+            "@utils/*": ["src/utils/*"]
         },
 
         // Emit
@@ -50,14 +50,8 @@
 
         // Completeness
         "skipLibCheck": true,
-        "strictNullChecks": false,
+        "strictNullChecks": false
     },
-    "include": [
-        "src/**/*",
-    ],
-    "exclude": [
-        "dist",
-        "node_modules",
-        "**/*.spec.ts"
-    ]
+    "include": ["src/**/*"],
+    "exclude": ["dist", "node_modules", "**/*.spec.ts"]
 }

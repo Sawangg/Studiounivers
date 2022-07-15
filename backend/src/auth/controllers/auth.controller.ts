@@ -13,11 +13,11 @@ import {
 } from "@nestjs/common";
 import type { Request, Response } from "express";
 import { SerializedUser, User } from "src/user/entities/user.entity";
-import { UserService } from "src/user/services/user.service";
-import { authCookieName } from "src/utils/constants";
-import { JwtAuthGuard } from "../guards/JWTGuard";
-import { LocalAuthGuard } from "../guards/LocalGuard";
-import { AuthService } from "../services/auth.service";
+import { UserService } from "@user/services/user.service";
+import { authCookieName } from "@utils/constants";
+import { JwtAuthGuard } from "@auth/guards/JWTGuard";
+import { LocalAuthGuard } from "@auth/guards/LocalGuard";
+import { AuthService } from "@auth/services/auth.service";
 
 @Controller("auth")
 export class AuthController {

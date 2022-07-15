@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Input } from "@ui/Input";
+import Link from "next/link";
 
 export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
     return (
@@ -11,27 +12,45 @@ export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                         <h4 className="font-title text-lg">Menu</h4>
                         <p className="cursor-pointer">Nouveautés</p>
                         <p className="cursor-pointer">Populaire</p>
-                        <a href="/products">Tous les produits</a>
+                        <Link href="products">
+                            <a href="/products">Tous les produits</a>
+                        </Link>
                     </div>
                     <div className="leading-loose mx-auto flex-grow basis-[calc(100%/2)]">
                         <h4 className="font-title text-lg">Catégories</h4>
-                        <a href="/products">Eclairages</a>
+                        <Link href="products">
+                            <a href="/products">Eclairages</a>
+                        </Link>
                         <br />
-                        <a href="/products">Accessoires</a>
+                        <Link href="products">
+                            <a href="/products">Accessoires</a>
+                        </Link>
                         <br />
-                        <a href="/products">Modificateurs</a>
+                        <Link href="products">
+                            <a href="/products">Modificateurs</a>
+                        </Link>
                         <br />
-                        <a href="/products">Arrière-fond</a>
+                        <Link href="products">
+                            <a href="/products">Arrière-fond</a>
+                        </Link>
                         <br />
-                        <a href="/products">Lampes</a>
+                        <Link href="products">
+                            <a href="/products">Lampes</a>
+                        </Link>
                         <br />
-                        <a href="/products">Appareils Photo</a>
+                        <Link href="products">
+                            <a href="/products">Appareils Photo</a>
+                        </Link>
                         <br />
-                        <a href="/products">Strobist</a>
+                        <Link href="products">
+                            <a href="/products">Strobist</a>
+                        </Link>
                     </div>
                     <div className="leading-loose mx-auto flex-grow basis-[calc(100%/2)] 2xl:my-0">
                         <h4 className="font-title text-lg">Notre entreprise</h4>
-                        <a href="/about">À propos</a>
+                        <Link href="about">
+                            <a href="/about">À propos</a>
+                        </Link>
                         <p>Contactez-nous</p>
                         <p>Conditions générales</p>
                     </div>

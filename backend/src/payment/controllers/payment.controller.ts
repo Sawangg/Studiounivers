@@ -1,10 +1,10 @@
 import { Body, Controller, Post, Request as RequestD, UseGuards } from "@nestjs/common";
 import type { Request } from "express";
-import { JwtAuthGuard } from "src/auth/guards/JWTGuard";
-import type { User } from "src/user/entities/user.entity";
-import { CreatePaymentSessionDto } from "../dtos/CreateSession.dto";
-import { VerifyPaymentDto } from "../dtos/VerifyPayment.dto";
-import { PaymentService } from "../services/payment.service";
+import { JwtAuthGuard } from "@auth/guards/JWTGuard";
+import type { User } from "@user/entities/user.entity";
+import { CreatePaymentSessionDto } from "@payment/dtos/CreateSession.dto";
+import { VerifyPaymentDto } from "@payment/dtos/VerifyPayment.dto";
+import { PaymentService } from "@payment/services/payment.service";
 
 @Controller("payment")
 export class PaymentController {
