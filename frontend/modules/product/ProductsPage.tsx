@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Product } from "../../types/Product";
+import { Product } from "../../type/Product";
 import { Button } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
 import { ProductCard } from "./ProductCard";

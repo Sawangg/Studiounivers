@@ -1,6 +1,6 @@
+import { apiEndpoint } from "@lib/constants";
+import getStripe from "@lib/stripe";
 import axios from "axios";
-import { apiEndpoint } from "./constants";
-import getStripe from "./stripe";
 
 const checkout = async (amount: number) => {
     try {

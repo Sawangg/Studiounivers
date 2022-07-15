@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { User } from "./User";
+import { User } from "@type/User";
 
 export interface GetServerSidePropsContextUser extends GetServerSidePropsContext {
     user: User | null;

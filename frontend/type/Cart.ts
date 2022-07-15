@@ -1,4 +1,4 @@
-import { Product } from "./Product";
+import { Product } from "@type/Product";
 
 export type Cart = {
     total: number;

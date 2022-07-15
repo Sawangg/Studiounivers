@@ -2,10 +2,10 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import checkout from "../../lib/checkout";
-import { apiEndpoint } from "../../lib/constants";
-import { Button } from "../../ui/Button";
-import { Stepper } from "../../ui/Stepper";
+import checkout from "@lib/checkout";
+import { apiEndpoint } from "@lib/constants";
+import { Button } from "@ui/Button";
+import { Stepper } from "@ui/Stepper";
 
 export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     productId: number;
@@ -29,7 +29,8 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                 { withCredentials: true },
             );
             setIsLoading({ ...isLoading, cart: false });
-        } catch (err) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (err: any) {
             setIsLoading({ ...isLoading, cart: false });
             if (err.response.status === 400) router.push("/login");
         }

@@ -1,11 +1,10 @@
-import React from "react";
 import type { GetServerSidePropsContext, NextPage } from "next";
 import Head from "next/head";
-import { Footer } from "../modules/Footer";
-import { FeatureAbout } from "../modules/landing/FeatureAbout";
-import { Features } from "../modules/landing/Features";
-import { Newsletter } from "../modules/landing/Newsletter";
-import { Navbar } from "../modules/Navbar";
+import { Footer } from "@modules/Footer";
+import { FeatureAbout } from "@modules/landing/FeatureAbout";
+import { Features } from "@modules/landing/Features";
+import { Newsletter } from "@modules/landing/Newsletter";
+import { Navbar } from "@modules/Navbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {

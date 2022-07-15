@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, HTMLAttributes, useEffect, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import Image from "next/image";
-import { Product } from "../types/Product";
+import { Product } from "@type/Product";
 import { useRouter } from "next/router";
 
 export type SearchBarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {

@@ -1,8 +1,7 @@
-import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Footer } from "../modules/Footer";
-import { Navbar } from "../modules/Navbar";
+import { Footer } from "@modules/Footer";
+import { Navbar } from "@modules/Navbar";
 
 // Translation needs fix here
 const NotFound: NextPage = () => (

@@ -1,14 +1,14 @@
+import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
-import { apiEndpoint } from "../lib/constants";
-import { Product } from "../types/Product";
-import { User } from "../types/User";
-import { Dropdown } from "../ui/Dropdown";
-import { SearchBar } from "../ui/SearchBar";
+import { apiEndpoint } from "@lib/constants";
+import { Product } from "@type/Product";
+import { User } from "@type/User";
+import { Dropdown } from "@ui/Dropdown";
+import { SearchBar } from "@ui/SearchBar";
 
 export type NavbarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     user?: User | null;

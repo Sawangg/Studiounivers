@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -7,9 +6,9 @@ import { apiEndpoint } from "../lib/constants";
 import { Footer } from "../modules/Footer";
 import { Navbar } from "../modules/Navbar";
 import { ProductsPage } from "../modules/product/ProductsPage";
-import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
-import { Product } from "../types/Product";
-import { User } from "../types/User";
+import { GetServerSidePropsContextUser } from "../type/GetServerSidePropsContextUser";
+import { Product } from "../type/Product";
+import { User } from "../type/User";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export interface ProductsProps {

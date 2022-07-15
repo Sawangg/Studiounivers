@@ -2,11 +2,11 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import checkout from "../../lib/checkout";
-import { apiEndpoint } from "../../lib/constants";
-import { Cart } from "../../types/Cart";
-import { Button } from "../../ui/Button";
-import { Stepper } from "../../ui/Stepper";
+import checkout from "@lib/checkout";
+import { apiEndpoint } from "@lib/constants";
+import { Cart } from "@type/Cart";
+import { Button } from "@ui/Button";
+import { Stepper } from "@ui/Stepper";
 
 export type CartBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     cart: Cart;

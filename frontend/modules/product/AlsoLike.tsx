@@ -1,8 +1,8 @@
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { useRouter } from "next/router";
-import { Button } from "../../ui/Button";
-import { ProductCard } from "../product/ProductCard";
-import { Product } from "../../types/Product";
+import { Button } from "@ui/Button";
+import { ProductCard } from "@modules/product/ProductCard";
+import { Product } from "@type/Product";
 
 export type AlsoLikeProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     alsoLikeProducts: Array<Product>;

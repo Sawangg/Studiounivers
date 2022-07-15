@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Button } from "../../ui/Button";
+import { Button } from "@ui/Button";
 
 export const FeatureAbout: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
     <div className="w-full flex flex-col md:flex-row">

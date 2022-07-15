@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { apiEndpoint } from "../../lib/constants";
-import { User } from "../../types/User";
-import { Button } from "../../ui/Button";
+import { apiEndpoint } from "@lib/constants";
+import { User } from "@type/User";
+import { Button } from "@ui/Button";
 
 export type ProfileBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     user: User;

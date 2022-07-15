@@ -1,9 +1,9 @@
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Product } from "../../types/Product";
-import { Button } from "../../ui/Button";
-import { ProductCard } from "../product/ProductCard";
+import { Product } from "@type/Product";
+import { Button } from "@ui/Button";
+import { ProductCard } from "@modules/product/ProductCard";
 
 export type NewListingsProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     newestProducts: Array<Product>;

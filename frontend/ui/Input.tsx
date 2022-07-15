@@ -1,5 +1,5 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
-import { Button } from "./Button";
+import { Button } from "@ui/Button";
 
 const colorInputClassnames = {
     primary: "bg-primary-600 text-white placeholder:text-white",

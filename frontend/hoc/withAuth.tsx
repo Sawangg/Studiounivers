@@ -1,6 +1,6 @@
-import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
-import { apiEndpoint } from "../lib/constants";
-import { User } from "../types/User";
+import { GetServerSidePropsContextUser } from "@type/GetServerSidePropsContextUser";
+import { apiEndpoint } from "@lib/constants";
+import { User } from "@type/User";
 import axios from "axios";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

@@ -1,4 +1,3 @@
-import React from "react";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -6,8 +5,8 @@ import { withAuthSsrRedirection } from "../hoc/withAuth";
 import { Footer } from "../modules/Footer";
 import { Navbar } from "../modules/Navbar";
 import { ProfileBlock } from "../modules/user/ProfileBlock";
-import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
-import { User } from "../types/User";
+import { GetServerSidePropsContextUser } from "../type/GetServerSidePropsContextUser";
+import { User } from "../type/User";
 
 export type ProfileProps = {
     user: User;

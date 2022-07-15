@@ -1,6 +1,5 @@
-import React from "react";
 import { Head, Html, Main, NextScript } from "next/document";
-import { NotificationsHub } from "../modules/NotificationHub";
+import { NotificationsHub } from "@modules/NotificationHub";
 
 export default function Document() {
     return (

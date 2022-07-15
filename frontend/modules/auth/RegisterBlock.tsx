@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { apiEndpoint } from "../../lib/constants";
-import { Button } from "../../ui/Button";
-import { Input } from "../../ui/Input";
+import { apiEndpoint } from "@lib/constants";
+import { Button } from "@ui/Button";
+import { Input } from "@ui/Input";
 
 export const RegisterBlock: React.FC = () => {
     const router = useRouter();

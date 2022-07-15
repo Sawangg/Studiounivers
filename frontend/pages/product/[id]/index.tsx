@@ -10,9 +10,9 @@ import { Features } from "../../../modules/landing/Features";
 import { NewListings } from "../../../modules/landing/NewListings";
 import { Navbar } from "../../../modules/Navbar";
 import { ProductBlock } from "../../../modules/product/ProductBlock";
-import { GetServerSidePropsContextUser } from "../../../types/GetServerSidePropsContextUser";
-import { Product } from "../../../types/Product";
-import { User } from "../../../types/User";
+import { GetServerSidePropsContextUser } from "../../../type/GetServerSidePropsContextUser";
+import { Product } from "../../../type/Product";
+import { User } from "../../../type/User";
 
 export interface ProductPageProps {
     user: User | null;

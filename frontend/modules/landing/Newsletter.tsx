@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Input } from "../../ui/Input";
+import { Input } from "@ui/Input";
 
 export const Newsletter: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
     <div className="w-full py-20 flex flex-row text-white">

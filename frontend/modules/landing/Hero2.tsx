@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Button } from "../../ui/Button";
+import { Button } from "@ui/Button";
 
 export const Hero2: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
     const { t } = useTranslation();

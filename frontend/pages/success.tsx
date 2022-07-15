@@ -1,4 +1,3 @@
-import React from "react";
 import type { GetServerSidePropsContext, NextPage } from "next";
 import Head from "next/head";
 import { Footer } from "../modules/Footer";

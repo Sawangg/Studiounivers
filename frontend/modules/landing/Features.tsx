@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { FeatureBlock } from "./FeatureBlock";
+import { FeatureBlock } from "@modules/landing/FeatureBlock";
 
 export const Features: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
     const { t } = useTranslation();

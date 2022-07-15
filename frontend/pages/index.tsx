@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -12,9 +11,9 @@ import { Hero } from "../modules/landing/Hero";
 import { Hero2 } from "../modules/landing/Hero2";
 import { NewListings } from "../modules/landing/NewListings";
 import { Navbar } from "../modules/Navbar";
-import { GetServerSidePropsContextUser } from "../types/GetServerSidePropsContextUser";
-import { Product } from "../types/Product";
-import { User } from "../types/User";
+import { GetServerSidePropsContextUser } from "../type/GetServerSidePropsContextUser";
+import { Product } from "../type/Product";
+import { User } from "../type/User";
 
 export type LandingProps = {
     user: User | null;

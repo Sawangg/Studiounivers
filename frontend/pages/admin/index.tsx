@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { withAuthSsrRedirection } from "../../hoc/withAuth";
-import { GetServerSidePropsContextUser } from "../../types/GetServerSidePropsContextUser";
-import { User } from "../../types/User";
+import { GetServerSidePropsContextUser } from "../../type/GetServerSidePropsContextUser";
+import { User } from "../../type/User";
 
 export type AdminLandingProps = {
     user: User;
