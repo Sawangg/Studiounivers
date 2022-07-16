@@ -52,6 +52,6 @@
         "skipLibCheck": true,
         "strictNullChecks": false
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "@types/index.d.ts"],
     "exclude": ["dist", "node_modules", "**/*.spec.ts"]
 }

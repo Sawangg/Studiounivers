@@ -12,7 +12,7 @@ import {
     UseInterceptors,
 } from "@nestjs/common";
 import type { Request, Response } from "express";
-import { SerializedUser, User } from "src/user/entities/user.entity";
+import { SerializedUser } from "@user/entities/user.entity";
 import { UserService } from "@user/services/user.service";
 import { authCookieName } from "@utils/constants";
 import { JwtAuthGuard } from "@auth/guards/JWTGuard";
@@ -28,7 +28,7 @@ export class AuthController {
     @Get("/")
     async isLogged(@RequestD() req: Request) {
         try {
-            const user = await this.userService.findOne((req.user as User).id);
+            const user = await this.userService.findOne(req.user.id);
             return new SerializedUser(user);
         } catch {
             throw new NotFoundException();
@@ -38,7 +38,7 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post("/login")
     async login(@RequestD() req: Request, @Res({ passthrough: true }) res: Response) {
-        const tokens = await this.authService.login(req.user as User);
+        const tokens = await this.authService.login(req.user);
         if (!tokens) throw new BadRequestException();
         res.cookie(authCookieName, tokens, { httpOnly: true, sameSite: true });
         return { msg: "Success" };
