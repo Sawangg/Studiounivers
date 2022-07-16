@@ -17,7 +17,7 @@ import {
 } from "@nestjs/common";
 import type { Request, Response } from "express";
 import { JwtAuthGuard } from "@auth/guards/JWTGuard";
-import { SerializedUser, User } from "@user/entities/user.entity";
+import { SerializedUser } from "@user/entities/user.entity";
 import { UserService } from "@user/services/user.service";
 import { AddToCartDto } from "@user/dtos/AddToCart.dto";
 import { UpdateCartDto } from "@user/dtos/UpdateCart.dto";
@@ -51,7 +51,7 @@ export class UserController {
     @UseGuards(JwtAuthGuard)
     @Post("cart/add")
     async addToCart(@RequestD() req: Request, @Body() addToCart: AddToCartDto) {
-        const data = await this.userService.addToCart((req.user as User).id, addToCart);
+        const data = await this.userService.addToCart(req.user.id, addToCart);
         if (!data) return new BadRequestException();
         return data;
     }
@@ -59,7 +59,7 @@ export class UserController {
     @UseGuards(JwtAuthGuard)
     @Post("cart/update")
     async cartUpdate(@RequestD() req: Request, @Body() updatedCart: UpdateCartDto) {
-        const data = await this.userService.updateCart((req.user as User).id, updatedCart);
+        const data = await this.userService.updateCart(req.user.id, updatedCart);
         if (!data) return new BadRequestException();
         return data;
     }
@@ -70,7 +70,7 @@ export class UserController {
         @RequestD() req: Request,
         @Param("productId", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) productId: number,
     ) {
-        const data = await this.userService.removeFromCart((req.user as User).id, productId);
+        const data = await this.userService.removeFromCart(req.user.id, productId);
         if (!data) throw new NotFoundException();
         return data;
     }
@@ -78,7 +78,7 @@ export class UserController {
     @UseGuards(JwtAuthGuard)
     @Get("cart")
     async getCart(@RequestD() req: Request) {
-        const data = await this.userService.getCart((req.user as User).id);
+        const data = await this.userService.getCart(req.user.id);
         if (!data) throw new NotFoundException();
         return data;
     }
