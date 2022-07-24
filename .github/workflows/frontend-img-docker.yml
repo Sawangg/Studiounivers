@@ -1,0 +1,16 @@
+name: frontend-build-image-docker
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build frontend image
+        run: docker build ./frontend --file Dockerfile --tag studiounivers-frontend:$(date +%s)
