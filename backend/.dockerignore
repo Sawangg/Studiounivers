@@ -1,5 +1,11 @@
 .git/
 .gitignore
+.gitattributes
 .dockerignore
 Dockerfile
 node_modules/
+.env
+.eslintignore
+.eslintrc.json
+.prettierignore
+.prettierrc.json
