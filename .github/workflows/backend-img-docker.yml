@@ -13,4 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build backend image
-        run: cd backend | docker build . --file Dockerfile --tag studiounivers-backend:$(date +%s)
+        working-directory: backend
+        run: docker build . -f Dockerfile --tag studiounivers-backend:$(date +%s)
