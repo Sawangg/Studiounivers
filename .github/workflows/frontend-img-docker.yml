@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build frontend image
-        run: docker build ./frontend --file Dockerfile --tag studiounivers-frontend:$(date +%s)
+        run: cd frontend | docker build . --file Dockerfile --tag studiounivers-frontend:$(date +%s)
