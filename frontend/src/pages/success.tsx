@@ -24,7 +24,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     };
 };
 
-const SuccessPayment: NextPage<SuccessPaymentProps> = ({ sessionId }) => (
+const SuccessPayment: NextPage<SuccessPaymentProps> = () => (
     <>
         <Head>
             <title>StudioUnivers — Succès</title>

@@ -18,13 +18,14 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "paths": {
-            "@hoc/*": ["./hoc/*"],
-            "@lib/*": ["./lib/*"],
-            "@modules/*": ["./modules/*"],
-            "@pages/*": ["./pages/*"],
-            "@styles/*": ["./styles/*"],
-            "@type/*": ["./type/*"],
-            "@ui/*": ["./ui/*"]
+            "@hoc/*": ["./src/hoc/*"],
+            "@lib/*": ["./src/lib/*"],
+            "@modules/*": ["./src/modules/*"],
+            "@pages/*": ["./src/pages/*"],
+            "@styles/*": ["./src/styles/*"],
+            "@type/*": ["./src/type/*"],
+            "@ui/*": ["./src/ui/*"],
+            "@public/*": ["./public/*"]
         },
 
         // Language and Environment

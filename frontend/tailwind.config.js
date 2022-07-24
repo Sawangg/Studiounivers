@@ -1,5 +1,5 @@
 module.exports = {
-    content: ["./pages/**/*.{ts,tsx}", "./modules/**/*.{ts,tsx}", "./ui/**/*.{ts,tsx}"],
+    content: ["./src/pages/**/*.{ts,tsx}", "./src/modules/**/*.{ts,tsx}", "./src/ui/**/*.{ts,tsx}"],
     theme: {
         extend: {
             screens: {

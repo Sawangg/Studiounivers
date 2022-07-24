@@ -8,6 +8,7 @@ export type SuccessPaymentBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivE
 };
 
 export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = ({ sessionId }) => {
+    console.log(sessionId);
     const router = useRouter();
 
     return (

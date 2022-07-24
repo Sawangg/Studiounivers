@@ -1,0 +1,14 @@
+.git/
+.gitignore
+.gitattributes
+.next/
+.dockerignore
+Dockerfile
+node_modules/
+nginx/
+.env.local
+.env.example
+.eslintignore
+.eslintrc.json
+.prettierignore
+.prettierrc.json

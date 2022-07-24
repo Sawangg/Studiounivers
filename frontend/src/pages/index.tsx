@@ -45,7 +45,7 @@ export const getServerSideProps = withAuthSsr(async (context: GetServerSideProps
     };
 });
 
-const Landing: NextPage<LandingProps> = ({ user, newestProducts, popularProducts }) => (
+const Landing: NextPage<LandingProps> = ({ user, newestProducts }) => (
     <>
         <Head>
             <title>StudioUnivers</title>
