@@ -9,8 +9,8 @@ export const Hero2: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, H
     const router = useRouter();
 
     return (
-        <div className="w-full hidden md:flex flex-row relative ">
-            <div className="w-full h-[60rem] relative">
+        <div className="w-full hidden md:flex flex-row relative">
+            <div className="w-full h-[50rem] 3xl:h-[60rem] relative">
                 <Image src="/assets/hero2.png" layout="fill" alt="heroImg" />
             </div>
 

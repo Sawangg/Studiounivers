@@ -3,16 +3,16 @@ import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withAuthSsr } from "../../../hoc/withAuth";
-import { apiEndpoint } from "../../../lib/constants";
-import { Footer } from "../../../modules/Footer";
-import { Features } from "../../../modules/landing/Features";
-import { NewListings } from "../../../modules/landing/NewListings";
-import { Navbar } from "../../../modules/Navbar";
-import { ProductBlock } from "../../../modules/product/ProductBlock";
-import { GetServerSidePropsContextUser } from "../../../type/GetServerSidePropsContextUser";
-import { Product } from "../../../type/Product";
-import { User } from "../../../type/User";
+import { withAuthSsr } from "@hoc/withAuth";
+import { apiEndpoint } from "@lib/constants";
+import { Footer } from "@modules/Footer";
+import { Features } from "@modules/landing/Features";
+import { NewListings } from "@modules/landing/NewListings";
+import { Navbar } from "@modules/Navbar";
+import { ProductBlock } from "@modules/product/ProductBlock";
+import { GetServerSidePropsContextUser } from "@type/GetServerSidePropsContextUser";
+import { Product } from "@type/Product";
+import { User } from "@type/User";
 
 export interface ProductPageProps {
     user: User | null;
