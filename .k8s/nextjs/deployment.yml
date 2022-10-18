@@ -1,0 +1,25 @@
+# Frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: nextjs
+spec:
+  selector:
+    matchLabels:
+      app: nextjs
+  template:
+    metadata:
+      labels:
+        app: nextjs
+    spec:
+      containers:
+        - name: next-frontend
+          image: studiounivers-frontend:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "250m"

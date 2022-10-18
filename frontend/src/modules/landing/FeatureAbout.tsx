@@ -3,7 +3,7 @@ import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 
 export const FeatureAbout: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
-    <div className="w-full flex flex-col md:flex-row">
+    <section className="w-full flex flex-col md:flex-row">
         <div className="w-full md:w-1/2 flex flex-col justify-between px-7 md:px-28 md:pt-24 pb-10 md:pb-16">
             <div>
                 <h3 className="font-title text-2xl md:text-3xl mx-auto mb-8">
@@ -31,5 +31,5 @@ export const FeatureAbout: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElem
                 <Image src="/assets/featureAbout.png" layout="fill" alt="featureAboutImg" />
             </div>
         </div>
-    </div>
+    </section>
 );

@@ -49,7 +49,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
     };
 
     return (
-        <div className="w-full bg-white-100 px-5 md:px-40 2xl:pt-6 3xl:pt-16 pb-10">
+        <section className="w-full bg-white-100 px-5 md:px-40 2xl:pt-6 3xl:pt-16 pb-10">
             <h1 className="font-title text-2xl md:text-5xl mb-4 md:mb-10 mt-4">Votre panier</h1>
             {currentCart && currentCart.productsInCart.length > 0 ? (
                 <>
@@ -163,6 +163,6 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                     </Button>
                 </div>
             )}
-        </div>
+        </section>
     );
 };

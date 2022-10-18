@@ -13,7 +13,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
     const router = useRouter();
 
     return (
-        <div
+        <section
             className="flex flex-col cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
             onClick={() => router.push(`/product/${productId}`)}
             onKeyPress={() => router.push(`/product/${productId}`)}
@@ -27,6 +27,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
                 <h4 className="font-title text-lg md:text-2xl">{title}</h4>
                 <p className="text-lg mb-3 md:mb-0 md:text-xl">{price}€</p>
             </div>
-        </div>
+        </section>
     );
 };

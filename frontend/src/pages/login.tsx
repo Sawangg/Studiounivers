@@ -1,8 +1,8 @@
 import type { GetServerSidePropsContext, NextPage } from "next";
 import Head from "next/head";
-import { Footer } from "../modules/Footer";
-import { LoginBlock } from "../modules/auth/LoginBlock";
-import { Navbar } from "../modules/Navbar";
+import { Footer } from "@modules/Footer";
+import { LoginBlock } from "@modules/auth/LoginBlock";
+import { Navbar } from "@modules/Navbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {

@@ -1,8 +1,8 @@
 import type { GetServerSidePropsContext, NextPage } from "next";
 import Head from "next/head";
-import { Footer } from "../modules/Footer";
-import { Navbar } from "../modules/Navbar";
-import { SuccessPaymentBlock } from "../modules/product/SuccessPaymentBlock";
+import { Footer } from "@modules/Footer";
+import { Navbar } from "@modules/Navbar";
+import { SuccessPaymentBlock } from "@modules/product/SuccessPaymentBlock";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export type SuccessPaymentProps = {

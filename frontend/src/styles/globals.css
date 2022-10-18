@@ -22,7 +22,6 @@
     font-style: normal;
 }
 
-
 * {
     box-sizing: border-box;
 }
@@ -47,10 +46,12 @@ input:checked+div svg {
 /* Hide Up Down arrows on input number */
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
     -webkit-appearance: none;
     margin: 0;
 }
 
 input[type=number] {
+    appearance: textfield;
     -moz-appearance: textfield;
 }

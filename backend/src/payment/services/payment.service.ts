@@ -16,7 +16,7 @@ export class PaymentService {
         @Inject(OrderService) private readonly orderService: OrderService,
         private readonly configService: ConfigService,
     ) {
-        this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2020-08-27" });
+        this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2022-08-01" });
     }
 
     async createSession(origin: string, createPaymentSession: CreatePaymentSessionDto) {
@@ -25,9 +25,7 @@ export class PaymentService {
             payment_method_types: ["card"],
             line_items: [
                 {
-                    name: "Régler votre commande",
                     amount: formatAmountForStripe(createPaymentSession.amount, defaultCurrency),
-                    currency: defaultCurrency,
                     quantity: 1,
                 },
             ],

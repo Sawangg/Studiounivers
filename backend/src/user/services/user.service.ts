@@ -6,7 +6,6 @@ import { User } from "@user/entities/user.entity";
 import { Product } from "@product/entities/product.entity";
 import type { DeleteResult, Repository } from "typeorm";
 import type { AddToCartDto } from "@user/dtos/AddToCart.dto";
-import type { CreateAdminDto } from "@user/dtos/CreateAdmin.dto";
 import type { CreateUserDto } from "@user/dtos/CreateUser.dto";
 import type { UpdateCartDto } from "@user/dtos/UpdateCart.dto";
 
@@ -27,9 +26,9 @@ export class UserService {
         return this.usersRepository.save(newUser);
     }
 
-    createAdmin(createAdminDto: CreateAdminDto) {
-        const password = encodePassword(createAdminDto.password);
-        const newAdmin = this.usersRepository.create({ ...createAdminDto, password });
+    createAdmin(createUserDto: CreateUserDto) {
+        const password = encodePassword(createUserDto.password);
+        const newAdmin = this.usersRepository.create({ ...createUserDto, password, admin: true });
         return this.usersRepository.save(newAdmin);
     }
 

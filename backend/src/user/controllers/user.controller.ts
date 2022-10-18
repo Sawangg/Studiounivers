@@ -21,7 +21,6 @@ import { SerializedUser } from "@user/entities/user.entity";
 import { UserService } from "@user/services/user.service";
 import { AddToCartDto } from "@user/dtos/AddToCart.dto";
 import { UpdateCartDto } from "@user/dtos/UpdateCart.dto";
-import { CreateAdminDto } from "@user/dtos/CreateAdmin.dto";
 import { CreateUserDto } from "@user/dtos/CreateUser.dto";
 
 @Controller("user")
@@ -37,7 +36,7 @@ export class UserController {
 
     @UseInterceptors(ClassSerializerInterceptor)
     @Post("admin/register")
-    async createAdmin(@Body() createUser: CreateAdminDto) {
+    async createAdmin(@Body() createUser: CreateUserDto) {
         const admin = await this.userService.createAdmin(createUser);
         return new SerializedUser(admin);
     }

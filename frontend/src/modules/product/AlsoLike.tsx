@@ -12,7 +12,7 @@ export const AlsoLike: React.FC<AlsoLikeProps> = ({ alsoLikeProducts }) => {
     const router = useRouter();
 
     return (
-        <div className="w-full px-7 md:px-28 py-10 md:py-16 flex flex-col">
+        <section className="w-full px-7 md:px-28 py-10 md:py-16 flex flex-col">
             <h2 className="font-title text-3xl md:text-4xl">Vous aimerez peut-être</h2>
             <div className="w-full sm:w-4/6 lg:w-full flex flex-wrap items-center justify-center my-10 gap-7 md:gap-20">
                 {alsoLikeProducts.map((product) => (
@@ -33,6 +33,6 @@ export const AlsoLike: React.FC<AlsoLikeProps> = ({ alsoLikeProducts }) => {
             >
                 Voir les produits
             </Button>
-        </div>
+        </section>
     );
 };

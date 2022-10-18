@@ -6,7 +6,7 @@ export const Features: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
     const { t } = useTranslation();
 
     return (
-        <div className="w-full flex flex-col md:px-10 py-10 2xl:py-10 4xl:py-24">
+        <section className="w-full flex flex-col md:px-10 py-10 2xl:py-10 4xl:py-24">
             <h3 className="font-title text-2xl md:text-3xl mb-6 md:mb-8 mx-5 md:mx-auto">{t("features.title")}</h3>
             <div className="flex flex-col md:flex-row justify-around">
                 <FeatureBlock
@@ -30,6 +30,6 @@ export const Features: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
                     imagePath="/assets/icons/sprout.svg"
                 />
             </div>
-        </div>
+        </section>
     );
 };

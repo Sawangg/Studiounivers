@@ -49,7 +49,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     };
 
     return (
-        <div className="w-full flex flex-col md:flex-row">
+        <section className="w-full flex flex-col md:flex-row">
             <div className="w-full 2xl:w-5/12 4xl:w-5/12 2xl:px-16 4xl:px-28 md:py-10">
                 <div className="w-full h-[30rem] 2xl:h-[40rem] 4xl:h-[55rem] relative">
                     <Image src={imagePath} layout="fill" alt="productImg" />
@@ -114,6 +114,6 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

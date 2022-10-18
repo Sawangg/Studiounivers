@@ -3,7 +3,7 @@ import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Input } from "@ui/Input";
 
 export const Newsletter: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
-    <div className="w-full py-20 flex flex-row text-white">
+    <section className="w-full py-20 flex flex-row text-white">
         <div className="h-[18rem] relative">
             <Image src="/assets/header.png" layout="fill" alt="header" className="-z-50 select-none" />
             <div className="">
@@ -33,5 +33,5 @@ export const Newsletter: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 );

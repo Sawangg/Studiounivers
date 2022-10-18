@@ -9,7 +9,7 @@ export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
     const router = useRouter();
 
     return (
-        <div className="w-full md:px-28 md:py-20 flex flex-row text-white md:hidden">
+        <section className="w-full md:px-28 md:py-20 flex flex-row text-white md:hidden">
             <div className="w-full md:w-3/5 flex flex-col justify-between bg-primary-700 p-7 md:p-16">
                 <div className="md:w-[calc(100%-32%)]">
                     <h2 className="font-title text-3xl md:text-4xl">{t("hero.title")}</h2>
@@ -35,6 +35,6 @@ export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
                     <Image src="/assets/hero.png" layout="fill" alt="heroImg" />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

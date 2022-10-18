@@ -6,9 +6,9 @@ import { apiEndpoint } from "@lib/constants";
 import { Footer } from "@modules/Footer";
 import { Navbar } from "@modules/Navbar";
 import { CartBlock } from "@modules/user/CartBlock";
-import { Cart } from "../type/Cart";
-import { GetServerSidePropsContextUser } from "../type/GetServerSidePropsContextUser";
-import { User } from "../type/User";
+import { Cart } from "@type/Cart";
+import { GetServerSidePropsContextUser } from "@type/GetServerSidePropsContextUser";
+import { User } from "@type/User";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export type CartProps = {

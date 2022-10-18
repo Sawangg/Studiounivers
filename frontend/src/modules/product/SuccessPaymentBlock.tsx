@@ -12,7 +12,7 @@ export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = ({ sessio
     const router = useRouter();
 
     return (
-        <div className="flex flex-col justify-center items-center gap-4 my-16">
+        <section className="flex flex-col justify-center items-center gap-4 my-16">
             <div className="mr-5">
                 <Image src="/assets/delivery.gif" width="110px" height="90px" alt="cart" />
             </div>
@@ -23,6 +23,6 @@ export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = ({ sessio
             <Button className="w-60 mt-2" onClick={() => router.push("/profile")}>
                 Suivre ma commande
             </Button>
-        </div>
+        </section>
     );
 };
