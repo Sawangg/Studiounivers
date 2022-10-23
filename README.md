@@ -24,6 +24,7 @@ E-commerce website for the company StudioUnivers
 <a href="https://yarnpkg.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/yarn/yarn-original.svg" alt="yarn" width="40" height="40"/></a>
 <a href="https://eslint.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/eslint/eslint-original.svg" alt="eslint" width="40" height="40"/></a>
 <a href="https://stripe.com/" target="_blank"> <img src="https://logodownload.org/wp-content/uploads/2017/06/stripe-logo.png" alt="stripe" width="100" height="40"/></a>
+<a href="https://min.io/" target="_blank"> <img src="https://min.io/resources/img/logo.svg" alt="minio" width="100" height="40"/></a>
 
 #### Development
 
