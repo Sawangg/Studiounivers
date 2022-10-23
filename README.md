@@ -40,4 +40,6 @@ You can run this project localy using two containers :
 
 ##### Frontend & Backend :
 
+Configure each .env file and run
+
 > yarn dev

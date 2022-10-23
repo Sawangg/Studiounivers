@@ -16,7 +16,7 @@ export const Hero2: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, H
 
             <div className="w-5/12 bg-white absolute top-[20%] right-28 p-16">
                 <h2 className="font-title text-3xl md:text-4xl">{t("hero.title")}</h2>
-                <p className="text-lg mt-6">Shop the new Spring 2022 collection today</p>
+                <p className="text-lg mt-6"> {t("hero.desc")}</p>
                 <Button color="secondary" className="mt-36 w-full md:w-2/6" onClick={() => router.push("/products")}>
                     {t("hero.button")}
                 </Button>
