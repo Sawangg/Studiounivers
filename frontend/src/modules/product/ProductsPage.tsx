@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Product } from "../../type/Product";
-import { Button } from "../../ui/Button";
-import { Checkbox } from "../../ui/Checkbox";
-import { ProductCard } from "./ProductCard";
+import { Product } from "@type/Product";
+import { Button } from "@ui/Button";
+import { Checkbox } from "@ui/Checkbox";
+import { ProductCard } from "@modules/product/ProductCard";
 
 export type ProductPageProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     products: Array<Product>;
@@ -13,7 +13,7 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
     <>
         <div className="w-full">
             <div className="h-[7rem] md:h-[18rem] relative flex justify-center items-center md:block">
-                <Image src="/assets/header.png" layout="fill" alt="header" className="-z-50 select-none" />
+                <Image src="/assets/header.png" alt="" className="-z-50 select-none" fill />
                 <h1 className="font-title md:absolute md:bottom-9 md:pl-24 text-3xl md:text-5xl text-white z-40">
                     Tous les produits
                 </h1>

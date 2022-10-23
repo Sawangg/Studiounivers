@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { apiEndpoint } from "@lib/constants";
@@ -56,8 +56,8 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     <div className="mr-5">
                         <Image
                             src="/assets/icons/cart.svg"
-                            width="20px"
-                            height="20px"
+                            width={20}
+                            height={20}
                             alt="cart"
                             className="cursor-pointer"
                             title="Votre panier"
@@ -67,8 +67,8 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     <div className="mr-5">
                         <Image
                             src="/assets/icons/user.svg"
-                            width="20px"
-                            height="20px"
+                            width={20}
+                            height={20}
                             alt="user"
                             className="cursor-pointer"
                             title="Mon profil"
@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         <div className="flex flex-row justify-around">
                             <Link href={currentUser ? "/cart" : "/login"}>
                                 <a className="flex flex-row gap-2 items-center" href={currentUser ? "/cart" : "/login"}>
-                                    <Image src="/assets/icons/cart.svg" width="20px" height="20px" alt="cart" />
+                                    <Image src="/assets/icons/cart.svg" width={20} height={20} alt="cart" />
                                     <p>Panier</p>
                                 </a>
                             </Link>
@@ -90,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                     className="flex flex-row gap-2 items-center"
                                     href={currentUser ? "/profile" : "/login"}
                                 >
-                                    <Image src="/assets/icons/user.svg" width="20px" height="20px" alt="user" />
+                                    <Image src="/assets/icons/user.svg" width={20} height={20} alt="user" />
                                     <p>Profile</p>
                                 </a>
                             </Link>

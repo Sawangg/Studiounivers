@@ -1,5 +1,5 @@
 import axios from "axios";
-import Image from "next/image";
+import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
 import checkout from "@lib/checkout";
@@ -32,7 +32,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             setIsLoading({ ...isLoading, cart: false });
-            if (err.response.status === 400) router.push("/login");
+            if (err.response.status === 401) router.push("/login");
         }
     };
 
@@ -52,7 +52,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
         <section className="w-full flex flex-col md:flex-row">
             <div className="w-full 2xl:w-5/12 4xl:w-5/12 2xl:px-16 4xl:px-28 md:py-10">
                 <div className="w-full h-[30rem] 2xl:h-[40rem] 4xl:h-[55rem] relative">
-                    <Image src={imagePath} layout="fill" alt="productImg" />
+                    <Image src={imagePath} alt="" fill />
                 </div>
             </div>
             <div className="w-full md:w-1/2 pt-10 px-6 2xl:p-16 4xl:p-24">

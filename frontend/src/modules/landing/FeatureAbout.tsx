@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 
@@ -28,7 +28,7 @@ export const FeatureAbout: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElem
         </div>
         <div className="w-full md:w-1/2">
             <div className="w-full h-96 md:h-[53.125rem] relative">
-                <Image src="/assets/featureAbout.png" layout="fill" alt="featureAboutImg" />
+                <Image src="/assets/featureAbout.png" fill alt="" />
             </div>
         </div>
     </section>

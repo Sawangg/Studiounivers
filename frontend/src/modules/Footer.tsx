@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Input } from "@ui/Input";
 import Link from "next/link";
@@ -74,40 +74,40 @@ export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                     <Image
                         className="cursor-pointer"
                         src="/assets/icons/socials/linkedin.svg"
-                        width="24px"
-                        height="24px"
+                        width={24}
+                        height={24}
                         title="LinkedIn"
                         alt="linkedin"
                     />
                     <Image
                         className="cursor-pointer"
                         src="/assets/icons/socials/facebook.svg"
-                        width="24px"
-                        height="24px"
+                        width={24}
+                        height={24}
                         title="Facebook"
                         alt="facebook"
                     />
                     <Image
                         className="cursor-pointer"
                         src="/assets/icons/socials/instagram.svg"
-                        width="24px"
-                        height="24px"
+                        width={24}
+                        height={24}
                         title="Instagram"
                         alt="instragram"
                     />
                     <Image
                         className="cursor-pointer"
                         src="/assets/icons/socials/twitter.svg"
-                        width="24px"
-                        height="24px"
+                        width={24}
+                        height={24}
                         title="Twitter"
                         alt="twitter"
                     />
                     <Image
                         className="cursor-pointer"
                         src="/assets/icons/socials/pinterest.svg"
-                        width="24px"
-                        height="24px"
+                        width={24}
+                        height={24}
                         title="Pinterest"
                         alt="pinterest"
                     />
@@ -120,8 +120,8 @@ export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                         <Image
                             className="cursor-pointer"
                             src="/assets/icons/socials/github.svg"
-                            width="24px"
-                            height="24px"
+                            width={24}
+                            height={24}
                             title="Créé par Sawangg"
                             alt="github"
                         />

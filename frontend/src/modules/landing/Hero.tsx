@@ -1,5 +1,5 @@
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
+import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
@@ -32,7 +32,7 @@ export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
             </div>
             <div className="hidden md:flex w-2/5 bg-white-100 h-[40rem] max-h-[40rem] min-h-[40rem] justify-center items-center">
                 <div className="w-[35rem] h-[30rem] relative">
-                    <Image src="/assets/hero.png" layout="fill" alt="heroImg" />
+                    <Image src="/assets/hero.png" alt="" fill />
                 </div>
             </div>
         </section>

@@ -1,20 +1,24 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, Like } from "typeorm";
-import type { CreateProductDto } from "@product/dtos/CreateProduct.dto";
+import { MinioService } from "@minio/services/minio.service";
 import { Product } from "@product/entities/product.entity";
+import type { CreateProductDto } from "@product/dtos/CreateProduct.dto";
 
 @Injectable()
 export class ProductService {
     constructor(
         @InjectRepository(Product)
         private readonly productRepository: Repository<Product>,
+        private readonly minioService: MinioService,
     ) {}
 
-    create(createProductDto: CreateProductDto, files: Array<Express.Multer.File>) {
-        const filesData: Array<string> = [];
-        files.forEach((file) => filesData.push(`data:${file.mimetype};base64,${file.buffer.toString("base64")}`));
-        createProductDto.photos = filesData;
+    async create(createProductDto: CreateProductDto, files: Array<Express.Multer.File>) {
+        const filesUploaded: Array<Promise<string>> = [];
+        for (const file of files) {
+            filesUploaded.push(this.minioService.upload(file));
+        }
+        createProductDto.photos = await Promise.all(filesUploaded);
         createProductDto.addedAt = new Date(Date.now());
         return this.productRepository.save(createProductDto);
     }
@@ -48,7 +52,11 @@ export class ProductService {
         return this.productRepository.findOne({ where: { id } });
     }
 
-    delete(id: number) {
+    async delete(id: number) {
+        const product = await this.find(id);
+        for (const photo of product.photos) {
+            this.minioService.delete(photo.split("/")[4]);
+        }
         return this.productRepository.delete(id);
     }
 }

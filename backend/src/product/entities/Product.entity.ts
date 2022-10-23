@@ -21,7 +21,7 @@ export class Product {
     @Column({ type: "varchar", array: true, default: [], nullable: false })
     tags: string[];
 
-    @Column({ type: "text", array: true, default: [], nullable: false })
+    @Column({ type: "varchar", array: true, default: [], nullable: false })
     photos: string[];
 
     @Column({ nullable: false })

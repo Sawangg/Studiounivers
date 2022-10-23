@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 const sizeClassnames = {
@@ -68,6 +68,6 @@ export const Button: React.FC<ButtonProps> = ({
                 {children}
             </span>
         )}
-        {arrow && <Image src="/assets/icons/caret.svg" alt="caret" width="20px" height="20px" />}
+        {arrow && <Image src="/assets/icons/caret.svg" alt="" width={20} height={20} />}
     </button>
 );

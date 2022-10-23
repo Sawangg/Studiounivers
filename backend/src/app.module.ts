@@ -8,6 +8,7 @@ import { OrderModule } from "@order/order.module";
 import { PaymentModule } from "@payment/payment.module";
 import { ProductModule } from "@product/product.module";
 import { UserModule } from "@user/user.module";
+import { MinioModule } from "@minio/minio.module";
 
 @Module({
     imports: [
@@ -37,10 +38,11 @@ import { UserModule } from "@user/user.module";
             inject: [ConfigService],
         }),
         AuthModule,
+        MinioModule,
         OrderModule,
         PaymentModule,
-        UserModule,
         ProductModule,
+        UserModule,
     ],
     controllers: [],
     providers: [],

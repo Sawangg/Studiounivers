@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 
@@ -21,7 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
             tabIndex={0}
         >
             <div className="w-36 h-48 md:w-96 md:h-[30rem] 2xl:w-64 2xl:h-80 4xl:w-96 4xl:h-[30rem] relative self-center">
-                <Image src={imagePath} layout="fill" alt="productImg" />
+                <Image src={imagePath} alt="" fill />
             </div>
             <div className="flex flex-col gap-2 mt-4 max-w-[9rem] md:max-w-[24rem]">
                 <h4 className="font-title text-lg md:text-2xl">{title}</h4>

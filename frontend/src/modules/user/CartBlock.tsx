@@ -1,5 +1,5 @@
 import axios from "axios";
-import Image from "next/image";
+import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
 import checkout from "@lib/checkout";
@@ -73,9 +73,9 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                     >
                                         <Image
                                             src={product.product.photos[0]}
-                                            layout="fill"
                                             title={product.product.name}
-                                            alt="productImg"
+                                            alt=""
+                                            fill
                                         />
                                     </div>
                                     <div className="w-full md:w-1/3">
@@ -152,8 +152,8 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                 <div className="flex flex-col justify-center items-center gap-10 my-14 md:mt-0 2xl:my-6">
                     <Image
                         src="/assets/icons/cart_empty.svg"
-                        width="110px"
-                        height="110px"
+                        width={110}
+                        height={110}
                         title="Panier vide"
                         alt="Empty cart"
                     />

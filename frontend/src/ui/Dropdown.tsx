@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, HTMLAttributes, useEffect, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
-import Image from "next/image";
+import Image from "next/future/image";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type DropdownProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {};
@@ -45,8 +45,8 @@ export const Dropdown: React.FC<DropdownProps> = ({ children }) => {
             <div ref={toggledRef} className="max-h-[20px]">
                 <Image
                     src="/assets/icons/burger.svg"
-                    width="20px"
-                    height="20px"
+                    width={20}
+                    height={20}
                     alt="burger"
                     className="cursor-pointer"
                     onClick={open}

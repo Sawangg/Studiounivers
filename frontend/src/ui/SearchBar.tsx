@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, HTMLAttributes, useEffect, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
-import Image from "next/image";
+import Image from "next/future/image";
 import { Product } from "@type/Product";
 import { useRouter } from "next/router";
 
@@ -26,8 +26,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onChange, searchData }) =>
             <div className="absolute z-50 top-3 left-3">
                 <Image
                     src="/assets/icons/search.svg"
-                    width="20px"
-                    height="20px"
+                    width={20}
+                    height={20}
                     alt="search"
                     className="cursor-pointer transition duration-200 ease-in-out"
                     onMouseOver={() => {

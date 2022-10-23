@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
@@ -14,7 +14,7 @@ export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = ({ sessio
     return (
         <section className="flex flex-col justify-center items-center gap-4 my-16">
             <div className="mr-5">
-                <Image src="/assets/delivery.gif" width="110px" height="90px" alt="cart" />
+                <Image src="/assets/delivery.gif" width={110} height={90} alt="cart" />
             </div>
             <h1 className="text-3xl">Merci Léo !</h1>
             <p className="text-lg">
