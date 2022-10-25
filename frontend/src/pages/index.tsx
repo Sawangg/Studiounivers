@@ -1,4 +1,3 @@
-import axios from "axios";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -22,13 +21,15 @@ export type LandingProps = {
 };
 
 const getNewestProducts = async () => {
-    const rep = await axios.get(`${apiEndpoint}/api/product/newest`);
-    return rep.data as Array<Product>;
+    const rep = await fetch(`${apiEndpoint}/api/product/newest`);
+    const data = await rep.json();
+    return data as Array<Product>;
 };
 
 const getPopularProducts = async () => {
-    const rep = await axios.get(`${apiEndpoint}/api/product/popular`);
-    return rep.data as Array<Product>;
+    const rep = await fetch(`${apiEndpoint}/api/product/popular`);
+    const data = await rep.json();
+    return data as Array<Product>;
 };
 
 export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {

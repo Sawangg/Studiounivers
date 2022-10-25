@@ -1,4 +1,3 @@
-import axios from "axios";
 import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
@@ -19,12 +18,14 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
 
     const handleChange = async (productId: number, quantity: number) => {
         try {
-            const newProducts = await axios.post(
-                `${apiEndpoint}/api/user/cart/update`,
-                { productId, quantity },
-                { withCredentials: true },
-            );
-            setCurrentCart(newProducts.data);
+            const res = await fetch(`${apiEndpoint}/api/user/cart/update`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ productId, quantity }),
+            });
+            const data = await res.json();
+            setCurrentCart(data);
         } catch {
             // Notif here
         }

@@ -3,21 +3,20 @@ import { useRouter } from "next/router";
 import { apiEndpoint } from "@lib/constants";
 import { Button } from "@ui/Button";
 import { Input } from "@ui/Input";
-import axios from "axios";
 
 export const LoginBlock: React.FC = () => {
     const router = useRouter();
     const [loginState, setLoginState] = useState({ username: "", pwd: "" });
 
     const connectClick = () => {
-        axios
-            .post(
-                `${apiEndpoint}/api/auth/login`,
-                { username: loginState.username, password: loginState.pwd },
-                { withCredentials: true },
-            )
-            .then((rep) => {
-                if (rep.status === 201) {
+        fetch(`${apiEndpoint}/api/auth/login`, {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: loginState.username, password: loginState.pwd }),
+        })
+            .then((res) => {
+                if (res.status === 201) {
                     setLoginState({ username: "", pwd: "" });
                     router.push("/");
                 } else {

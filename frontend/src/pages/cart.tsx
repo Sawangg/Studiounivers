@@ -1,4 +1,3 @@
-import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { withAuthSsrRedirection } from "@hoc/withAuth";
@@ -18,12 +17,11 @@ export type CartProps = {
 
 const getCart = async (context: GetServerSidePropsContextUser) => {
     try {
-        const rep = await axios({
-            method: "get",
-            url: `${apiEndpoint}/api/user/cart`,
+        const res = await fetch(`${apiEndpoint}/api/user/cart`, {
             headers: context.req ? { cookie: context.req.headers.cookie! } : undefined,
         });
-        return rep.data as Cart;
+        const data = await res.json();
+        return data as Cart;
     } catch {
         return null;
     }

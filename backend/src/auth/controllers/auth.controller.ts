@@ -39,7 +39,7 @@ export class AuthController {
     @Post("/login")
     async login(@RequestD() req: Request, @Res({ passthrough: true }) res: Response) {
         const tokens = await this.authService.login(req.user);
-        if (!tokens) throw new BadRequestException();
+        if (!tokens) throw new BadRequestException("No token created");
         res.cookie(authCookieName, tokens, { httpOnly: true, sameSite: true });
         return { msg: "Success" };
     }

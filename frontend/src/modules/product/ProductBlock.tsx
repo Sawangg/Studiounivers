@@ -1,4 +1,3 @@
-import axios from "axios";
 import Image from "next/future/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
@@ -23,11 +22,12 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     const addToCart = async () => {
         setIsLoading({ ...isLoading, cart: true });
         try {
-            await axios.post(
-                `${apiEndpoint}/api/user/cart/add`,
-                { productId, quantity: currentQuantity },
-                { withCredentials: true },
-            );
+            await fetch(`${apiEndpoint}/api/user/cart/add`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ productId, quantity: currentQuantity }),
+            });
             setIsLoading({ ...isLoading, cart: false });
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
@@ -39,7 +39,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     const handleCheckout = async () => {
         setIsLoading({ ...isLoading, oneClick: true });
         try {
-            await axios.get(`${apiEndpoint}/api/auth`, { withCredentials: true });
+            await fetch(`${apiEndpoint}/api/auth`, { credentials: "include" });
             await checkout(price * currentQuantity);
             setIsLoading({ ...isLoading, oneClick: false });
         } catch {

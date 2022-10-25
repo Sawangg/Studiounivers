@@ -1,4 +1,3 @@
-import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { withAuthSsr } from "@hoc/withAuth";
@@ -17,8 +16,9 @@ export interface ProductsProps {
 }
 
 export const getAllProducts = async () => {
-    const rep = await axios.get(`${apiEndpoint}/api/product/`);
-    return rep.data as Array<Product>;
+    const res = await fetch(`${apiEndpoint}/api/product/`);
+    const data = await res.json();
+    return data as Array<Product>;
 };
 
 export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {

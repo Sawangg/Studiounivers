@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { apiEndpoint } from "@lib/constants";
@@ -11,14 +10,14 @@ export const RegisterBlock: React.FC = () => {
 
     const registerClick = () => {
         if (registerState.pwd === registerState.cpwd) {
-            axios
-                .post(
-                    `${apiEndpoint}/api/user/register`,
-                    { username: registerState.username, password: registerState.pwd },
-                    { withCredentials: true },
-                )
-                .then((rep) => {
-                    if (rep.status === 201) {
+            fetch(`${apiEndpoint}/api/user/register`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username: registerState.username, password: registerState.pwd }),
+            })
+                .then((res) => {
+                    if (res.status === 201) {
                         router.push("/login");
                     } else {
                         setRegisterState({ username: registerState.username, pwd: "", cpwd: "" });

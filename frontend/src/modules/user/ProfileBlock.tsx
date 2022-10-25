@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { apiEndpoint } from "@lib/constants";
@@ -13,7 +12,10 @@ export const ProfileBlock: React.FC<ProfileBlockProps> = ({ user }) => {
     const router = useRouter();
 
     const logout = async () => {
-        await axios.delete(`${apiEndpoint}/api/auth/logout`, { withCredentials: true });
+        await fetch(`${apiEndpoint}/api/auth/logout`, {
+            method: "DELETE",
+            credentials: "include",
+        });
         router.push("/");
     };
 

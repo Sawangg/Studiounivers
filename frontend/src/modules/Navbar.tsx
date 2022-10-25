@@ -1,5 +1,4 @@
 import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
-import axios from "axios";
 import { useTranslation } from "next-i18next";
 import Image from "next/future/image";
 import Link from "next/link";
@@ -22,18 +21,18 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
     useEffect(() => {
         if (!user)
-            axios
-                .get(`${apiEndpoint}/api/auth`, { withCredentials: true })
-                .then((rep) => setCurrentUser(rep.data))
+            fetch(`${apiEndpoint}/api/auth`, { credentials: "include" })
+                .then((res) => res.json())
+                .then((data) => setCurrentUser(data))
                 .catch(() => setCurrentUser(null));
     }, [user]);
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const query = event.target.value as string;
         if (query.length) {
-            axios.get(`${apiEndpoint}/api/product/search/${query}`).then((rep) => {
-                setResults(rep.data);
-            });
+            fetch(`${apiEndpoint}/api/product/search/${query}`)
+                .then((res) => res.json())
+                .then((data) => setResults(data));
         } else {
             setResults([]);
         }

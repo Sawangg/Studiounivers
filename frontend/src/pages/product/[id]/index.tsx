@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -21,13 +20,15 @@ export interface ProductPageProps {
 }
 
 const getAlsoLikeProducts = async () => {
-    const rep = await axios.get(`${apiEndpoint}/api/product/newest`);
-    return rep.data as Array<Product>;
+    const res = await fetch(`${apiEndpoint}/api/product/newest`);
+    const data = await res.json();
+    return data as Array<Product>;
 };
 
 export const getProduct = async (id: number) => {
-    const rep = await axios.get(`${apiEndpoint}/api/product/${id}`);
-    return rep.data as Product;
+    const res = await fetch(`${apiEndpoint}/api/product/${id}`);
+    const data = await res.json();
+    return data as Product;
 };
 
 export const getServerSideProps = withAuthSsr(async (context: GetServerSidePropsContextUser) => {
