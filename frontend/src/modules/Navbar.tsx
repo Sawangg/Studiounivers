@@ -1,8 +1,9 @@
+"use client";
+
 import React, { DetailedHTMLProps, HTMLAttributes, useCallback, useEffect, useState } from "react";
-import { useTranslation } from "next-i18next";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { apiEndpoint } from "@lib/constants";
 import { Product } from "@type/Product";
 import { User } from "@type/User";
@@ -14,10 +15,13 @@ export type NavbarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTML
 };
 
 export const Navbar: React.FC<NavbarProps> = ({ user }) => {
-    const { t } = useTranslation();
     const router = useRouter();
     const [currentUser, setCurrentUser] = useState(user);
     const [results, setResults] = useState<Array<Product>>([]);
+
+    const t = (str: string) => {
+        return <p>{str}</p>;
+    };
 
     useEffect(() => {
         if (!user)
@@ -39,19 +43,17 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
     }, []);
 
     return (
-        <nav className="w-full bg-white flex flex-col justify-center items-center">
-            <div className="w-full flex flex-row justify-between sm:grid sm:grid-cols-3 items-center py-3 px-5 sm:px-10">
+        <nav className="flex w-full flex-col items-center justify-center bg-white">
+            <div className="flex w-full flex-row items-center justify-between py-3 px-5 sm:grid sm:grid-cols-3 sm:px-10">
                 <div className="hidden sm:block">
                     <SearchBar onChange={onChange} searchData={results} />
                 </div>
-                <div className="sm:flex justify-center">
-                    <Link href="/">
-                        <a title="StudioUnivers - Accueil" className="text-3xl" href="/">
-                            StudioUnivers
-                        </a>
+                <div className="justify-center sm:flex">
+                    <Link href="/" className="text-3xl" title="StudioUnivers - Accueil">
+                        StudioUnivers
                     </Link>
                 </div>
-                <div className="hidden sm:flex flex-row justify-end">
+                <div className="hidden flex-row justify-end sm:flex">
                     <div className="mr-5">
                         <Image
                             src="/assets/icons/cart.svg"
@@ -75,72 +77,42 @@ export const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         />
                     </div>
                 </div>
-                <div className="block md:hidden max-h-[20px]">
+                <div className="block max-h-[20px] md:hidden">
                     <Dropdown>
                         <div className="flex flex-row justify-around">
-                            <Link href={currentUser ? "/cart" : "/login"}>
-                                <a className="flex flex-row gap-2 items-center" href={currentUser ? "/cart" : "/login"}>
-                                    <Image src="/assets/icons/cart.svg" width={20} height={20} alt="cart" />
-                                    <p>Panier</p>
-                                </a>
+                            <Link href={currentUser ? "/cart" : "/login"} className="flex flex-row items-center gap-2">
+                                <Image src="/assets/icons/cart.svg" width={20} height={20} alt="cart" />
+                                <p>Panier</p>
                             </Link>
-                            <Link href={currentUser ? "/profile" : "/login"}>
-                                <a
-                                    className="flex flex-row gap-2 items-center"
-                                    href={currentUser ? "/profile" : "/login"}
-                                >
-                                    <Image src="/assets/icons/user.svg" width={20} height={20} alt="user" />
-                                    <p>Profile</p>
-                                </a>
+                            <Link
+                                href={currentUser ? "/profile" : "/login"}
+                                className="flex flex-row items-center gap-2"
+                            >
+                                <Image src="/assets/icons/user.svg" width={20} height={20} alt="user" />
+                                <p>Profile</p>
                             </Link>
                         </div>
-                        <hr className="w-full text-white-200 mb-4" />
-                        <Link href="/products">
-                            <a href="/products">{t("navbar.catego1")}</a>
-                        </Link>
-                        <a href="/products">{t("navbar.catego2")}</a>
-                        <Link href="/products">
-                            <a href="/products">{t("navbar.catego3")}</a>
-                        </Link>
-                        <Link href="/products">
-                            <a href="/products">{t("navbar.catego4")}</a>
-                        </Link>
-                        <Link href="/products">
-                            <a href="/products">{t("navbar.catego5")}</a>
-                        </Link>
-                        <Link href="/products">
-                            <a href="/products">{t("navbar.catego6")}</a>
-                        </Link>
-                        <Link href="/products">
-                            <a href="/products">{t("navbar.catego7")}</a>
-                        </Link>
+                        <hr className="mb-4 w-full text-white-200" />
+                        <Link href="/products">{t("navbar.catego1")}</Link>
+                        <Link href="/products">{t("navbar.catego2")}</Link>
+                        <Link href="/products">{t("navbar.catego3")}</Link>
+                        <Link href="/products">{t("navbar.catego4")}</Link>
+                        <Link href="/products">{t("navbar.catego5")}</Link>
+                        <Link href="/products">{t("navbar.catego6")}</Link>
+                        <Link href="/products">{t("navbar.catego7")}</Link>
                     </Dropdown>
                 </div>
             </div>
-            <hr className="w-[calc(100%-3.5rem)] text-white-200 hidden sm:block" />
-            <div className="w-full hidden sm:flex justify-center py-3">
-                <div className="w-4/6 flex flex-row text-lg items-center justify-around text-white-400">
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego1")}</a>
-                    </Link>
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego2")}</a>
-                    </Link>
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego3")}</a>
-                    </Link>
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego4")}</a>
-                    </Link>
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego5")}</a>
-                    </Link>
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego6")}</a>
-                    </Link>
-                    <Link href="/products">
-                        <a href="/products">{t("navbar.catego7")}</a>
-                    </Link>
+            <hr className="hidden w-[calc(100%-3.5rem)] text-white-200 sm:block" />
+            <div className="hidden w-full justify-center py-3 sm:flex">
+                <div className="flex w-4/6 flex-row items-center justify-around text-lg text-white-400">
+                    <Link href="/products">{t("navbar.catego1")}</Link>
+                    <Link href="/products">{t("navbar.catego2")}</Link>
+                    <Link href="/products">{t("navbar.catego3")}</Link>
+                    <Link href="/products">{t("navbar.catego4")}</Link>
+                    <Link href="/products">{t("navbar.catego5")}</Link>
+                    <Link href="/products">{t("navbar.catego6")}</Link>
+                    <Link href="/products">{t("navbar.catego7")}</Link>
                 </div>
             </div>
         </nav>

@@ -1,5 +1,5 @@
-import Image from "next/future/image";
-import { useRouter } from "next/router";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
@@ -14,18 +14,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
 
     return (
         <section
-            className="flex flex-col cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
+            className="ease-in-out flex cursor-pointer flex-col transition duration-300 hover:scale-105"
             onClick={() => router.push(`/product/${productId}`)}
             onKeyPress={() => router.push(`/product/${productId}`)}
             role="button"
             tabIndex={0}
         >
-            <div className="w-36 h-48 md:w-96 md:h-[30rem] 2xl:w-64 2xl:h-80 4xl:w-96 4xl:h-[30rem] relative self-center">
+            <div className="relative h-48 w-36 self-center md:h-[30rem] md:w-96 2xl:h-80 2xl:w-64 4xl:h-[30rem] 4xl:w-96">
                 <Image src={imagePath} alt="" fill />
             </div>
-            <div className="flex flex-col gap-2 mt-4 max-w-[9rem] md:max-w-[24rem]">
+            <div className="mt-4 flex max-w-[9rem] flex-col gap-2 md:max-w-[24rem]">
                 <h4 className="font-title text-lg md:text-2xl">{title}</h4>
-                <p className="text-lg mb-3 md:mb-0 md:text-xl">{price}€</p>
+                <p className="mb-3 text-lg md:mb-0 md:text-xl">{price}€</p>
             </div>
         </section>
     );

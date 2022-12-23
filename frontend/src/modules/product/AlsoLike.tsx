@@ -12,9 +12,9 @@ export const AlsoLike: React.FC<AlsoLikeProps> = ({ alsoLikeProducts }) => {
     const router = useRouter();
 
     return (
-        <section className="w-full px-7 md:px-28 py-10 md:py-16 flex flex-col">
+        <section className="flex w-full flex-col px-7 py-10 md:px-28 md:py-16">
             <h2 className="font-title text-3xl md:text-4xl">Vous aimerez peut-être</h2>
-            <div className="w-full sm:w-4/6 lg:w-full flex flex-wrap items-center justify-center my-10 gap-7 md:gap-20">
+            <div className="my-10 flex w-full flex-wrap items-center justify-center gap-7 sm:w-4/6 md:gap-20 lg:w-full">
                 {alsoLikeProducts.map((product) => (
                     <div key={product.id} className="flex-[1_0_45%] self-start md:flex-[0_0_0]">
                         <ProductCard
@@ -27,7 +27,7 @@ export const AlsoLike: React.FC<AlsoLikeProps> = ({ alsoLikeProducts }) => {
                 ))}
             </div>
             <Button
-                className="w-full md:w-60 md:mt-6 self-center"
+                className="w-full self-center md:mt-6 md:w-60"
                 color="secondary"
                 onClick={() => router.push("/products")}
             >

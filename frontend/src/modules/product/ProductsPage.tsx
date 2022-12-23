@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Product } from "@type/Product";
 import { Button } from "@ui/Button";
@@ -12,17 +12,17 @@ export type ProductPageProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,
 export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
     <>
         <div className="w-full">
-            <div className="h-[7rem] md:h-[18rem] relative flex justify-center items-center md:block">
+            <div className="relative flex h-[7rem] items-center justify-center md:block md:h-[18rem]">
                 <Image src="/assets/header.png" alt="" className="-z-50 select-none" fill />
-                <h1 className="font-title md:absolute md:bottom-9 md:pl-24 text-3xl md:text-5xl text-white z-40">
+                <h1 className="z-40 font-title text-3xl text-white md:absolute md:bottom-9 md:pl-24 md:text-5xl">
                     Tous les produits
                 </h1>
             </div>
         </div>
-        <div className="w-full flex flex-col md:flex-row px-4 md:px-16">
-            <div className="hidden w-1/4 md:flex flex-col p-10 gap-16">
+        <div className="flex w-full flex-col px-4 md:flex-row md:px-16">
+            <div className="hidden w-1/4 flex-col gap-16 p-10 md:flex">
                 <div className="flex flex-col gap-2">
-                    <h5 className="font-title text-lg my-4">Types de produits</h5>
+                    <h5 className="my-4 font-title text-lg">Types de produits</h5>
                     <Checkbox label="Eclairage" />
                     <Checkbox label="Accessoires" />
                     <Checkbox label="Modificateurs" />
@@ -32,20 +32,20 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                     <Checkbox label="Strobist" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h5 className="font-title text-lg my-4">Prix</h5>
+                    <h5 className="my-4 font-title text-lg">Prix</h5>
                     <Checkbox label="0 - 100" />
                     <Checkbox label="101 - 250" />
                     <Checkbox label="250+" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h5 className="font-title text-lg my-4">Fournisseurs</h5>
+                    <h5 className="my-4 font-title text-lg">Fournisseurs</h5>
                     <Checkbox label="Disnet" />
                     <Checkbox label="Kiwi" />
                     <Checkbox label="Litra" />
                     <Checkbox label="Meike" />
                 </div>
             </div>
-            <div className="flex flex-row items-center justify-around mt-6 md:hidden">
+            <div className="mt-6 flex flex-row items-center justify-around md:hidden">
                 <Button color="secondary" arrow={true} className="w-40">
                     Filtres
                 </Button>
@@ -53,8 +53,8 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                     Trier
                 </Button>
             </div>
-            <div className="w-full md:w-3/4 py-12">
-                <div className="grid grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-y-4 md:gap-y-12 justify-items-center md:justify-items-start">
+            <div className="w-full py-12 md:w-3/4">
+                <div className="grid grid-cols-2 justify-items-center gap-y-4 md:grid-cols-3 md:justify-items-start md:gap-x-8 md:gap-y-12">
                     {products.length > 0 &&
                         products.map((product) => (
                             <ProductCard
@@ -66,7 +66,7 @@ export const ProductsPage: React.FC<ProductPageProps> = ({ products }) => (
                             />
                         ))}
                 </div>
-                <div className="w-full flex justify-center mt-6 px-3 md:px-0 md:mt-12">
+                <div className="mt-6 flex w-full justify-center px-3 md:mt-12 md:px-0">
                     <Button color="secondary" className="w-full md:w-1/12">
                         Plus
                     </Button>

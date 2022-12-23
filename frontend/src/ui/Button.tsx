@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 const sizeClassnames = {
@@ -33,16 +33,16 @@ export const Button: React.FC<ButtonProps> = ({
 }) => (
     <button
         disabled={disabled}
-        className={`cursor-pointer flex outline-none focus:ring-4 ${sizeClassnames[size]} ${colorClassnames[color]}
-            flex items-center justify-center text-lg group gap-x-2 min-w-max group
+        className={`flex cursor-pointer outline-none focus:ring-4 ${sizeClassnames[size]} ${colorClassnames[color]}
+            group group flex min-w-max items-center justify-center gap-x-2 text-lg
             ${className}`}
         {...props}
     >
         {loading ? (
-            <div className={`flex justify-center items-center ${loadingStyle}`}>
+            <div className={`flex items-center justify-center ${loadingStyle}`}>
                 <svg
                     role="status"
-                    className={`w-8 h-8 animate-spin ${
+                    className={`h-8 w-8 animate-spin ${
                         color === "primary" ? "fill-primary-600" : "fill-white-300 group-hover:fill-[#feabb5]"
                     }`}
                     viewBox="0 0 100 101"
@@ -61,9 +61,9 @@ export const Button: React.FC<ButtonProps> = ({
             </div>
         ) : (
             <span
-                className="flex items-center relative group-hover:before:scale-x-100 group-hover:before:scale-y-100
-                before:transition-scale before:absolute before:bottom-[1px] before:left-0 before:origin-left before:border-t
-                before:scale-x-0 before:duration-700 before:ease-out-expo"
+                className="before:transition-scale relative flex items-center before:absolute
+                before:bottom-[1px] before:left-0 before:origin-left before:scale-x-0 before:border-t before:duration-700
+                before:ease-out-expo group-hover:before:scale-x-100 group-hover:before:scale-y-100"
             >
                 {children}
             </span>

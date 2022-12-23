@@ -10,12 +10,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, ...props }) => (
         <input
             name="chckb"
             type="checkbox"
-            className="opacity-0 appearance-none absolute w-4 h-4 cursor-pointer"
+            className="absolute h-4 w-4 cursor-pointer appearance-none opacity-0"
             {...props}
         />
-        <div className="border-2 rounded-sm border-white-700 w-[15px] h-[15px] flex flex-shrink-0 justify-center items-center">
+        <div className="flex h-[15px] w-[15px] flex-shrink-0 items-center justify-center rounded-sm border-2 border-white-700">
             <svg
-                className="hidden w-3 h-3 pointer-events-none"
+                className="pointer-events-none hidden h-3 w-3"
                 width="12"
                 height="9"
                 viewBox="0 0 12 9"
@@ -29,7 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, ...props }) => (
             </svg>
         </div>
         {label && (
-            <label htmlFor="chckb" className="text-base select-none">
+            <label htmlFor="chckb" className="select-none text-base">
                 {label}
             </label>
         )}

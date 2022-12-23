@@ -48,8 +48,13 @@
         "incremental": true,
 
         // JavaScript Support
-        "allowJs": true
+        "allowJs": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
     "exclude": [".next", "node_modules"]
 }

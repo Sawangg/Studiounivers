@@ -6,9 +6,9 @@ export const Features: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
     const { t } = useTranslation();
 
     return (
-        <section className="w-full flex flex-col md:px-10 py-10 2xl:py-10 4xl:py-24">
-            <h3 className="font-title text-2xl md:text-3xl mb-6 md:mb-8 mx-5 md:mx-auto">{t("features.title")}</h3>
-            <div className="flex flex-col md:flex-row justify-around">
+        <section className="flex w-full flex-col py-10 md:px-10 2xl:py-10 4xl:py-24">
+            <h3 className="mx-5 mb-6 font-title text-2xl md:mx-auto md:mb-8 md:text-3xl">{t("features.title")}</h3>
+            <div className="flex flex-col justify-around md:flex-row">
                 <FeatureBlock
                     title={t("features.delivery.title")}
                     description={t("features.delivery.description")}

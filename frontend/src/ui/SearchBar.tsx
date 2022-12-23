@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, HTMLAttributes, useEffect, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
-import Image from "next/future/image";
+import Image from "next/image";
 import { Product } from "@type/Product";
 import { useRouter } from "next/router";
 
@@ -23,13 +23,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onChange, searchData }) =>
 
     return (
         <div className="relative">
-            <div className="absolute z-50 top-3 left-3">
+            <div className="absolute top-3 left-3 z-50">
                 <Image
                     src="/assets/icons/search.svg"
                     width={20}
                     height={20}
                     alt="search"
-                    className="cursor-pointer transition duration-200 ease-in-out"
+                    className="ease-in-out cursor-pointer transition duration-200"
                     onMouseOver={() => {
                         setOpen(true);
                         textInput.current!.value = "";
@@ -51,19 +51,19 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onChange, searchData }) =>
                 ref={textInput}
                 style={barSpring}
                 onChange={onChange}
-                className="w-full px-10 py-1 text-lg border-[1px] border-primary-900 rounded-lg outline-none"
+                className="w-full rounded-lg border-[1px] border-primary-900 px-10 py-1 text-lg outline-none"
             />
             {searchData && searchData.length > 0 && (
                 <animated.div
                     ref={dataRef}
                     style={dataSpring}
-                    className="absolute z-50 bg-primary-700 text-white flex flex-col items-start gap-2 w-full max-w-[20rem] px-10 py-4 mt-2 text-lg rounded-lg"
+                    className="absolute z-50 mt-2 flex w-full max-w-[20rem] flex-col items-start gap-2 rounded-lg bg-primary-700 px-10 py-4 text-lg text-white"
                     // eslint-disable-next-line no-return-assign
                     onClick={() => (dataRef.current!.style.display = "none")}
                 >
                     {searchData.map((product) => (
                         <button key={product.id} onClick={() => router.push(`/product/${product.id}`)}>
-                            <h5 className="text-base cursor-pointer">{product.name}</h5>
+                            <h5 className="cursor-pointer text-base">{product.name}</h5>
                         </button>
                     ))}
                 </animated.div>

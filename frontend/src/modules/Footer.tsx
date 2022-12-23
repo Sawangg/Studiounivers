@@ -1,56 +1,38 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Input } from "@ui/Input";
 import Link from "next/link";
 
 export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
     return (
-        <footer className="w-full mt-auto bg-primary-700 sm:flex sm:flex-col sm:justify-center sm:items-center px-4 sm:px-28 text-white">
-            <div className="w-full sm:flex sm:flex-row pt-9 pb-5 sm:py-9">
-                <div className="w-full sm:w-1/2 flex flex-row flex-wrap sm:flex-nowrap">
-                    <div className="w-5/6 leading-loose flex-grow basis-[calc(100%/2)]">
+        <footer className="mt-auto w-full bg-primary-700 px-4 text-white sm:flex sm:flex-col sm:items-center sm:justify-center sm:px-28">
+            <div className="w-full pt-9 pb-5 sm:flex sm:flex-row sm:py-9">
+                <div className="flex w-full flex-row flex-wrap sm:w-1/2 sm:flex-nowrap">
+                    <div className="w-5/6 flex-grow basis-[calc(100%/2)] leading-loose">
                         <h4 className="font-title text-lg">Menu</h4>
                         <p className="cursor-pointer">Nouveautés</p>
                         <p className="cursor-pointer">Populaire</p>
-                        <Link href="products">
-                            <a href="/products">Tous les produits</a>
-                        </Link>
+                        <Link href="/products">Tous les produits</Link>
                     </div>
-                    <div className="leading-loose mx-auto flex-grow basis-[calc(100%/2)]">
+                    <div className="mx-auto flex-grow basis-[calc(100%/2)] leading-loose">
                         <h4 className="font-title text-lg">Catégories</h4>
-                        <Link href="products">
-                            <a href="/products">Eclairages</a>
-                        </Link>
+                        <Link href="/products">Eclairages</Link>
                         <br />
-                        <Link href="products">
-                            <a href="/products">Accessoires</a>
-                        </Link>
+                        <Link href="/products">Accessoires</Link>
                         <br />
-                        <Link href="products">
-                            <a href="/products">Modificateurs</a>
-                        </Link>
+                        <Link href="/products">Modificateurs</Link>
                         <br />
-                        <Link href="products">
-                            <a href="/products">Arrière-fond</a>
-                        </Link>
+                        <Link href="/products">Arrière-fond</Link>
                         <br />
-                        <Link href="products">
-                            <a href="/products">Lampes</a>
-                        </Link>
+                        <Link href="/products">Lampes</Link>
                         <br />
-                        <Link href="products">
-                            <a href="/products">Appareils Photo</a>
-                        </Link>
+                        <Link href="/products">Appareils Photo</Link>
                         <br />
-                        <Link href="products">
-                            <a href="/products">Strobist</a>
-                        </Link>
+                        <Link href="/products">Strobist</Link>
                     </div>
-                    <div className="leading-loose mx-auto flex-grow basis-[calc(100%/2)] 2xl:my-0">
+                    <div className="mx-auto flex-grow basis-[calc(100%/2)] leading-loose 2xl:my-0">
                         <h4 className="font-title text-lg">Notre entreprise</h4>
-                        <Link href="about">
-                            <a href="/about">À propos</a>
-                        </Link>
+                        <Link href="/about">À propos</Link>
                         <p>Contactez-nous</p>
                         <p>Conditions générales</p>
                     </div>
@@ -65,12 +47,12 @@ export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                     />
                 </div>
             </div>
-            <hr className="w-full text-primary-600 lg:visible md:invisible sm:invisible" />
-            <div className="w-full flex flex-row py-6 items-center">
-                <p className="text-base mx-auto sm:mx-0">
+            <hr className="w-full text-primary-600 sm:invisible md:invisible lg:visible" />
+            <div className="flex w-full flex-row items-center py-6">
+                <p className="mx-auto text-base sm:mx-0">
                     Copyright {new Date().getFullYear().toString()} StudioUnivers
                 </p>
-                <div className="hidden sm:flex flex-row ml-auto gap-6">
+                <div className="ml-auto hidden flex-row gap-6 sm:flex">
                     <Image
                         className="cursor-pointer"
                         src="/assets/icons/socials/linkedin.svg"

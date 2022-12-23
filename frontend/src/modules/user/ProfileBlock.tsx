@@ -20,7 +20,7 @@ export const ProfileBlock: React.FC<ProfileBlockProps> = ({ user }) => {
     };
 
     return (
-        <section className="w-full md:px-28 md:py-20 flex flex-col gap-6">
+        <section className="flex w-full flex-col gap-6 md:px-28 md:py-20">
             <div>{user.username}</div>
             <div>
                 <Button color="secondary" onClick={logout}>

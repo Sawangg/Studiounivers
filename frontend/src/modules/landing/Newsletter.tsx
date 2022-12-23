@@ -1,13 +1,13 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Input } from "@ui/Input";
 
 export const Newsletter: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => (
-    <section className="w-full py-20 flex flex-row text-white">
-        <div className="h-[18rem] relative">
+    <section className="flex w-full flex-row py-20 text-white">
+        <div className="relative h-[18rem]">
             <Image src="/assets/header.png" alt="header" className="-z-50 select-none" fill />
             <div className="flex flex-col gap-6">
-                <h2 className="absolute bottom-9 pl-24 text-5xl font-title text-white z-50">
+                <h2 className="absolute bottom-9 z-50 pl-24 font-title text-5xl text-white">
                     Rejoingnez notre newsletter
                 </h2>
                 <p>

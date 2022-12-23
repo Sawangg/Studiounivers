@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
 import checkout from "@lib/checkout";
@@ -49,22 +49,22 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     };
 
     return (
-        <section className="w-full flex flex-col md:flex-row">
-            <div className="w-full 2xl:w-5/12 4xl:w-5/12 2xl:px-16 4xl:px-28 md:py-10">
-                <div className="w-full h-[30rem] 2xl:h-[40rem] 4xl:h-[55rem] relative">
+        <section className="flex w-full flex-col md:flex-row">
+            <div className="w-full md:py-10 2xl:w-5/12 2xl:px-16 4xl:w-5/12 4xl:px-28">
+                <div className="relative h-[30rem] w-full 2xl:h-[40rem] 4xl:h-[55rem]">
                     <Image src={imagePath} alt="" fill />
                 </div>
             </div>
-            <div className="w-full md:w-1/2 pt-10 px-6 2xl:p-16 4xl:p-24">
+            <div className="w-full px-6 pt-10 md:w-1/2 2xl:p-16 4xl:p-24">
                 <h1 className="font-title text-3xl md:text-5xl">{title}</h1>
                 <h3 className="text-2xl font-bold md:text-3xl">{price}€</h3>
                 <div className="mt-8 2xl:mt-14 4xl:mt-20">
-                    <h5 className="font-title font-semibold text-xl mb-4">Description</h5>
+                    <h5 className="mb-4 font-title text-xl font-semibold">Description</h5>
                     <p className="text-base md:text-lg">‟ {description} ”</p>
                 </div>
                 <div className="my-8 2xl:my-10 4xl:my-16">
-                    <h5 className="font-title font-semibold text-xl">Dimensions</h5>
-                    <div className="grid grid-cols-3 gap-6 w-full 2xl:w-7/12 4xl:w-1/3 mt-6">
+                    <h5 className="font-title text-xl font-semibold">Dimensions</h5>
+                    <div className="mt-6 grid w-full grid-cols-3 gap-6 2xl:w-7/12 4xl:w-1/3">
                         <div className="flex flex-col gap-4">
                             <h6 className="font-title">Hauteur</h6>
                             <p>110cm</p>
@@ -79,10 +79,10 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col 4xl:flex-row items-center 2xl:items-start 4xl:items-center 4xl:justify-between w-full">
+                <div className="flex w-full flex-col items-center 2xl:items-start 4xl:flex-row 4xl:items-center 4xl:justify-between">
                     <div className="flex flex-row items-center gap-6 md:gap-10">
-                        <p className="text-lg w-24">Quantité :</p>
-                        <div className="flex flex-row items-center max-w-[10rem]">
+                        <p className="w-24 text-lg">Quantité :</p>
+                        <div className="flex max-w-[10rem] flex-row items-center">
                             <Stepper
                                 defaultValue={1}
                                 min={1}
@@ -93,7 +93,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
                             />
                         </div>
                     </div>
-                    <div className="4xl:justify-end w-full flex flex-col md:flex-row gap-6 4xl:gap-10 my-10 4xl:my-0 md:mb-0">
+                    <div className="my-10 flex w-full flex-col gap-6 md:mb-0 md:flex-row 4xl:my-0 4xl:justify-end 4xl:gap-10">
                         <Button
                             className="w-full md:w-28"
                             loading={isLoading.cart}
