@@ -4,8 +4,10 @@ import {
     Controller,
     Delete,
     Get,
+    HttpStatus,
     NotFoundException,
     Param,
+    ParseIntPipe,
     Post,
     UploadedFiles,
     UseGuards,
@@ -14,6 +16,7 @@ import {
 import { FilesInterceptor } from "@nestjs/platform-express";
 import { JwtAuthGuard } from "@auth/guards/JWTGuard";
 import { CreateProductDto } from "@product/dtos/CreateProduct.dto";
+import { UpdateProductDto } from "@product/dtos/UpdateProduct.dto";
 import { ProductService } from "@product/services/product.service";
 
 @Controller("product")
@@ -30,20 +33,22 @@ export class ProductController {
     @Get("/newest")
     async getNewestProducts() {
         const data = await this.productService.newest();
-        if (!data) throw new NotFoundException();
+        if (!data || data.length === 0) throw new NotFoundException();
         return data;
     }
 
     @Get("/popular")
     async getPopularProducts() {
         const data = await this.productService.popular();
-        if (!data) throw new NotFoundException();
+        if (!data || data.length === 0) throw new NotFoundException();
         return data;
     }
 
     @Get("/:productId")
-    async getProduct(@Param("productId") productId: string) {
-        const data = await this.productService.find(+productId);
+    async getProduct(
+        @Param("productId", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) productId: number,
+    ) {
+        const data = await this.productService.find(productId);
         if (!data) throw new NotFoundException();
         return data;
     }
@@ -61,8 +66,21 @@ export class ProductController {
         return this.productService.create(createProductDto, files);
     }
 
+    @UseGuards(JwtAuthGuard)
+    @UseInterceptors(FilesInterceptor("files"))
+    @Post("update/:productId")
+    updateProduct(
+        @Param("productId", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) productId: number,
+        @Body() updateProductDto: UpdateProductDto,
+        @UploadedFiles() files?: Array<Express.Multer.File>,
+    ) {
+        return this.productService.update(productId, updateProductDto, files);
+    }
+
     @Delete("/delete/:productId")
-    deleteProduct(@Param("productId") productId: string) {
-        return this.productService.delete(+productId);
+    deleteProduct(
+        @Param("productId", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) productId: number,
+    ) {
+        return this.productService.delete(productId);
     }
 }

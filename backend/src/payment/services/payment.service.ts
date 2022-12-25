@@ -1,12 +1,11 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { OrderService } from "@order/services/order.service";
-import type { User } from "@user/entities/user.entity";
 import { defaultCurrency } from "@utils/constants";
-import { formatAmountForStripe } from "@utils/stripe";
-import Stripe from "stripe";
+import type { User } from "@user/entities/user.entity";
 import type { CreatePaymentSessionDto } from "@payment/dtos/CreateSession.dto";
 import type { VerifyPaymentDto } from "@payment/dtos/VerifyPayment.dto";
+import Stripe from "stripe";
 
 @Injectable()
 export class PaymentService {
@@ -16,7 +15,7 @@ export class PaymentService {
         @Inject(OrderService) private readonly orderService: OrderService,
         private readonly configService: ConfigService,
     ) {
-        this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2022-08-01" });
+        this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2022-11-15" });
     }
 
     async createSession(origin: string, createPaymentSession: CreatePaymentSessionDto) {
@@ -25,7 +24,7 @@ export class PaymentService {
             payment_method_types: ["card"],
             line_items: [
                 {
-                    amount: formatAmountForStripe(createPaymentSession.amount, defaultCurrency),
+                    price_data: { currency: defaultCurrency, unit_amount: createPaymentSession.amount },
                     quantity: 1,
                 },
             ],
@@ -45,10 +44,8 @@ export class PaymentService {
             const alreadyOrdered = await this.orderService.findByStripeSessionId(verifyPayment.sessionId);
             if (alreadyOrdered) return { customer };
             const order = await this.orderService.createOrder(user, verifyPayment.sessionId);
-            console.log(order);
-            console.log({ customer, order });
             return { customer, order };
-        } catch (err) {
+        } catch {
             throw new BadRequestException();
         }
     }

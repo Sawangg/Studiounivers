@@ -26,13 +26,13 @@ export default async function Page() {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             {/* <Hero /> */}
             {/* <Hero2 /> */}
             {/* <Features />
             <NewListings newestProducts={newestProducts} />
             <FeatureAbout /> */}
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
