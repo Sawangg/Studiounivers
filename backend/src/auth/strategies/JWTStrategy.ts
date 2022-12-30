@@ -1,38 +1,36 @@
 import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
-import type { Request } from "express";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { UserService } from "@user/services/user.service";
+import type { Request } from "express";
 import { authCookieName } from "@utils/constants";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(private readonly userService: UserService, readonly configService: ConfigService) {
         super({
-            ignoreExpiration: true,
-            passReqToCallback: true,
+            ignoreExpiration: false,
             secretOrKey: configService.get<string>("JWT_SECRET"),
             jwtFromRequest: ExtractJwt.fromExtractors([
                 (request: Request) => {
-                    const data = request.cookies[authCookieName];
-                    if (!data) return null;
-                    return data.access_token;
+                    // Get access token from header first if failed try with the cookie
+                    const header = request.headers["authorization"];
+                    if (header && header.length > 0) return header.split(" ")[1];
+                    const cookie = request.cookies[authCookieName];
+                    if (!cookie) return null;
+                    return cookie.access_token;
                 },
             ]),
         });
     }
 
-    // TODO: Better refresh token check
-    async validate(req: Request, payload: { username: string; sub: number; iat: number }) {
-        if (payload === null) throw new BadRequestException("invalid jwt token");
+    async validate(payload: { username: string; sub: number }) {
+        if (payload === null) throw new BadRequestException("Invalid jwt token");
 
         const user = await this.userService.findByUsername(payload.username);
-        if (!user) throw new UnauthorizedException();
+        if (!user) throw new UnauthorizedException("User not found");
 
-        const data = req.cookies[authCookieName];
-        if (!data?.refresh_token || user.refreshToken !== data?.refresh_token)
-            throw new BadRequestException("invalid refresh token");
         if (!user.refreshTokenExpires || new Date() > user.refreshTokenExpires)
             throw new BadRequestException("Refresh token expired");
 

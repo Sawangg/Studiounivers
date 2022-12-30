@@ -14,14 +14,6 @@ import { MinioModule } from "@minio/minio.module";
     imports: [
         ConfigModule.forRoot({ isGlobal: true, cache: true }),
         PassportModule.register({ defaultStrategy: "jwt" }),
-        JwtModule.registerAsync({
-            imports: [ConfigModule],
-            useFactory: (configService: ConfigService) => ({
-                secret: configService.get<string>("JWT_SECRET"),
-                signOptions: { expiresIn: "1h" },
-            }),
-            inject: [ConfigService],
-        }),
         TypeOrmModule.forRootAsync({
             imports: [ConfigModule],
             useFactory: (configService: ConfigService) => ({
@@ -38,6 +30,7 @@ import { MinioModule } from "@minio/minio.module";
             inject: [ConfigService],
         }),
         AuthModule,
+        JwtModule,
         MinioModule,
         OrderModule,
         PaymentModule,

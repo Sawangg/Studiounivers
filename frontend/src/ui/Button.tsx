@@ -9,7 +9,6 @@ const sizeClassnames = {
 const colorClassnames = {
     primary: "bg-primary-600 text-white hover:bg-primary-500 transition duration-200 ease-in-out",
     secondary: "bg-white-300 text-primary-700 hover:bg-accent-200/50 transition duration-200 ease-in-out",
-    opaque: "",
 };
 
 export type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {

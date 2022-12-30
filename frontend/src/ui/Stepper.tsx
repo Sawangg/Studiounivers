@@ -1,3 +1,5 @@
+"use client";
+
 import React, { DetailedHTMLProps, InputHTMLAttributes, useEffect, useRef, useState } from "react";
 
 export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {

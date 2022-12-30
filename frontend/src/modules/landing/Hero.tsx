@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 

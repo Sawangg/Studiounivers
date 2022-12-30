@@ -18,10 +18,10 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "paths": {
+            "@api/*": ["./src/api/*"],
             "@hoc/*": ["./src/hoc/*"],
             "@lib/*": ["./src/lib/*"],
             "@modules/*": ["./src/modules/*"],
-            "@pages/*": ["./src/pages/*"],
             "@styles/*": ["./src/styles/*"],
             "@type/*": ["./src/type/*"],
             "@ui/*": ["./src/ui/*"],

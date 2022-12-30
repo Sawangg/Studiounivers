@@ -1,20 +1,22 @@
+"use client";
+
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import checkout from "@lib/checkout";
+import { checkout } from "@lib/checkout";
 import { apiEndpoint } from "@lib/constants";
 import { Button } from "@ui/Button";
 import { Stepper } from "@ui/Stepper";
 
-export type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+type ProductCardProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     productId: number;
     title: string;
     description: string;
     price: number;
-    imagePath: string;
+    images: Array<string>;
 };
 
-export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, description, price, imagePath }) => {
+export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, description, price, images }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState({ cart: false, oneClick: false });
     const [currentQuantity, setCurrentQuantity] = useState<number>(1);
@@ -22,7 +24,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     const addToCart = async () => {
         setIsLoading({ ...isLoading, cart: true });
         try {
-            await fetch(`${apiEndpoint}/api/user/cart/add`, {
+            await fetch(`${apiEndpoint}/user/cart/add`, {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -39,7 +41,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
     const handleCheckout = async () => {
         setIsLoading({ ...isLoading, oneClick: true });
         try {
-            await fetch(`${apiEndpoint}/api/auth`, { credentials: "include" });
+            await fetch(`${apiEndpoint}/auth`, { credentials: "include" });
             await checkout(price * currentQuantity);
             setIsLoading({ ...isLoading, oneClick: false });
         } catch {
@@ -52,7 +54,7 @@ export const ProductBlock: React.FC<ProductCardProps> = ({ productId, title, des
         <section className="flex w-full flex-col md:flex-row">
             <div className="w-full md:py-10 2xl:w-5/12 2xl:px-16 4xl:w-5/12 4xl:px-28">
                 <div className="relative h-[30rem] w-full 2xl:h-[40rem] 4xl:h-[55rem]">
-                    <Image src={imagePath} alt="" fill />
+                    <Image src={images[0]} alt="" fill />
                 </div>
             </div>
             <div className="w-full px-6 pt-10 md:w-1/2 2xl:p-16 4xl:p-24">

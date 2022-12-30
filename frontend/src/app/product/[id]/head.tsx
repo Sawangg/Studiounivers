@@ -1,14 +1,7 @@
-import { apiEndpoint } from "@lib/constants";
-import { Product } from "@type/Product";
+import { getProduct } from "@api/products/getProduct";
 
-export const getProduct = async (id: number) => {
-    const res = await fetch(`${apiEndpoint}/api/product/${id}`);
-    const data = await res.json();
-    return data as Product;
-};
-
-export default async function Head({ params }: any) {
-    const product = await getProduct(params.slug);
+export default async function Head({ params }: { params: { id: string } }) {
+    const product = await getProduct(params.id);
 
     return <title>{`StudioUnivers — ${product.name}`}</title>;
 }

@@ -1,6 +1,4 @@
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { useRouter } from "next/router";
-import { Button } from "@ui/Button";
 import { ProductCard } from "@modules/product/ProductCard";
 import { Product } from "@type/Product";
 
@@ -9,8 +7,6 @@ export type AlsoLikeProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
 };
 
 export const AlsoLike: React.FC<AlsoLikeProps> = ({ alsoLikeProducts }) => {
-    const router = useRouter();
-
     return (
         <section className="flex w-full flex-col px-7 py-10 md:px-28 md:py-16">
             <h2 className="font-title text-3xl md:text-4xl">Vous aimerez peut-être</h2>
@@ -26,13 +22,6 @@ export const AlsoLike: React.FC<AlsoLikeProps> = ({ alsoLikeProducts }) => {
                     </div>
                 ))}
             </div>
-            <Button
-                className="w-full self-center md:mt-6 md:w-60"
-                color="secondary"
-                onClick={() => router.push("/products")}
-            >
-                Voir les produits
-            </Button>
         </section>
     );
 };

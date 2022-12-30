@@ -1,3 +1,5 @@
+"use client";
+
 import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 

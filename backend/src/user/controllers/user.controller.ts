@@ -77,8 +77,6 @@ export class UserController {
     @UseGuards(JwtAuthGuard)
     @Get("cart")
     async getCart(@RequestD() req: Request) {
-        const data = await this.userService.getCart(req.user.id);
-        if (!data) throw new NotFoundException();
-        return data;
+        return this.userService.getCart(req.user.id);
     }
 }

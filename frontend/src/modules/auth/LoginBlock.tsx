@@ -11,7 +11,7 @@ export const LoginBlock: React.FC = () => {
     const [loginState, setLoginState] = useState({ username: "", pwd: "" });
 
     const connectClick = () => {
-        fetch(`${apiEndpoint}/api/auth/login`, {
+        fetch(`${apiEndpoint}/auth/login`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -20,7 +20,7 @@ export const LoginBlock: React.FC = () => {
             .then((res) => {
                 if (res.status === 201) {
                     setLoginState({ username: "", pwd: "" });
-                    router.push("/");
+                    window.location.href = "/"; // Router is not suited here
                 } else {
                     setLoginState({ username: loginState.username, pwd: "" });
                 }

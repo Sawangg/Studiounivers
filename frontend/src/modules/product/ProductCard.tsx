@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
@@ -16,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId, title, pric
         <section
             className="ease-in-out flex cursor-pointer flex-col transition duration-300 hover:scale-105"
             onClick={() => router.push(`/product/${productId}`)}
-            onKeyPress={() => router.push(`/product/${productId}`)}
+            onKeyDown={() => router.push(`/product/${productId}`)}
             role="button"
             tabIndex={0}
         >

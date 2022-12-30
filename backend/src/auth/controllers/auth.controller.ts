@@ -41,13 +41,14 @@ export class AuthController {
         const tokens = await this.authService.login(req.user);
         if (!tokens) throw new BadRequestException("No token created");
         res.cookie(authCookieName, tokens, { httpOnly: true, sameSite: true });
-        return { msg: "Success" };
+        return tokens;
     }
 
     @UseGuards(JwtAuthGuard)
     @Delete("/logout")
     logout(@Res() res: Response) {
         res.clearCookie(authCookieName);
+        // TODO: blacklist old JWT token
         return res.sendStatus(200);
     }
 }

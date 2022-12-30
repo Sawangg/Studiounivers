@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import checkout from "@lib/checkout";
+import { checkout } from "@lib/checkout";
 import { apiEndpoint } from "@lib/constants";
 import { Cart } from "@type/Cart";
 import { Button } from "@ui/Button";
@@ -18,7 +20,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
 
     const handleChange = async (productId: number, quantity: number) => {
         try {
-            const res = await fetch(`${apiEndpoint}/api/user/cart/update`, {
+            const res = await fetch(`${apiEndpoint}/user/cart/update`, {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -68,7 +70,7 @@ export const CartBlock: React.FC<CartBlockProps> = ({ cart }) => {
                                     <div
                                         className="relative h-[12rem] w-60 cursor-pointer md:w-[8rem]"
                                         onClick={() => router.push(`/product/${product.product.id}`)}
-                                        onKeyPress={() => router.push(`/product/${product.product.id}`)}
+                                        onKeyDown={() => router.push(`/product/${product.product.id}`)}
                                         role="button"
                                         tabIndex={0}
                                     >
