@@ -1,9 +1,9 @@
 import { apiEndpoint } from "@lib/constants";
 import getStripe from "@lib/stripe";
 
-const checkout = async (amount: number) => {
+export const checkout = async (amount: number) => {
     try {
-        const res = await fetch(`${apiEndpoint}/api/payment/session`, {
+        const res = await fetch(`${apiEndpoint}/payment/session`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -16,5 +16,3 @@ const checkout = async (amount: number) => {
         // Notif error here
     }
 };
-
-export default checkout;

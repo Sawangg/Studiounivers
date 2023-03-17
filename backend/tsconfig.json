@@ -13,19 +13,31 @@
         "noUnusedParameters": true,
         "useUnknownInCatchVariables": true,
         "strictBindCallApply": false,
-
         // Modules
         "module": "CommonJS",
         "paths": {
-            "@auth/*": ["src/auth/*"],
-            "@minio/*": ["src/minio/*"],
-            "@order/*": ["src/order/*"],
-            "@payment/*": ["src/payment/*"],
-            "@product/*": ["src/product/*"],
-            "@user/*": ["src/user/*"],
-            "@utils/*": ["src/utils/*"]
+            "@auth/*": [
+                "src/auth/*"
+            ],
+            "@minio/*": [
+                "src/minio/*"
+            ],
+            "@order/*": [
+                "src/order/*"
+            ],
+            "@payment/*": [
+                "src/payment/*"
+            ],
+            "@product/*": [
+                "src/product/*"
+            ],
+            "@user/*": [
+                "src/user/*"
+            ],
+            "@utils/*": [
+                "src/utils/*"
+            ]
         },
-
         // Emit
         "baseUrl": ".",
         "outDir": "dist",
@@ -33,26 +45,28 @@
         "newLine": "lf",
         "sourceMap": true,
         "removeComments": true,
-        "importsNotUsedAsValues": "error",
-
         // Interop Constraints
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": false,
         "esModuleInterop": true,
-
         // Language and Environment
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "target": "ESNext",
         "useDefineForClassFields": true,
-
         // Projects
         "incremental": true,
-
         // Completeness
         "skipLibCheck": true,
         "strictNullChecks": false
     },
-    "include": ["src/**/*", "@types/index.d.ts"],
-    "exclude": ["dist", "node_modules", "**/*.spec.ts"]
+    "include": [
+        "src/**/*",
+        "@types/index.d.ts"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules",
+        "**/*.spec.ts"
+    ]
 }

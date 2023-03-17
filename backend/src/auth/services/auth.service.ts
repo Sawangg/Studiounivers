@@ -32,8 +32,9 @@ export class AuthService {
         return {
             access_token: this.jwtService.sign(
                 { username: user.username, sub: user.id },
-                { secret: this.configService.get("JWT_SECRET") },
+                { secret: this.configService.get("JWT_SECRET"), expiresIn: "1d" },
             ),
+            // TODO: find a way to send a cookie from a SSR component so we can use the refresh token feature
             refresh_token: await this.generateRefreshToken(user.id),
         };
     }

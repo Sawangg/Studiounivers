@@ -1,3 +1,5 @@
+"use client";
+
 import React, { DetailedHTMLProps, InputHTMLAttributes, useEffect, useRef, useState } from "react";
 
 export type StepperProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
@@ -37,10 +39,10 @@ export const Stepper: React.FC<StepperProps> = ({ onStepperButtonIncrease, onSte
     };
 
     return (
-        <div className="bg-white-300 flex flex-row items-center w-full">
+        <div className="flex w-full flex-row items-center bg-white-300">
             <button
                 data-action="decrement"
-                className="h-full w-20 rounded-l cursor-pointer outline-none disabled:text-white-400 disabled:cursor-not-allowed"
+                className="h-full w-20 cursor-pointer rounded-l outline-none disabled:cursor-not-allowed disabled:text-white-400"
                 onClick={dec}
                 disabled={inputRef.current ? inputRef.current.value === inputRef.current.min : disabled.min}
             >
@@ -49,14 +51,14 @@ export const Stepper: React.FC<StepperProps> = ({ onStepperButtonIncrease, onSte
             <input
                 type="number"
                 ref={inputRef}
-                className="bg-white-300 focus:outline-none text-center w-full font-semibold text-md hover:text-black focus:text-black
-                    flex items-center outline-none py-4 px-4"
+                className="text-md hover:text-black focus:text-black flex w-full items-center bg-white-300 py-4
+                    px-4 text-center font-semibold outline-none focus:outline-none"
                 onChange={handleChange}
                 {...props}
             />
             <button
                 data-action="increment"
-                className="h-full w-20 rounded-r cursor-pointer disabled:text-white-400 disabled:cursor-not-allowed"
+                className="h-full w-20 cursor-pointer rounded-r disabled:cursor-not-allowed disabled:text-white-400"
                 onClick={inc}
                 disabled={inputRef.current ? inputRef.current.value === inputRef.current.max : disabled.max}
             >

@@ -43,10 +43,10 @@ export const RegisterBlock: React.FC = () => {
     });
 
     return (
-        <section className="flex flex-col md:justify-center md:items-center w-full py-6 px-8 md:px-0 md:py-10 bg-white-100">
-            <div className="flex flex-col md:justify-center md:items-center w-full md:w-1/2 md:my-8">
-                <h1 className="font-title text-xl md:text-2xl self-start mb-4">Créér un compte</h1>
-                <hr className="md:w-[calc(100%-3.5rem)] text-white-200 lg:visible md:invisible sm:invisible md:mb-8 mb-" />
+        <section className="flex w-full flex-col bg-white-100 py-6 px-8 md:items-center md:justify-center md:px-0 md:py-10">
+            <div className="flex w-full flex-col md:my-8 md:w-1/2 md:items-center md:justify-center">
+                <h1 className="mb-4 self-start font-title text-xl md:text-2xl">Créér un compte</h1>
+                <hr className="mb- text-white-200 sm:invisible md:invisible md:mb-8 md:w-[calc(100%-3.5rem)] lg:visible" />
                 <div className="md:w-1/2">
                     <Input
                         color="primary"
@@ -67,11 +67,11 @@ export const RegisterBlock: React.FC = () => {
                         onChange={(e) => setRegisterState({ ...registerState, cpwd: e.target.value })}
                     />
                 </div>
-                <div className="w-full md:w-5/6 flex justify-between items-center self-end mt-9">
+                <div className="mt-9 flex w-full items-center justify-between self-end md:w-5/6">
                     <p className="w-full">
                         Déjà un compte ?
                         <span
-                            className="text-primary-200 underline cursor-pointer md:ml-2"
+                            className="cursor-pointer text-primary-200 underline md:ml-2"
                             onClick={() => router.push("/login")}
                             onKeyPress={() => router.push("/login")}
                             role="button"

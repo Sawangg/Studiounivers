@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+"use client";
+
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { apiEndpoint } from "@lib/constants";
 import { User } from "@type/User";
@@ -9,18 +10,16 @@ export type ProfileBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
 };
 
 export const ProfileBlock: React.FC<ProfileBlockProps> = ({ user }) => {
-    const router = useRouter();
-
     const logout = async () => {
-        await fetch(`${apiEndpoint}/api/auth/logout`, {
+        await fetch(`${apiEndpoint}/auth/logout`, {
             method: "DELETE",
             credentials: "include",
         });
-        router.push("/");
+        window.location.href = "/"; // Router not suited here
     };
 
     return (
-        <section className="w-full md:px-28 md:py-20 flex flex-col gap-6">
+        <section className="flex w-full flex-col gap-6 md:px-28 md:py-20">
             <div>{user.username}</div>
             <div>
                 <Button color="secondary" onClick={logout}>

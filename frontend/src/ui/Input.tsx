@@ -1,3 +1,5 @@
+"use client";
+
 import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 
@@ -17,9 +19,9 @@ export type InputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>
 export const Input: React.FC<InputProps> = ({ placeholder, label, color = "primary", button, ...props }) => (
     <>
         {label && <label className="font-title text-lg">{label}</label>}
-        <div className="flex flex-row items-center justify-center mt-4">
+        <div className="mt-4 flex flex-row items-center justify-center">
             <input
-                className={`w-full pl-4 sm:pl-8 py-4 text-lg ${colorInputClassnames[color]} outline-none text-white placeholder:text-white-700`}
+                className={`w-full py-4 pl-4 text-lg sm:pl-8 ${colorInputClassnames[color]} text-white outline-none placeholder:text-white-700`}
                 placeholder={placeholder}
                 {...props}
             />

@@ -1,5 +1,5 @@
-import Image from "next/future/image";
-import { useRouter } from "next/router";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 
@@ -12,15 +12,15 @@ export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = ({ sessio
     const router = useRouter();
 
     return (
-        <section className="flex flex-col justify-center items-center gap-4 my-16">
+        <section className="my-16 flex flex-col items-center justify-center gap-4">
             <div className="mr-5">
-                <Image src="/assets/delivery.gif" width={110} height={90} alt="cart" />
+                <Image src="/assets/delivery.gif" width={110} height={90} alt="" />
             </div>
-            <h1 className="text-3xl">Merci Léo !</h1>
+            <h1 className="text-3xl">Merci !</h1>
             <p className="text-lg">
                 Votre commande <span className="font-bold">#12345</span> est en cours de préparation.
             </p>
-            <Button className="w-60 mt-2" onClick={() => router.push("/profile")}>
+            <Button className="mt-2 w-60" onClick={() => router.push("/profile")}>
                 Suivre ma commande
             </Button>
         </section>

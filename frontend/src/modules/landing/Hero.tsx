@@ -1,19 +1,23 @@
-import { useTranslation } from "next-i18next";
-import Image from "next/future/image";
-import { useRouter } from "next/router";
+"use client";
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 
 export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
-    const { t } = useTranslation();
+    const t = (str: string) => {
+        return <p>{str}</p>;
+    };
+
     const router = useRouter();
 
     return (
-        <section className="w-full md:px-28 md:py-20 flex flex-row text-white md:hidden">
-            <div className="w-full md:w-3/5 flex flex-col justify-between bg-primary-700 p-7 md:p-16">
+        <section className="flex w-full flex-row text-white md:hidden md:px-28 md:py-20">
+            <div className="flex w-full flex-col justify-between bg-primary-700 p-7 md:w-3/5 md:p-16">
                 <div className="md:w-[calc(100%-32%)]">
                     <h2 className="font-title text-3xl md:text-4xl">{t("hero.title")}</h2>
-                    <p className="md:hidden mt-16">
+                    <p className="mt-16 md:hidden">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta pariatur sapiente molestiae
                         placeat suscipit eum possimus, rerum, sit excepturi eveniet sequi. Eveniet excepturi, quas vero
                         alias deserunt earum? Assumenda, molestiae?
@@ -30,8 +34,8 @@ export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
                     </p>
                 </div>
             </div>
-            <div className="hidden md:flex w-2/5 bg-white-100 h-[40rem] max-h-[40rem] min-h-[40rem] justify-center items-center">
-                <div className="w-[35rem] h-[30rem] relative">
+            <div className="hidden h-[40rem] max-h-[40rem] min-h-[40rem] w-2/5 items-center justify-center bg-white-100 md:flex">
+                <div className="relative h-[30rem] w-[35rem]">
                     <Image src="/assets/hero.png" alt="" fill />
                 </div>
             </div>

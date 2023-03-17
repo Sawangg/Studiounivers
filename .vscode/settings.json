@@ -4,5 +4,6 @@
     "source.fixAll.eslint": true
   },
   "editor.formatOnSave": true,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

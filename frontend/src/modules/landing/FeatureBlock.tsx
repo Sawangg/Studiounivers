@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type FeatureBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
@@ -9,11 +9,11 @@ export type FeatureBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
 
 export const FeatureBlock: React.FC<FeatureBlockProps> = ({ title, description, imagePath, ...props }) => (
     <section
-        className="w-full block max-w-md 2xl:max-w-[20rem] 4xl:max-w-md p-7 4xl:p-10 overflow-hidden md:bg-white-300"
+        className="block w-full max-w-md overflow-hidden p-7 md:bg-white-300 2xl:max-w-[20rem] 4xl:max-w-md 4xl:p-10"
         {...props}
     >
         <Image src={imagePath} width={24} height={24} alt="icon" />
-        <h4 className="font-title text-xl 2xl:text-lg 4xl:text-2xl my-2">{title}</h4>
-        <p className="w-full text-md 4xl:text-lg break-words">{description}</p>
+        <h4 className="my-2 font-title text-xl 2xl:text-lg 4xl:text-2xl">{title}</h4>
+        <p className="text-md w-full break-words 4xl:text-lg">{description}</p>
     </section>
 );

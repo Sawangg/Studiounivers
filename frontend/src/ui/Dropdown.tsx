@@ -1,6 +1,8 @@
+"use client";
+
 import React, { DetailedHTMLProps, HTMLAttributes, useEffect, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
-import Image from "next/future/image";
+import Image from "next/image";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type DropdownProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {};
@@ -53,7 +55,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ children }) => {
                 />
             </div>
             <animated.div
-                className="absolute top-16 left-0 w-full hidden flex-col gap-2 z-50 h-96 p-10 bg-white"
+                className="absolute top-16 left-0 z-50 hidden h-96 w-full flex-col gap-2 bg-white p-10"
                 ref={dropDownRef}
                 style={spring}
             >

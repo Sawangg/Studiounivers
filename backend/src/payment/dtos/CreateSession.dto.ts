@@ -7,4 +7,10 @@ export class CreatePaymentSessionDto {
     @IsNumber()
     @Min(1)
     amount: number;
+
+    @IsNotEmpty()
+    @Type(() => Number)
+    @IsNumber()
+    @Min(1)
+    quantity: number;
 }

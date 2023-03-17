@@ -18,10 +18,10 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "paths": {
+            "@api/*": ["./src/api/*"],
             "@hoc/*": ["./src/hoc/*"],
             "@lib/*": ["./src/lib/*"],
             "@modules/*": ["./src/modules/*"],
-            "@pages/*": ["./src/pages/*"],
             "@styles/*": ["./src/styles/*"],
             "@type/*": ["./src/type/*"],
             "@ui/*": ["./src/ui/*"],
@@ -48,8 +48,13 @@
         "incremental": true,
 
         // JavaScript Support
-        "allowJs": true
+        "allowJs": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
     "exclude": [".next", "node_modules"]
 }
