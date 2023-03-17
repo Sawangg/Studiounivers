@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import { User } from "@type/User";
 
-export interface GetServerSidePropsContextUser extends GetServerSidePropsContext {
+export type GetServerSidePropsContextUser = {
     user: User | null;
-}
+} & GetServerSidePropsContext;
