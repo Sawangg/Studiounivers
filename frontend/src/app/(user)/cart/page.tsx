@@ -10,7 +10,7 @@ export default async function Page() {
 
     return (
         <>
-            <CartBlock cart={cart!} />
+            <CartBlock cart={cart} />
         </>
     );
 }

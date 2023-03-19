@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling your project before committing 👷‍♂️🏗️'
+echo 'please be patient, this may take a while...'
+
+# Run lint
+cd frontend && yarn lint ||
+(
+    echo '🔨❌ You have a problem in your code. Check linter 🔨❌'
+    false;
+)
+
+echo '🎉 No error found: committing this now.... ✨🚀🏄‍♂️🍻'

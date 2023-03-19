@@ -90,7 +90,7 @@ export const Footer: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
                         src="/assets/icons/socials/github.svg"
                         width={24}
                         height={24}
-                        title="Créé par Sawangg"
+                        title="Créé par Léo MERCIER"
                         alt="github"
                     />
                 </a>

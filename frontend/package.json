@@ -1,14 +1,16 @@
 {
     "name": "frontend",
     "version": "0.1.0",
-    "private": true,
     "author": "Léo MERCIER <leo.mercier@efrei.net>",
+    "license": "MIT",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "lint:fix": "next lint --fix"
+        "lint:fix": "next lint --fix",
+        "prepare": "cd .. && husky install frontend/.husky",
+        "postinstall": "cd .. && husky install frontend/.husky"
     },
     "dependencies": {
         "@react-spring/web": "^9.7.1",
@@ -30,9 +32,10 @@
         "eslint-plugin-jsx-a11y": "^6.7.1",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react-hooks": "^4.6.0",
+        "husky": "8.0.3",
         "postcss": "^8.4.21",
         "prettier": "^2.8.4",
-        "prettier-plugin-tailwindcss": "^0.2.4",
+        "prettier-plugin-tailwindcss": "0.2.5",
         "tailwindcss": "^3.2.7",
         "typescript": "^5.0.2"
     }

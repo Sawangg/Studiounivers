@@ -6,3 +6,4 @@ Dockerfile
 .eslintignore
 README.md
 .next
+tsconfig.json
