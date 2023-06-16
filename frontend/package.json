@@ -8,9 +8,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "lint:fix": "next lint --fix",
-        "prepare": "cd .. && husky install frontend/.husky",
-        "postinstall": "cd .. && husky install frontend/.husky"
+        "lint:fix": "next lint --fix"
     },
     "dependencies": {
         "@react-spring/web": "^9.7.1",

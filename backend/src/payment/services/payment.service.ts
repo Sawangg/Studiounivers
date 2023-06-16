@@ -15,7 +15,7 @@ export class PaymentService {
         @Inject(OrderService) private readonly orderService: OrderService,
         private readonly configService: ConfigService,
     ) {
-        this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2022-08-01" });
+        this.stripe = new Stripe(this.configService.get<string>("STRIPE_SECRET_KEY"), { apiVersion: "2022-11-15" });
     }
 
     async createSession(origin: string, createPaymentSession: CreatePaymentSessionDto) {

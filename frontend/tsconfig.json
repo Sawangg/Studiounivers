@@ -19,7 +19,6 @@
         "resolveJsonModule": true,
         "paths": {
             "@api/*": ["./src/api/*"],
-            "@hoc/*": ["./src/hoc/*"],
             "@lib/*": ["./src/lib/*"],
             "@modules/*": ["./src/modules/*"],
             "@styles/*": ["./src/styles/*"],

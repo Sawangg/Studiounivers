@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
@@ -7,8 +8,7 @@ export type SuccessPaymentBlockProps = DetailedHTMLProps<HTMLAttributes<HTMLDivE
     sessionId: string;
 };
 
-export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = ({ sessionId }) => {
-    console.log(sessionId);
+export const SuccessPaymentBlock: React.FC<SuccessPaymentBlockProps> = () => {
     const router = useRouter();
 
     return (

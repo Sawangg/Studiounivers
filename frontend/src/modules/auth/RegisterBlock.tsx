@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+"use client";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { apiEndpoint } from "@lib/constants";
 import { Button } from "@ui/Button";

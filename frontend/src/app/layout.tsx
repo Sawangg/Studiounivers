@@ -12,6 +12,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="fr">
             <body className="min-h-screen bg-white font-body leading-normal text-primary-800">
+                {/* @ts-expect-error: "??" */}
                 <Navbar />
                 {children}
                 <Footer />

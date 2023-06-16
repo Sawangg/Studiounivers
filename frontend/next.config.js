@@ -3,10 +3,10 @@ const nextConfig = {
     experimental: {
         appDir: true,
     },
-    swcMinify: true,
     images: {
         domains: ["localhost"],
     },
+    output: "standalone",
 };
 
 module.exports = nextConfig;

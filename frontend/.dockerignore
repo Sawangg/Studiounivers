@@ -3,9 +3,10 @@
 .gitattributes
 .next/
 .dockerignore
+.husky/
+.npmrc
 Dockerfile
 node_modules/
-nginx/
 .env.local
 .env.example
 .eslintignore
