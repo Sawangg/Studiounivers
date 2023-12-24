@@ -1,44 +1,26 @@
 "use client";
 
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Button } from "@ui/Button";
 
 export const Hero: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
-    const t = (str: string) => {
-        return <p>{str}</p>;
-    };
+  const router = useRouter();
 
-    const router = useRouter();
+  return (
+    <section className="relative hidden w-full flex-row md:flex">
+      <div className="relative h-[50rem] w-full 3xl:h-[60rem]">
+        <Image src="/assets/hero2.png" alt="" fill />
+      </div>
 
-    return (
-        <section className="flex w-full flex-row text-white md:hidden md:px-28 md:py-20">
-            <div className="flex w-full flex-col justify-between bg-primary-700 p-7 md:w-3/5 md:p-16">
-                <div className="md:w-[calc(100%-32%)]">
-                    <h2 className="font-title text-3xl md:text-4xl">{t("hero.title")}</h2>
-                    <p className="mt-16 md:hidden">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta pariatur sapiente molestiae
-                        placeat suscipit eum possimus, rerum, sit excepturi eveniet sequi. Eveniet excepturi, quas vero
-                        alias deserunt earum? Assumenda, molestiae?
-                    </p>
-                    <Button className="mt-6 w-full md:w-2/6" onClick={() => router.push("/products")}>
-                        {t("hero.button")}
-                    </Button>
-                </div>
-                <div className="hidden md:block md:w-5/6">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta pariatur sapiente molestiae
-                        placeat suscipit eum possimus, rerum, sit excepturi eveniet sequi. Eveniet excepturi, quas vero
-                        alias deserunt earum? Assumenda, molestiae?
-                    </p>
-                </div>
-            </div>
-            <div className="hidden h-[40rem] max-h-[40rem] min-h-[40rem] w-2/5 items-center justify-center bg-white-100 md:flex">
-                <div className="relative h-[30rem] w-[35rem]">
-                    <Image src="/assets/hero.png" alt="" fill />
-                </div>
-            </div>
-        </section>
-    );
+      <div className="absolute right-28 top-[20%] w-5/12 bg-white p-16">
+        <h2 className="font-title text-3xl md:text-4xl">Produit de luxe pour les passionnées de photo</h2>
+        <p className="mt-6 text-lg">Achetez dès aujourd&apos;hui dans la nouvelle collection Printemps 2023</p>
+        <Button color="secondary" className="mt-36 w-full md:w-2/6" onClick={() => router.push("/products")}>
+          Voir la collection
+        </Button>
+      </div>
+    </section>
+  );
 };

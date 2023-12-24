@@ -1,19 +1,18 @@
-import { Hero2 } from "@modules/landing/Hero2";
-import { Features } from "@modules/landing/Features";
-import { NewListings } from "@modules/landing/NewListings";
-import { FeatureAbout } from "@modules/landing/FeatureAbout";
 import { getNewestProducts } from "@api/products/getNewestProducts";
+import { FeatureAbout } from "@modules/landing/FeatureAbout";
+import { Features } from "@modules/landing/Features";
+import { Hero } from "@modules/landing/Hero";
+import { NewListings } from "@modules/landing/NewListings";
 
 export default async function Page() {
-    const newestProducts = await getNewestProducts();
+  const newestProducts = await getNewestProducts();
 
-    return (
-        <>
-            {/* <Hero /> */}
-            <Hero2 />
-            <Features />
-            <NewListings newestProducts={newestProducts} />
-            <FeatureAbout />
-        </>
-    );
+  return (
+    <>
+      <Hero />
+      <Features />
+      <NewListings newestProducts={newestProducts!} />
+      <FeatureAbout />
+    </>
+  );
 }

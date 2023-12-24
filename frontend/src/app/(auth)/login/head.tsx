@@ -1,3 +1,3 @@
 export default function Head() {
-    return <title>StudioUnivers - Login</title>;
+  return <title>StudioUnivers - Login</title>;
 }

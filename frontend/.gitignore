@@ -21,17 +21,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
 
 # local env files
-.env.local
-.env.production
+.env*.local
 
 # vercel
 .vercel
-.swc
 
 # typescript
 *.tsbuildinfo
+next-env.d.ts
 
-.vscode
+.env
+.unlighthouse

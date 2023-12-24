@@ -5,8 +5,8 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /home/studiounivers
 
-COPY package.json yarn.lock ./
-RUN yarn install --pure-lockfile
+COPY package.json ./
+RUN npm i
 
 # Builder
 FROM node:alpine AS builder
@@ -17,7 +17,7 @@ WORKDIR /home/studiounivers
 
 COPY . .
 COPY --from=deps /home/studiounivers/node_modules ./node_modules
-RUN yarn build
+RUN npm run build
 
 # Runner
 FROM node:alpine

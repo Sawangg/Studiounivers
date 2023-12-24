@@ -1,60 +1,60 @@
 {
-    "compilerOptions": {
-        // Type Checking
-        "strict": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "exactOptionalPropertyTypes": false,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitOverride": true,
-        "noImplicitReturns": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "useUnknownInCatchVariables": true,
+  "compilerOptions": {
+    // Type Checking
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
 
-        // Modules
-        "baseUrl": ".",
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "paths": {
-            "@api/*": ["./src/api/*"],
-            "@hoc/*": ["./src/hoc/*"],
-            "@lib/*": ["./src/lib/*"],
-            "@modules/*": ["./src/modules/*"],
-            "@styles/*": ["./src/styles/*"],
-            "@type/*": ["./src/type/*"],
-            "@ui/*": ["./src/ui/*"],
-            "@public/*": ["./public/*"]
-        },
-
-        // Language and Environment
-        "target": "ESNext",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "jsx": "preserve",
-
-        // Interop Constraints
-        "forceConsistentCasingInFileNames": true,
-        "esModuleInterop": true,
-        "isolatedModules": true,
-
-        // Completeness
-        "skipLibCheck": true,
-
-        // Emit
-        "noEmit": true,
-
-        // Projects
-        "incremental": true,
-
-        // JavaScript Support
-        "allowJs": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ]
+    // Modules
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "@api/*": ["./src/api/*"],
+      "@hoc/*": ["./src/hoc/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@type/*": ["./src/type/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@public/*": ["./public/*"]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": [".next", "node_modules"]
+
+    // Language and Environment
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+
+    // Interop Constraints
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+
+    // Completeness
+    "skipLibCheck": true,
+
+    // Emit
+    "noEmit": true,
+
+    // Projects
+    "incremental": true,
+
+    // JavaScript Support
+    "allowJs": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": [".next", "node_modules"]
 }
