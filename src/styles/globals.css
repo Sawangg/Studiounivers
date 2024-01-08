@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "ClashDisplay-Variable";
+  src:
+    url("/assets/fonts/ClashDisplay/ClashDisplay-Variable.woff2") format("woff2"),
+    url("/assets/fonts/ClashDisplay/ClashDisplay-Variable.woff") format("woff"),
+    url("/assets/fonts/ClashDisplay/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Variable";
+  src:
+    url("/assets/fonts/Satoshi/Satoshi-Variable.woff2") format("woff2"),
+    url("/assets/fonts/Satoshi/Satoshi-Variable.woff") format("woff"),
+    url("/assets/fonts/Satoshi/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Custom checkbox */
+input:checked + div {
+  @apply border-primary-600;
+}
+
+input:checked + div svg {
+  display: block;
+  @apply bg-primary-600;
+}
+
+/* Hide Up Down arrows on input number */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
