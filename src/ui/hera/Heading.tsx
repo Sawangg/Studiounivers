@@ -16,3 +16,5 @@ export const Heading: React.FC<HeadingProps> = ({ level = 1, className, children
     {children}
   </RAHeading>
 );
+
+// TODO: Handle sm:
