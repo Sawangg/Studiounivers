@@ -1,16 +1,18 @@
 import { signInCredentials } from "@actions/signInCredentials";
+import { AlertTest } from "@components/AlertTest";
+import { DialogTest } from "@components/DialogTest";
 import { Avatar } from "@ui/hera/Avatar";
 import { Badge } from "@ui/hera/Badge";
 import { Button } from "@ui/hera/Button";
 import { Checkbox, CheckboxField, CheckboxGroup } from "@ui/hera/Checkbox";
 import { DarkModeToggle } from "@ui/hera/DarkModeToggle";
-import { Dialog } from "@ui/hera/Dialog";
 import { FieldSet, Legend } from "@ui/hera/Fieldset";
 import { Heading } from "@ui/hera/Heading";
 import { Input } from "@ui/hera/Input";
 import { Label } from "@ui/hera/Label";
 import { Radio, RadioField, RadioGroup } from "@ui/hera/Radio";
 import { Option, Select } from "@ui/hera/Select";
+import { Switch } from "@ui/hera/Switch";
 import { Code, Strong, Text, TextLink } from "@ui/hera/Text";
 import { TextArea } from "@ui/hera/TextArea";
 
@@ -33,16 +35,10 @@ export default function Page() {
         once.
       </Text>
 
-      <Dialog>
-        <Heading level={2}>Hello world</Heading>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente nostrum ratione quia reprehenderit totam
-          dicta reiciendis ab quibusdam optio libero dolores itaque ipsam ipsa, nobis accusantium unde adipisci
-          veritatis quam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, repudiandae minima maiores sed
-          aperiam velit possimus. Debitis tenetur, asperiores molestiae eveniet eos facilis repellat quisquam id nostrum
-          aliquam voluptatibus nihil.
-        </Text>
-      </Dialog>
+      <div className="flex gap-x-4">
+        <DialogTest />
+        <AlertTest />
+      </div>
 
       <form action={signInCredentials} className="flex w-1/2 flex-col gap-y-3">
         <FieldSet>
@@ -58,13 +54,19 @@ export default function Page() {
 
         <FieldSet>
           <Label>Selection</Label>
-          <Select>
+          <Select label="selection">
             <Option>Active</Option>
             <Option>Paused</Option>
           </Select>
         </FieldSet>
 
-        <FieldSet>
+        <FieldSet className="grid grid-cols-[1fr_auto] items-center gap-x-8 gap-y-1 sm:grid-cols-[1fr_auto] [&>[data-slot=control]]:col-start-2 [&>[data-slot=control]]:self-center [&>[data-slot=description]]:col-start-1 [&>[data-slot=description]]:row-start-2 [&>[data-slot=label]]:col-start-1 [&>[data-slot=label]]:row-start-1 [&>[data-slot=label]]:justify-self-start [&_[data-slot=label]]:has-[[data-slot=description]]:font-medium">
+          <Label>Allow embedding</Label>
+          <Text as="description">Allow others to embed your event details on their own site.</Text>
+          <Switch name="allow_embedding" />
+        </FieldSet>
+
+        <FieldSet aria-label="discoverability">
           <Legend>Discoverability</Legend>
           <Text>Decide where your events can be found across the web.</Text>
           <CheckboxGroup>
@@ -81,10 +83,10 @@ export default function Page() {
           </CheckboxGroup>
         </FieldSet>
 
-        <FieldSet>
+        <FieldSet aria-label="resale_transfers">
           <Legend>Resale and transfers</Legend>
           <Text>Decide if people buy tickets from you or from scalpers.</Text>
-          <RadioGroup name="resale">
+          <RadioGroup name="resale" defaultValue="permit" aria-label="resale">
             <RadioField>
               <Radio value="permit" />
               <Label>Allow tickets to be resold</Label>

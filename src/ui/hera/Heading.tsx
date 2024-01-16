@@ -11,6 +11,7 @@ export const Heading: React.FC<HeadingProps> = ({ level = 1, className, children
       level === 2 && "text-base",
       level === 3 && "text-[1rem]",
     )}
+    data-slot="title"
     {...props}
   >
     {children}

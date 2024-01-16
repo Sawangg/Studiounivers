@@ -6,13 +6,18 @@ import {
   Popover,
   Select as RASelect,
   SelectValue,
-  type SelectProps,
+  type SelectProps as RASelectProps,
 } from "react-aria-components";
 import { ChevronUpDownIcon } from "./icons/ChevronUpDownIcon";
 
-export const Select: React.FC<SelectProps<object>> = ({ className, children, ...props }) => (
+export type SelectProps = RASelectProps<object> & {
+  label: string;
+};
+
+export const Select: React.FC<SelectProps> = ({ label, className, children, ...props }) => (
   <RASelect
     className="group relative block w-full before:absolute before:inset-px before:rounded-[calc(theme(borderRadius.lg)-1px)] before:bg-white before:shadow after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-transparent has-[[data-disabled]]:opacity-50 before:has-[[data-disabled]]:bg-zinc-950/5 before:has-[[data-disabled]]:shadow-none dark:before:hidden sm:after:has-[[data-focused]]:ring-2 sm:after:has-[[data-focused]]:ring-blue-500"
+    aria-label={label}
     data-slot="control"
     {...props}
   >

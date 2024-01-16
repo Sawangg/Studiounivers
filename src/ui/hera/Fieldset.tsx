@@ -17,13 +17,14 @@ export const Legend: React.FC<LegendProps> = ({ children, className, ...props })
 );
 
 // Add disabled
-export const FieldSet: React.FC<FieldSetProps> = ({ children, className }) => (
+export const FieldSet: React.FC<FieldSetProps> = ({ children, className, ...props }) => (
   <RATextfield
     className={clsx(
       "[&>*+[data-slot=control]]:mt-6 [&>[data-slot=control]+[data-slot=description]]:mt-3 [&>[data-slot=control]+[data-slot=error]]:mt-3 [&>[data-slot=description]+[data-slot=control]]:mt-3 [&>[data-slot=label]+[data-slot=control]]:mt-3 [&>[data-slot=label]+[data-slot=description]]:mt-1 [&>[data-slot=label]]:font-medium [&>[data-slot=text]]:mt-1",
       className,
     )}
     data-slot="field"
+    {...props}
   >
     {children}
   </RATextfield>
